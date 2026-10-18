@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enactus IFMBTP - Affiche & Portail Recrutement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <!-- QR Code Generator Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        enactus: {
+                            yellow: '#FFC20E',
+                            darkYellow: '#E5A900',
+                            dark: '#000000',
+                            body: '#F4F5F7',
+                            slate: '#0F172A'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        hiring: ['Montserrat', 'sans-serif'],
+                        cursive: ['Caveat', 'cursive']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .poster-yellow-bg { background-color: #FFC20E; }
+        .hiring-shadow { text-shadow: 0px 6px 14px rgba(0,0,0,0.18); }
+        .dot-pattern {
+            background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
+            background-size: 10px 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #FFC20E; border-radius: 8px; }
+
+        @media print {
+            body * { visibility: hidden; }
+            #printable-form, #printable-form * { visibility: visible; }
+            #printable-form {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 20px;
+                background: white !important;
+                color: black !important;
+            }
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body class="min-h-full font-sans text-slate-800 bg-slate-200 antialiased selection:bg-enactus-yellow selection:text-black">
+
+    <!-- Navigation Top Bar & QR Code Configurator -->
+    <nav class="no-print sticky top-0 z-40 bg-slate-950 text-white py-3 px-4 sm:px-8 border-b border-white/10 shadow-md">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="switchView('poster')">
+                <div class="w-8 h-8 bg-enactus-yellow rounded-lg flex items-center justify-center font-extrabold text-black text-sm shadow-inner">
+                    E
+                </div>
+                <span class="font-bold text-sm tracking-wide">ENACTUS <span class="text-enactus-yellow">IFMBTP</span></span>
+            </div>
+
+            <!-- URL input for QR Code -->
+            <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-xl text-xs w-full md:w-auto">
+                <i class="fa-solid fa-link text-enactus-yellow"></i>
+                <span class="hidden sm:inline font-semibold text-slate-300">Lien du QR Code :</span>
+                <input id="qr-url-input" type="url" value="https://enactus-ifmbtp.com/recrutement" placeholder="Collez l'URL de votre site ou formulaire ici" oninput="updateQRCode()" class="bg-slate-900 border border-slate-700 text-white px-2 py-1 rounded text-xs w-full sm:w-64 focus:outline-none focus:border-enactus-yellow" />
+            </div>
+
+            <!-- View Switcher Tabs -->
+            <div class="flex items-center gap-1.5 bg-white/10 p-1.5 rounded-xl text-xs w-full md:w-auto justify-center">
+                <button id="tab-poster" onclick="switchView('poster')" class="px-4 py-2 rounded-lg font-bold transition-all bg-enactus-yellow text-black shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-image"></i> Vue Affiche
+                </button>
+                <button id="tab-poles" onclick="switchView('poles')" class="px-4 py-2 rounded-lg font-bold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2">
+                    <i class="fa-solid fa-sitemap text-enactus-yellow"></i> Pôles & Postes
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- VIEW 1: RECRUITMENT POSTER VIEW -->
+    <div id="view-poster" class="no-print py-8 px-4 flex flex-col items-center justify-center min-h-[calc(100vh-60px)]">
+        
+        <div class="relative w-full max-w-lg bg-[#F5F5F7] shadow-2xl rounded-2xl overflow-hidden border border-slate-300 flex flex-col min-h-[780px]">
+            
+            <!-- Top Yellow Section with Enactus Logo -->
+            <div class="poster-yellow-bg relative pt-10 pb-16 px-6 text-center flex flex-col items-center justify-center shadow-sm">
+                <!-- Dot Pattern Accents -->
+                <div class="absolute left-0 top-0 bottom-0 w-12 dot-pattern opacity-20"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-12 dot-pattern opacity-20"></div>
+
+                <!-- Enactus Logo Graphic -->
+                <div class="flex flex-col items-center justify-center mb-1">
+                    <div class="flex items-center gap-2">
+                        <div class="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[18px] border-b-white transform -rotate-45"></div>
+                        <span class="text-white font-extrabold text-3xl tracking-tight">enactus</span>
+                    </div>
+                    <span class="text-white font-bold text-xs tracking-widest uppercase mt-0.5">IFMBTP</span>
+                </div>
+            </div>
+
+            <!-- Curved Diagonal Separator Accent -->
+            <div class="relative -mt-10 mb-2">
+                <svg class="w-full h-12 text-[#F5F5F7] fill-current" viewBox="0 0 500 50" preserveAspectRatio="none">
+                    <polygon points="0,50 500,0 500,50"></polygon>
+                </svg>
+            </div>
+
+            <!-- Poster Main Title Section -->
+            <div class="text-center px-6 z-10 -mt-6">
+                <h1 class="font-hiring font-black text-4xl sm:text-5xl text-black tracking-tight leading-none hiring-shadow uppercase">
+                    WE ARE<br>HIRING !
+                </h1>
+
+                <div class="mt-4 mb-4">
+                    <p class="font-cursive text-3xl sm:text-4xl text-slate-800 -rotate-3 select-none">
+                        Become the next Change Maker
+                    </p>
+                </div>
+            </div>
+
+            <!-- Geometric Yellow Framing Lines -->
+            <div class="absolute left-0 top-[52%] w-20 h-44 pointer-events-none opacity-80">
+                <svg viewBox="0 0 100 200" class="w-full h-full stroke-enactus-yellow fill-none stroke-[6]">
+                    <polyline points="90,10 10,90 80,180" />
+                </svg>
+            </div>
+            <div class="absolute right-0 top-[58%] w-18 h-40 pointer-events-none opacity-80">
+                <svg viewBox="0 0 100 200" class="w-full h-full stroke-enactus-yellow fill-none stroke-[6]">
+                    <polyline points="10,10 90,90 20,180" />
+                </svg>
+            </div>
+
+            <!-- QR Code Section -->
+            <div class="flex-1 flex flex-col items-center justify-center p-4 z-10">
+                <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-200 text-center flex flex-col items-center w-full max-w-xs">
+                    
+                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                        Scanner pour découvrir nos postes
+                    </p>
+
+                    <!-- High-Contrast QR Code Box with quiet zone -->
+                    <div class="p-4 bg-white rounded-xl border-2 border-slate-900 shadow-inner cursor-pointer" onclick="switchView('poles')" title="Découvrir les postes sur cet écran">
+                        <div id="poster-qrcode" class="flex justify-center items-center bg-white min-w-[170px] min-h-[170px]"></div>
+                    </div>
+
+                    <button onclick="switchView('poles')" class="mt-4 w-full flex items-center justify-center gap-2 bg-enactus-yellow text-black font-extrabold text-xs py-3 px-4 rounded-xl hover:bg-enactus-darkYellow transition-all shadow-md">
+                        <i class="fa-solid fa-compass text-black"></i>
+                        <span>Découvrir tous les Postes</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer Social Info -->
+            <div class="py-4 text-center border-t border-slate-200 bg-white/60 backdrop-blur-sm z-10">
+                <div class="flex items-center justify-center gap-3 text-slate-900 font-bold text-xs tracking-wide">
+                    <i class="fa-brands fa-facebook text-base text-slate-800"></i>
+                    <i class="fa-brands fa-instagram text-base text-slate-800"></i>
+                    <span>IFMBTP Enactors</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- VIEW 2: INTERACTIVE POLES & ROLES CATALOG -->
+    <div id="view-poles" class="no-print hidden max-w-6xl mx-auto px-4 py-8">
+        
+        <!-- Header & Action Banner to Printable Form -->
+        <div class="mb-8 bg-slate-900 text-white rounded-2xl p-6 border border-slate-800 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+                <span class="inline-block px-3 py-1 bg-enactus-yellow text-black font-extrabold text-[10px] rounded-full uppercase tracking-wider mb-2">
+                    Recrutement Enactus IFMBTP
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold">Catalogue des Postes Disponibles</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
+                    Découvrez ci-dessous l'organisation de nos pôles, les rôles du Bureau Exécutif et des Membres Actifs. Une fois votre choix fait, imprimez votre fiche et déposez-la à la réception !
+                </p>
+            </div>
+
+            <!-- Direct Button to Print/Fill Form -->
+            <button onclick="openPrintModal()" class="w-full md:w-auto shrink-0 bg-enactus-yellow hover:bg-enactus-darkYellow text-black font-extrabold px-5 py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-3 transition-all text-sm">
+                <i class="fa-solid fa-print text-base"></i>
+                <span>Formulaire Manuscrit (À Imprimer)</span>
+            </button>
+        </div>
+
+        <!-- Leadership Status Banner -->
+        <div class="mb-8 bg-white border border-slate-200 rounded-2xl p-5 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                <h3 class="font-extrabold text-slate-900 text-base">Direction Générale du Club</h3>
+                <p class="text-xs text-slate-500">Supervision stratégique et représentation d'Enactus IFMBTP</p>
+            </div>
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+                <div class="flex-1 sm:flex-none px-4 py-2 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-user-check text-emerald-600"></i>
+                    <div>
+                        <span class="text-[9px] text-emerald-600 font-extrabold uppercase block">Occupé par Moi</span>
+                        <span class="text-xs font-bold text-slate-800">Team Leader</span>
+                    </div>
+                </div>
+                <div class="flex-1 sm:flex-none px-4 py-2 bg-slate-100 border border-slate-200 rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-lock text-slate-400"></i>
+                    <div>
+                        <span class="text-[9px] text-slate-400 font-extrabold uppercase block">Occupé</span>
+                        <span class="text-xs font-bold text-slate-800">Vice-Team Leader</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Poles Grid Section -->
+        <div class="space-y-8">
+            
+            <!-- POLE 1: PROJETS & R&D -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-900">Pôle Projets & Innovation R&D</h3>
+                        <p class="text-xs text-slate-500">Conception de projets d'entrepreneuriat social & études d'impact terrain</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Executive Bureau -->
+                    <div onclick="openRoleModal('project-manager')" class="cursor-pointer p-4 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-100/50 transition-colors flex items-start justify-between gap-3">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-amber-200 text-amber-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Project Manager (PM)</h4>
+                            <p class="text-xs text-slate-600 mt-1">Superviser les projets de la phase d'idéation au prototype.</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-enactus-yellow text-black font-extrabold text-[10px] rounded-lg shrink-0">Voir description</span>
+                    </div>
+
+                    <div onclick="openRoleModal('vice-pm')" class="cursor-pointer p-4 rounded-xl border border-amber-200 bg-amber-50/40 hover:bg-amber-100/50 transition-colors flex items-start justify-between gap-3">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-amber-200 text-amber-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Vice-Project Manager</h4>
+                            <p class="text-xs text-slate-600 mt-1">Coordination opérationnelle et suivi du calendrier de terrain.</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-enactus-yellow text-black font-extrabold text-[10px] rounded-lg shrink-0">Voir description</span>
+                    </div>
+
+                    <!-- Active Members -->
+                    <div onclick="openRoleModal('cellule-projets')" class="md:col-span-2 cursor-pointer p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-white border text-amber-600 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-users"></i></span>
+                            <div>
+                                <span class="text-[9px] font-bold uppercase text-slate-400">Membres Actifs</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Membres de la Cellule Projets & R&D</h4>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-slate-700 underline">Voir missions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POLE 2: COMMUNICATION & MEDIA -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-900">Pôle Communication, Design & Média</h3>
+                        <p class="text-xs text-slate-500">Gestion de l'image de marque, création visuelle et présence digitale</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div onclick="openRoleModal('vp-com')" class="cursor-pointer p-4 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-blue-200 text-blue-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">VP Communication</h4>
+                            <p class="text-xs text-slate-600 mt-1">Piloter la stratégie média globale du club.</p>
+                        </div>
+                        <span class="mt-3 text-right text-xs font-extrabold text-blue-700">Voir description &rarr;</span>
+                    </div>
+
+                    <div onclick="openRoleModal('media-lead')" class="cursor-pointer p-4 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-blue-200 text-blue-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Media Lead / Graphic Designer</h4>
+                            <p class="text-xs text-slate-600 mt-1">Création des visuels, charte et designs originaux.</p>
+                        </div>
+                        <span class="mt-3 text-right text-xs font-extrabold text-blue-700">Voir description &rarr;</span>
+                    </div>
+
+                    <div onclick="openRoleModal('audiovisuel')" class="cursor-pointer p-4 rounded-xl border border-blue-200 bg-blue-50/40 hover:bg-blue-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-blue-200 text-blue-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Audiovisuel & Community Manager</h4>
+                            <p class="text-xs text-slate-600 mt-1">Couverture vidéo, reels & gestion de communauté.</p>
+                        </div>
+                        <span class="mt-3 text-right text-xs font-extrabold text-blue-700">Voir description &rarr;</span>
+                    </div>
+
+                    <!-- Active Members -->
+                    <div onclick="openRoleModal('cellule-com')" class="md:col-span-3 cursor-pointer p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-white border text-blue-600 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-users"></i></span>
+                            <div>
+                                <span class="text-[9px] font-bold uppercase text-slate-400">Membres Actifs</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Membres de la Cellule Communication & Média</h4>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-slate-700 underline">Voir missions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POLE 3: ÉVÉNEMENTIEL, LOGISTIQUE & PITCH -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-900">Pôle Événementiel, Logistique & Pitch</h3>
+                        <p class="text-xs text-slate-500">Organisation des séminaires, bootcamps & préparation aux compétitions</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div onclick="openRoleModal('event-logistics')" class="cursor-pointer p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-100/50 transition-colors flex items-start justify-between gap-3">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-emerald-200 text-emerald-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Event & Logistics Manager</h4>
+                            <p class="text-xs text-slate-600 mt-1">Superviser l'organisation matérielle des événements.</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-enactus-yellow text-black font-extrabold text-[10px] rounded-lg shrink-0">Voir description</span>
+                    </div>
+
+                    <div onclick="openRoleModal('pitch-coach')" class="cursor-pointer p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 hover:bg-emerald-100/50 transition-colors flex items-start justify-between gap-3">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-emerald-200 text-emerald-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Training & Pitch Coach</h4>
+                            <p class="text-xs text-slate-600 mt-1">Formation des orateurs pour les compétitions nationales.</p>
+                        </div>
+                        <span class="px-2.5 py-1 bg-enactus-yellow text-black font-extrabold text-[10px] rounded-lg shrink-0">Voir description</span>
+                    </div>
+
+                    <!-- Active Members -->
+                    <div onclick="openRoleModal('cellule-logistique')" class="md:col-span-2 cursor-pointer p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 transition-colors flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-white border text-emerald-600 flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-users"></i></span>
+                            <div>
+                                <span class="text-[9px] font-bold uppercase text-slate-400">Membres Actifs</span>
+                                <h4 class="font-bold text-slate-900 text-sm">Membres de la Cellule Événementiel & Logistique</h4>
+                            </div>
+                        </div>
+                        <span class="text-xs font-extrabold text-slate-700 underline">Voir missions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- POLE 4: FINANCE, SPONSORING & RH -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-4">
+                    <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-coins"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-extrabold text-slate-900">Pôle Finance, Sponsoring & RH</h3>
+                        <p class="text-xs text-slate-500">Gestion des partenariats, fonds, budget et du capital humain</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div onclick="openRoleModal('hr-manager')" class="cursor-pointer p-4 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-purple-200 text-purple-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">HR Manager</h4>
+                            <p class="text-xs text-slate-600 mt-1">Gestion des membres & teambuilding.</p>
+                        </div>
+                        <span class="mt-3 text-xs font-extrabold text-purple-700">Voir description &rarr;</span>
+                    </div>
+
+                    <div onclick="openRoleModal('vp-sponsorship')" class="cursor-pointer p-4 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-purple-200 text-purple-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">VP Sponsorship</h4>
+                            <p class="text-xs text-slate-600 mt-1">Négociation & recherche de sponsors.</p>
+                        </div>
+                        <span class="mt-3 text-xs font-extrabold text-purple-700">Voir description &rarr;</span>
+                    </div>
+
+                    <div onclick="openRoleModal('treasurer')" class="cursor-pointer p-4 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-purple-200 text-purple-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Trésorier</h4>
+                            <p class="text-xs text-slate-600 mt-1">Tenue des comptes & gestion budgétaire.</p>
+                        </div>
+                        <span class="mt-3 text-xs font-extrabold text-purple-700">Voir description &rarr;</span>
+                    </div>
+
+                    <div onclick="openRoleModal('finance-fundraising')" class="cursor-pointer p-4 rounded-xl border border-purple-200 bg-purple-50/40 hover:bg-purple-100/50 transition-colors flex flex-col justify-between">
+                        <div>
+                            <span class="inline-block px-2 py-0.5 bg-purple-200 text-purple-900 font-bold text-[9px] rounded uppercase mb-1">Bureau Exécutif</span>
+                            <h4 class="font-extrabold text-slate-900 text-sm">Finance & Fundraising Officer</h4>
+                            <p class="text-xs text-slate-600 mt-1">Levée de fonds & activités lucratives.</p>
+                        </div>
+                        <span class="mt-3 text-xs font-extrabold text-purple-700">Voir description &rarr;</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sticky Bottom CTA to Printable Form -->
+        <div class="mt-8 bg-enactus-yellow p-6 rounded-2xl text-black flex flex-col sm:flex-row items-center justify-between gap-4 shadow-lg">
+            <div>
+                <h3 class="text-lg font-black uppercase">Prêt à nous rejoindre ?</h3>
+                <p class="text-xs font-medium text-slate-900">Imprimez la fiche de candidature manuscrite et remettez-la à la réceptionniste de l'IFMBTP.</p>
+            </div>
+            <button onclick="openPrintModal()" class="w-full sm:w-auto bg-black text-white font-extrabold px-6 py-3 rounded-xl hover:bg-slate-800 transition-colors text-xs shrink-0 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-print"></i> Formulaire Manuscrit À Imprimer
+            </button>
+        </div>
+    </div>
+
+    <!-- ROLE DETAIL MODAL -->
+    <div id="role-modal" class="no-print fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative space-y-5 max-h-[90vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <button onclick="closeRoleModal()" class="absolute top-4 right-4 text-slate-400 hover:text-black text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div>
+                <span id="modal-role-badge" class="px-2.5 py-1 bg-enactus-yellow text-black font-extrabold text-[10px] rounded-full uppercase">
+                    Pôle Projets
+                </span>
+                <h3 id="modal-role-title" class="text-2xl font-extrabold text-slate-900 mt-2">Project Manager</h3>
+                <p id="modal-role-subtitle" class="text-xs text-slate-500 font-medium">Bureau Exécutif - Responsable de Pôle</p>
+            </div>
+
+            <!-- Role Breakdown -->
+            <div class="space-y-4 text-xs bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <div>
+                    <h5 class="font-extrabold text-slate-900 uppercase tracking-wider text-[10px] border-b pb-1 mb-2 flex items-center gap-1.5 text-amber-600">
+                        <i class="fa-solid fa-list-check"></i> Missions Ciblées
+                    </h5>
+                    <ul id="modal-role-missions" class="space-y-1.5 text-slate-700 list-disc list-inside"></ul>
+                </div>
+
+                <div>
+                    <h5 class="font-extrabold text-slate-900 uppercase tracking-wider text-[10px] border-b pb-1 mb-2 flex items-center gap-1.5 text-blue-600">
+                        <i class="fa-solid fa-user-check"></i> Attentes & Profil Recherché
+                    </h5>
+                    <ul id="modal-role-expectations" class="space-y-1.5 text-slate-700 list-disc list-inside"></ul>
+                </div>
+            </div>
+
+            <div class="pt-2 border-t flex items-center gap-3">
+                <button onclick="closeRoleModal(); openPrintModal();" class="w-full py-3 bg-enactus-yellow text-black font-extrabold rounded-xl hover:bg-enactus-darkYellow transition-colors shadow-md text-xs flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-print"></i> Choisir ce poste & Imprimer le Formulaire
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRINTABLE MANUSCRIPT APPLICATION FORM -->
+    <div id="print-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative space-y-4 max-h-[95vh] overflow-y-auto custom-scrollbar border border-slate-200">
+            <button onclick="closePrintModal()" class="no-print absolute top-4 right-4 text-slate-400 hover:text-black text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="no-print flex items-center justify-between border-b pb-3">
+                <div>
+                    <h3 class="font-extrabold text-lg text-slate-900">Aperçu du Formulaire à Imprimer</h3>
+                    <p class="text-xs text-slate-500">Imprimez ce document, remplissez-le à la main et déposez-le à la réception.</p>
+                </div>
+                <button onclick="window.print()" class="bg-enactus-yellow text-black font-extrabold px-4 py-2 rounded-xl text-xs hover:bg-enactus-darkYellow flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-print"></i> Imprimer Maintenant
+                </button>
+            </div>
+
+            <!-- FORM TO BE PRINTED OR FILLED MANUALLY -->
+            <div id="printable-form" class="bg-white p-6 rounded-xl border border-slate-300 text-slate-900 space-y-6">
+                <!-- Form Header -->
+                <div class="flex items-center justify-between border-b-2 border-black pb-4">
+                    <div>
+                        <h1 class="text-2xl font-black tracking-tight">ENACTUS IFMBTP</h1>
+                        <p class="text-xs font-bold uppercase tracking-wider text-slate-600">Fiche de Candidature Officielle - Recrutement</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs font-bold border border-black px-3 py-1 rounded">Année Universitaire</span>
+                    </div>
+                </div>
+
+                <div class="p-3 bg-slate-100 rounded text-[11px] font-medium border border-slate-300">
+                    <p>📌 <strong>Instruction :</strong> Veuillez remplir minutieusement ce formulaire à la main en lettres capitales, puis le remettre en main propre à la <strong>réceptionniste de l'IFMBTP</strong>.</p>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black uppercase tracking-wider border-b pb-1">1. Informations Personnelles</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <p class="font-bold mb-1">Nom :</p>
+                            <div class="h-8 border-b border-dashed border-slate-800"></div>
+                        </div>
+                        <div>
+                            <p class="font-bold mb-1">Prénom :</p>
+                            <div class="h-8 border-b border-dashed border-slate-800"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-xs">
+                        <div>
+                            <p class="font-bold mb-1">Filière / Niveau à l'IFMBTP :</p>
+                            <div class="h-8 border-b border-dashed border-slate-800"></div>
+                        </div>
+                        <div>
+                            <p class="font-bold mb-1">Numéro Téléphone / WhatsApp :</p>
+                            <div class="h-8 border-b border-dashed border-slate-800"></div>
+                        </div>
+                    </div>
+
+                    <div class="text-xs">
+                        <p class="font-bold mb-1">Adresse E-mail :</p>
+                        <div class="h-8 border-b border-dashed border-slate-800"></div>
+                    </div>
+                </div>
+
+                <!-- Post Wish -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black uppercase tracking-wider border-b pb-1">2. Choix du Poste Souhaité</h3>
+                    
+                    <div class="text-xs">
+                        <p class="font-bold mb-1">Poste Visé (Intitulé exact) :</p>
+                        <div class="h-8 border-b border-dashed border-slate-800"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 border-2 border-slate-800"></div>
+                            <span>Bureau Exécutif</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="w-4 h-4 border-2 border-slate-800"></div>
+                            <span>Membre Actif de Cellule</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motivation & Skills -->
+                <div class="space-y-4">
+                    <h3 class="text-sm font-black uppercase tracking-wider border-b pb-1">3. Motivations & Compétences</h3>
+                    
+                    <div class="text-xs">
+                        <p class="font-bold mb-2">Pourquoi souhaitez-vous rejoindre ce poste et le club Enactus IFMBTP ?</p>
+                        <div class="space-y-3">
+                            <div class="h-6 border-b border-dashed border-slate-400"></div>
+                            <div class="h-6 border-b border-dashed border-slate-400"></div>
+                            <div class="h-6 border-b border-dashed border-slate-400"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Signatures -->
+                <div class="pt-6 grid grid-cols-2 gap-8 text-xs border-t">
+                    <div>
+                        <p class="font-bold mb-8">Date & Signature du Candidat(e) :</p>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-8">Accusé de réception (Réceptionniste IFMBTP) :</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-print pt-2 flex justify-end gap-3">
+                <button onclick="closePrintModal()" class="px-4 py-2 bg-slate-200 text-slate-800 rounded-xl font-bold text-xs hover:bg-slate-300">
+                    Fermer
+                </button>
+                <button onclick="window.print()" class="px-5 py-2 bg-enactus-yellow text-black rounded-xl font-extrabold text-xs hover:bg-enactus-darkYellow flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-print"></i> Imprimer le Formulaire
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Roles details repository
+        const rolesData = {
+            'project-manager': {
+                title: "Project Manager (PM)",
+                badge: "Pôle Projets & R&D",
+                subtitle: "Bureau Exécutif - Responsable de Pôle",
+                missions: [
+                    "Superviser l'ensemble des projets d'entrepreneuriat social du club.",
+                    "Définir la méthodologie de travail, les jalons et le calendrier global.",
+                    "S'assurer du respect des critères de compétition Enactus National."
+                ],
+                expectations: [
+                    "Sens aigu de l'organisation et du leadership.",
+                    "Capacité à résoudre des problèmes complexes et à orienter les équipes.",
+                    "Avoir idéalement une première expérience dans la gestion de projets."
+                ]
+            },
+            'vice-pm': {
+                title: "Vice-Project Manager",
+                badge: "Pôle Projets & R&D",
+                subtitle: "Bureau Exécutif - Co-Responsable",
+                missions: [
+                    "Assister le Project Manager dans la gestion quotidienne des équipes de projet.",
+                    "Assurer le suivi du calendrier terrain et des études d'impact.",
+                    "Coordonner les réunions hebdomadaires d'avancement."
+                ],
+                expectations: [
+                    "Rigueur, capacité d'écoute et excellent relationnel.",
+                    "Fort engagement et disponibilité pour le travail de terrain."
+                ]
+            },
+            'cellule-projets': {
+                title: "Membres de la Cellule Projets & R&D",
+                badge: "Pôle Projets & R&D",
+                subtitle: "Membres Actifs",
+                missions: [
+                    "Participer aux séances d'idéation et d'analyse des besoins sur le terrain.",
+                    "Concevoir et tester les prototypes des solutions entrepreneuriales.",
+                    "Réaliser les enquêtes et collecter les données d'impact auprès des bénéficiaires."
+                ],
+                expectations: [
+                    "Esprit créatif, curiosité et motivation à faire un impact social.",
+                    "Capacité à travailler efficacement en équipe."
+                ]
+            },
+            'vp-com': {
+                title: "VP Communication",
+                badge: "Pôle Communication",
+                subtitle: "Bureau Exécutif - Responsable de Pôle",
+                missions: [
+                    "Définir la stratégie globale de communication et l'image de marque du club.",
+                    "Valider l'ensemble des contenus visuels et éditoriaux avant publication.",
+                    "Gérer le calendrier de publication sur les réseaux sociaux."
+                ],
+                expectations: [
+                    "Excellente maîtrise de la communication digitale et des tendances.",
+                    "Sens artistique affirmé et capacités rédactionnelles."
+                ]
+            },
+            'media-lead': {
+                title: "Media Lead / Graphic Designer",
+                badge: "Pôle Communication",
+                subtitle: "Bureau Exécutif - Design Lead",
+                missions: [
+                    "Créer l'identité visuelle, les affiches, les présentations et les visuels sociaux.",
+                    "Maintenir la cohérence de la charte graphique Enactus IFMBTP."
+                ],
+                expectations: [
+                    "Maîtrise de Canva, Illustrator, Photoshop ou Figma.",
+                    "Créativité et souci du détail visuel."
+                ]
+            },
+            'audiovisuel': {
+                title: "Audiovisuel & Community Manager",
+                badge: "Pôle Communication",
+                subtitle: "Bureau Exécutif - Media",
+                missions: [
+                    "Réaliser la couverture photo/vidéo des événements du club.",
+                    "Monter les Reels/TikToks promotionnels et interagir avec la communauté."
+                ],
+                expectations: [
+                    "Aisance avec le cadrage et le montage vidéo sur smartphone/PC.",
+                    "Aisance relationnelle et réactivité."
+                ]
+            },
+            'cellule-com': {
+                title: "Membres de la Cellule Communication & Média",
+                badge: "Pôle Communication",
+                subtitle: "Membres Actifs",
+                missions: [
+                    "Rédiger les textes et publications pour les réseaux sociaux.",
+                    "Aider à la création de contenus interactifs et à l'animation de la communauté."
+                ],
+                expectations: [
+                    "Passionné par le branding, la rédaction ou le montage court."
+                ]
+            },
+            'event-logistics': {
+                title: "Event & Logistics Manager",
+                badge: "Pôle Événementiel",
+                subtitle: "Bureau Exécutif - Responsable de Pôle",
+                missions: [
+                    "Planifier et orchestrer l'organisation logistique de tous les événements.",
+                    "Gérer les réservations de salles, matériels et autorisations."
+                ],
+                expectations: [
+                    "Sens poussé de l'organisation et anticipation des besoins.",
+                    "Bonne gestion du stress lors des événements en direct."
+                ]
+            },
+            'pitch-coach': {
+                title: "Training & Pitch Coach",
+                badge: "Pôle Événementiel",
+                subtitle: "Bureau Exécutif - Formateur",
+                missions: [
+                    "Formuler et coacher l'équipe de Pitchers pour la compétition nationale.",
+                    "Organiser des ateliers de prise de parole en public pour les membres."
+                ],
+                expectations: [
+                    "Aisance oratoire exceptionnelle et leadership.",
+                    "Capacité à structurer un discours impactant (Storytelling)."
+                ]
+            },
+            'cellule-logistique': {
+                title: "Membres de la Cellule Événementiel & Logistique",
+                badge: "Pôle Événementiel",
+                subtitle: "Membres Actifs",
+                missions: [
+                    "Assurer la mise en place physique et l'accueil lors des événements.",
+                    "Aider à la coordination matérielle des séminaires et compétitions."
+                ],
+                expectations: [
+                    "Esprit d'équipe, réactivité et enthousiasme."
+                ]
+            },
+            'hr-manager': {
+                title: "HR Manager",
+                badge: "Pôle Finance & RH",
+                subtitle: "Bureau Exécutif - Responsable RH",
+                missions: [
+                    "Gérer le recrutement, l'intégration (onboarding) et le suivi des membres.",
+                    "Organiser les activités de Team Building et veiller au bon climat du club."
+                ],
+                expectations: [
+                    "Empathie, écoute active et compétences en gestion humaine."
+                ]
+            },
+            'vp-sponsorship': {
+                title: "VP Sponsorship",
+                badge: "Pôle Finance & RH",
+                subtitle: "Bureau Exécutif - Partenariats",
+                missions: [
+                    "Identifier, démarcher et négocier avec les entreprises partenaires.",
+                    "Rédiger le dossier de sponsoring et sécuriser les conventions."
+                ],
+                expectations: [
+                    "Excellentes compétences en négociation et en prospection."
+                ]
+            },
+            'treasurer': {
+                title: "Trésorier",
+                badge: "Pôle Finance & RH",
+                subtitle: "Bureau Exécutif - Trésorerie",
+                missions: [
+                    "Tenir la comptabilité du club et élaborer les budgets prévisionnels.",
+                    "Gérer le fonds de caisse et valider les dépenses."
+                ],
+                expectations: [
+                    "Rigueur financière, transparence et honnêteté."
+                ]
+            },
+            'finance-fundraising': {
+                title: "Finance & Fundraising Officer",
+                badge: "Pôle Finance & RH",
+                subtitle: "Bureau Exécutif - Fundraising",
+                missions: [
+                    "Organiser des activités génératrices de revenus pour le club.",
+                    "Rechercher des subventions et financements participatifs."
+                ],
+                expectations: [
+                    "Esprit entrepreneurial et orientation résultats."
+                ]
+            }
+        };
+
+        // Switch between Poster and Poles views
+        window.switchView = function(viewName) {
+            const viewPoster = document.getElementById('view-poster');
+            const viewPoles = document.getElementById('view-poles');
+            const tabPoster = document.getElementById('tab-poster');
+            const tabPoles = document.getElementById('tab-poles');
+
+            if (viewName === 'poster') {
+                viewPoster.classList.remove('hidden');
+                viewPoles.classList.add('hidden');
+
+                tabPoster.className = "px-4 py-2 rounded-lg font-bold transition-all bg-enactus-yellow text-black shadow-md flex items-center gap-2";
+                tabPoles.className = "px-4 py-2 rounded-lg font-bold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2";
+            } else {
+                viewPoster.classList.add('hidden');
+                viewPoles.classList.remove('hidden');
+
+                tabPoles.className = "px-4 py-2 rounded-lg font-bold transition-all bg-enactus-yellow text-black shadow-md flex items-center gap-2";
+                tabPoster.className = "px-4 py-2 rounded-lg font-bold transition-all text-slate-300 hover:text-white hover:bg-white/10 flex items-center gap-2";
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.openRoleModal = function(roleKey) {
+            const role = rolesData[roleKey];
+            if (!role) return;
+
+            document.getElementById('modal-role-title').innerText = role.title;
+            document.getElementById('modal-role-badge').innerText = role.badge;
+            document.getElementById('modal-role-subtitle').innerText = role.subtitle;
+
+            const missionsList = document.getElementById('modal-role-missions');
+            missionsList.innerHTML = role.missions.map(m => `<li>${m}</li>`).join('');
+
+            const expectationsList = document.getElementById('modal-role-expectations');
+            expectationsList.innerHTML = role.expectations.map(e => `<li>${e}</li>`).join('');
+
+            document.getElementById('role-modal').classList.remove('hidden');
+        };
+
+        window.closeRoleModal = function() {
+            document.getElementById('role-modal').classList.add('hidden');
+        };
+
+        window.openPrintModal = function() {
+            document.getElementById('print-modal').classList.remove('hidden');
+        };
+
+        window.closePrintModal = function() {
+            document.getElementById('print-modal').classList.add('hidden');
+        };
+
+        // Generates valid scannable QR Code
+        window.updateQRCode = function() {
+            const qrcodeContainer = document.getElementById("poster-qrcode");
+            if (!qrcodeContainer) return;
+            qrcodeContainer.innerHTML = ""; // Clear existing canvas
+
+            const inputVal = document.getElementById('qr-url-input').value.trim();
+            const targetUrl = inputVal || "https://enactus-ifmbtp.com/recrutement";
+
+            try {
+                new QRCode(qrcodeContainer, {
+                    text: targetUrl,
+                    width: 170,
+                    height: 170,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.M
+                });
+            } catch (err) {
+                const fallbackImg = document.createElement('img');
+                fallbackImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=170x170&margin=10&data=${encodeURIComponent(targetUrl)}`;
+                fallbackImg.alt = "QR Code Recrutement";
+                fallbackImg.className = "w-44 h-44 rounded";
+                qrcodeContainer.appendChild(fallbackImg);
+            }
+        };
+
+        window.onload = function() {
+            window.updateQRCode();
+        };
+    </script>
+</body>
+</html>
