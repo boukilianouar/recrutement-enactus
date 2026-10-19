@@ -1,636 +1,257 @@
 <!DOCTYPE html>
-<html lang="fr" class="h-full bg-[#F5F5F3] text-[#111111]">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enactus IFMBTP - Recrutement Officiel</title>
+    <title>Recrutement Enactus IFMBTP</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,800;1,900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        poster: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        enactus: {
-                            yellow: '#FFC20E',    /* Jaune Enactus officiel */
-                            yellowDark: '#E5AB00',
-                            yellowLight: '#FFE380',
-                            dark: '#111111',      /* Noir intense */
-                            charcoal: '#222222',  
-                            grayBg: '#F5F5F3',    
-                            cardBg: '#FFFFFF',    
-                            accentBg: '#FFFDF5',
-                            border: '#E8E8E4'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
     <style>
         body {
+            font-family: 'Montserrat', sans-serif;
             background-color: #F5F5F3;
             color: #111111;
         }
         .poster-card {
-            background: #FFFFFF;
-            border: 1px solid #E8E8E4;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.07);
+            background-color: #FFFFFF;
+            border: 4px solid #FFC20E;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .outlined-text-yellow {
-            color: transparent;
-            -webkit-text-stroke: 1.5px #FFC20E;
-        }
-        .enactus-btn-yellow {
+        .btn-yellow {
             background-color: #FFC20E;
             color: #111111;
             font-weight: 800;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
-        .enactus-btn-yellow:hover {
-            background-color: #E5AB00;
+        .btn-yellow:hover {
+            background-color: #E5AD05;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(255, 194, 14, 0.4);
+            box-shadow: 0 4px 12px rgba(255, 194, 14, 0.4);
         }
     </style>
 </head>
-<body class="h-full flex flex-col font-sans bg-[#F5F5F3] text-[#111111] antialiased">
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-8">
 
-    <header class="sticky top-0 z-50 bg-white/90 border-b border-enactus-border backdrop-blur-md shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-            
-            <div class="flex items-center space-x-3 cursor-pointer" onclick="showSection('poster-view')">
-                <div class="flex items-center space-x-2">
-                    <svg class="w-9 h-9" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 80 L70 10 L90 30 Z" fill="#FFC20E"/>
-                        <path d="M30 85 L85 85 L58 45 Z" fill="#111111"/>
-                    </svg>
-                    <div>
-                        <span class="font-extrabold text-xl tracking-tight font-poster text-enactus-dark leading-none block">enactus</span>
-                        <span class="text-[10px] font-bold tracking-widest text-gray-500 uppercase block -mt-0.5">IFMBTP - FÈS</span>
-                    </div>
-                </div>
-            </div>
-
-            <nav class="hidden md:flex items-center space-x-2">
-                <button onclick="showSection('poster-view')" class="px-4 py-2 rounded-xl text-sm font-bold text-enactus-dark hover:bg-enactus-grayBg transition">
-                    <i class="fa-solid fa-house mr-1.5 text-enactus-yellowDark"></i> Accueil Affiche
-                </button>
-                <button onclick="showSection('destination-choice-view')" class="px-4 py-2 rounded-xl text-sm font-bold text-enactus-dark hover:bg-enactus-grayBg transition">
-                    <i class="fa-solid fa-compass mr-1.5 text-enactus-yellowDark"></i> Parcours Candidat
-                </button>
-                <button onclick="showSection('organigramme-view')" class="px-4 py-2 rounded-xl text-sm font-bold text-enactus-dark hover:bg-enactus-grayBg transition">
-                    <i class="fa-solid fa-sitemap mr-1.5 text-enactus-yellowDark"></i> Postes & Hiérarchie
-                </button>
-                <button onclick="showSection('ai-assistant-view')" class="px-4 py-2 rounded-xl text-sm font-bold text-enactus-dark bg-enactus-yellow/15 border border-enactus-yellow hover:bg-enactus-yellow/30 transition">
-                    <i class="fa-solid fa-brain mr-1.5 text-enactus-dark"></i> Assistant IA
-                </button>
-            </nav>
-
-            <a href="https://boukilanwar5-cloud.github.io/recrutement-enactus/" target="_blank" class="px-5 py-2.5 rounded-full enactus-btn-yellow text-sm shadow-sm flex items-center">
-                <i class="fa-solid fa-rocket mr-2"></i>
-                <span>POSTULER EN LIGNE</span>
-            </a>
+    <!-- En-tête / Logo IFMBTP -->
+    <header class="w-full max-w-4xl flex justify-between items-center mb-6 bg-white p-4 rounded-xl shadow-sm border border-gray-200">
+        <div class="flex items-center space-x-3">
+            <div class="bg-amber-400 text-black font-black px-3 py-1.5 rounded-lg text-sm tracking-wider">IFMBTP</div>
+            <span class="font-bold text-gray-800 text-sm md:text-base">Enactus Institut de Formation aux Métiers du Bâtiment et des Travaux Publics</span>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="switchView('poster')" class="px-3 py-1.5 text-xs md:text-sm font-bold bg-gray-100 hover:bg-gray-200 rounded-lg transition">Affiche</button>
+            <button onclick="switchView('options')" class="px-3 py-1.5 text-xs md:text-sm font-bold btn-yellow rounded-lg">Portail Interactif</button>
         </div>
     </header>
 
-    <main class="flex-grow max-w-6xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+    <!-- Conteneur Principal -->
+    <main class="w-full max-w-4xl">
 
-        <section id="poster-view" class="view-section transition-all duration-300">
-            <div class="poster-card rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+        <!-- VUE 1 : AFFICHE OFFICIELLE -->
+        <section id="view-poster" class="poster-card rounded-3xl p-6 md:p-12 relative overflow-hidden flex flex-col items-center text-center">
+            
+            <!-- Badge Haut -->
+            <div class="inline-block bg-black text-amber-400 font-extrabold text-xs md:text-sm px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+                Institut de Formation aux Métiers du Bâtiment et des Travaux Publics
+            </div>
+
+            <!-- Titre Principal style Affiche -->
+            <h1 class="text-4xl md:text-7xl font-black uppercase tracking-tight leading-none text-black mb-6">
+                MEMBERSHIPS <br>
+                <span class="text-amber-500 underline decoration-black decoration-4">ARE NOW</span> <br>
+                OPEN
+            </h1>
+
+            <!-- Disposition côte à côte : Slogan / Mégaphone et QR Code -->
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-6 items-center my-6">
                 
-                <div class="flex flex-wrap items-center justify-between pb-6 mb-8 border-b border-enactus-border gap-4">
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-enactus-dark text-enactus-yellow flex items-center justify-center font-black text-lg shadow">
-                            <i class="fa-solid fa-building-columns"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-enactus-yellowDark block">Institut de Formation BTP</span>
-                            <h2 class="text-xs sm:text-sm font-black tracking-tight text-enactus-dark font-poster">
-                                INSTITUT DE FORMATION AUX MÉTIERS DU BÂTIMENT ET DES TRAVAUX PUBLICS
-                            </h2>
-                        </div>
-                    </div>
-
-                    <div class="px-4 py-1.5 rounded-full bg-enactus-yellow text-enactus-dark font-black text-xs uppercase tracking-wider flex items-center space-x-2">
-                        <i class="fa-solid fa-star text-xs"></i>
-                        <span>Recrutement Officiel 2026-2027</span>
-                    </div>
+                <!-- Bloc de gauche : Slogan & Bouton d'accès -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+                    <p class="text-base md:text-xl font-extrabold tracking-wide uppercase text-gray-800 border-l-4 border-amber-400 pl-4 py-1">
+                        YOUR SKILLS <br>
+                        YOUR IDEAS <br>
+                        YOUR IMPACT
+                    </p>
+                    <p class="text-xs md:text-sm text-gray-600">Rejoignez le mouvement de l'entrepreneuriat social et de l'innovation BTP !</p>
+                    <button onclick="switchView('options')" class="px-6 py-3 btn-yellow rounded-xl text-sm md:text-base uppercase tracking-wider shadow-md">
+                        Accéder au Portail & Quiz
+                    </button>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    
-                    <div class="lg:col-span-7 space-y-6">
-                        <div class="space-y-0 leading-none">
-                            <h1 class="text-4xl sm:text-6xl font-black font-poster tracking-tight uppercase text-enactus-yellow">
-                                MEMBERSHIPS
-                            </h1>
-                            <h1 class="text-4xl sm:text-6xl font-black font-poster tracking-tight uppercase text-enactus-yellow">
-                                ARE NOW
-                            </h1>
-                            <h1 class="text-5xl sm:text-7xl font-black font-poster tracking-tight uppercase text-enactus-dark">
-                                OPEN
-                            </h1>
-                        </div>
-
-                        <div class="py-2 space-y-1">
-                            <p class="text-xl sm:text-2xl font-black font-poster uppercase outlined-text-yellow tracking-wide">
-                                YOUR SKILLS
-                            </p>
-                            <p class="text-xl sm:text-2xl font-black font-poster uppercase outlined-text-yellow tracking-wide">
-                                YOUR IDEAS
-                            </p>
-                            <p class="text-xl sm:text-2xl font-black font-poster uppercase outlined-text-yellow tracking-wide">
-                                YOUR IMPACT
-                            </p>
-                        </div>
-
-                        <div class="flex items-center space-x-4 pt-2">
-                            <button onclick="showSection('destination-choice-view')" class="px-8 py-4 rounded-full enactus-btn-yellow text-base font-black font-poster tracking-wider shadow-lg inline-flex items-center">
-                                COMMENCER L'AVENTURE <i class="fa-solid fa-arrow-right ml-3"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-5 flex flex-col items-center justify-center">
-                        <div class="bg-white rounded-3xl p-6 sm:p-8 border-2 border-enactus-yellow text-center space-y-4 w-full max-w-sm shadow-xl">
-                            
-                            <div class="flex items-center justify-center space-x-2">
-                                <i class="fa-solid fa-qrcode text-enactus-yellowDark text-lg"></i>
-                                <span class="text-xs font-black uppercase tracking-wider text-enactus-dark font-poster">SCANNEZ LE QR CODE</span>
-                            </div>
-
-                            <!-- Vrai QR Code scannable par téléphone -->
-                            <a href="https://boukilanwar5-cloud.github.io/recrutement-enactus/" target="_blank" title="Cliquez pour ouvrir la plateforme de recrutement Enactus IFMBTP" class="block group relative">
-                                <div class="p-4 bg-white rounded-2xl border border-enactus-border flex items-center justify-center transition group-hover:scale-[1.02] shadow-inner">
-                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://boukilanwar5-cloud.github.io/recrutement-enactus/&color=111111&bgcolor=ffffff" 
-                                         alt="QR Code Recrutement Enactus IFMBTP" 
-                                         class="w-48 h-48 rounded-lg object-contain" />
-                                    
-                                    <div class="absolute w-12 h-12 bg-enactus-dark rounded-xl border-2 border-enactus-yellow flex flex-col items-center justify-center text-enactus-yellow font-black text-[9px] font-poster shadow-lg">
-                                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                                        <span class="-mt-0.5">POSTULER</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <p class="text-xs text-gray-600 font-bold uppercase tracking-tight">
-                                Plateforme Interactive Officielle :<br/>
-                                <span class="text-enactus-dark text-[11px] underline break-all">boukilanwar5-cloud.github.io/recrutement-enactus/</span>
-                            </p>
-
-                            <div class="pt-2 border-t border-enactus-border text-[11px] font-bold text-gray-700 space-y-0.5">
-                                <p class="text-[10px] uppercase text-gray-400 font-black">CONTACTS RECRUTEMENT IFMBTP :</p>
-                                <p>+212 604-631084 &nbsp;|&nbsp; +212 709-197933</p>
-                            </div>
-
-                            <button onclick="showSection('destination-choice-view')" class="w-full py-3 rounded-2xl enactus-btn-yellow text-xs font-black uppercase tracking-wider">
-                                ACCÉDER AUX OPTIONS CANDIDAT
-                            </button>
-
-                        </div>
-                    </div>
-
+                <!-- Bloc de droite : QR Code scannable à côté -->
+                <div class="bg-amber-50 p-6 rounded-2xl border-2 border-amber-300 shadow-inner flex flex-col items-center justify-center">
+                    <div id="qrcode" class="bg-white p-2 rounded-lg border border-gray-200 shadow-sm mb-2"></div>
+                    <span class="text-xs font-black text-gray-700 uppercase tracking-wider">Scannez pour accéder</span>
                 </div>
+
+            </div>
+
+            <!-- Footer Affiche -->
+            <div class="mt-8 text-xs font-bold text-gray-400 border-t border-gray-200 pt-4 w-full text-center">
+                Conçu par Anouar Boukili (Team Leader) & Sara Achoubal (Vice Team Leader)
             </div>
         </section>
 
-        <section id="destination-choice-view" class="view-section hidden transition-all duration-300">
-            <button onclick="showSection('poster-view')" class="mb-6 inline-flex items-center text-sm font-bold text-enactus-dark hover:text-enactus-yellowDark transition">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Retour à l'Affiche
-            </button>
-
-            <div class="poster-card rounded-3xl p-6 sm:p-10 max-w-4xl mx-auto space-y-8">
-                <div class="text-center max-w-xl mx-auto space-y-2">
-                    <span class="px-3.5 py-1 rounded-full bg-enactus-yellow/30 text-enactus-dark text-xs font-black uppercase">Après le Scan QR Code</span>
-                    <h2 class="text-3xl font-black font-poster text-enactus-dark">Choisissez Votre Parcours</h2>
-                    <p class="text-gray-600 text-sm">Découvrez comment vous pouvez faire la différence chez Enactus IFMBTP</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Option 1 Card -->
-                    <div class="p-8 rounded-3xl bg-enactus-grayBg border-2 border-enactus-yellow flex flex-col justify-between space-y-6 hover:shadow-lg transition">
-                        <div class="space-y-4">
-                            <div class="w-14 h-14 rounded-2xl bg-enactus-yellow text-enactus-dark flex items-center justify-center font-black text-2xl shadow">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                            </div>
-                            <span class="text-xs font-black uppercase text-enactus-yellowDark block tracking-wider">OPTION 1</span>
-                            <h3 class="text-2xl font-black font-poster text-enactus-dark">Test de Compétences & Quiz Unique</h3>
-                            <p class="text-xs text-gray-600 leading-relaxed font-medium">
-                                Répondez à un questionnaire interactif unique. À la fin du test, nous analyserons vos compétences pour vous recommander exactement le **pôle fait pour vous** !
-                            </p>
-                        </div>
-                        <button onclick="startUnifiedQuiz()" class="w-full py-3.5 rounded-2xl enactus-btn-yellow text-sm font-black uppercase tracking-wider">
-                            Commencer le Test <i class="fa-solid fa-play ml-2"></i>
-                        </button>
-                    </div>
-
-                    <!-- Option 2 Card -->
-                    <div class="p-8 rounded-3xl bg-enactus-grayBg border-2 border-enactus-dark flex flex-col justify-between space-y-6 hover:shadow-lg transition">
-                        <div class="space-y-4">
-                            <div class="w-14 h-14 rounded-2xl bg-enactus-dark text-enactus-yellow flex items-center justify-center font-black text-2xl shadow">
-                                <i class="fa-solid fa-sitemap"></i>
-                            </div>
-                            <span class="text-xs font-black uppercase text-gray-400 block tracking-wider">OPTION 2</span>
-                            <h3 class="text-2xl font-black font-poster text-enactus-dark">Détails des Postes & Pouvoirs</h3>
-                            <p class="text-xs text-gray-600 leading-relaxed font-medium">
-                                Consultez l'organigramme détaillé du club par pôle, les rôles du Bureau Exécutif (Team Leader, Vice Team Leader) et les responsabilités des membres actifs.
-                            </p>
-                        </div>
-                        <button onclick="showSection('organigramme-view')" class="w-full py-3.5 rounded-2xl bg-enactus-dark text-white font-black uppercase tracking-wider hover:bg-enactus-charcoal transition">
-                            Voir l'Organigramme <i class="fa-solid fa-list ml-2"></i>
-                        </button>
-                    </div>
-                </div>
+        <!-- VUE 2 : PORTAIL INTERACTIF (CHOIX 1 & CHOIX 2) -->
+        <section id="view-options" class="hidden bg-white border-4 border-amber-400 rounded-3xl p-6 md:p-10 shadow-xl">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-black uppercase text-black">Portail de Recrutement Enactus IFMBTP</h2>
+                <p class="text-gray-600 font-medium mt-2">Choisissez votre parcours pour intégrer l'aventure :</p>
             </div>
-        </section>
 
-        <section id="quiz-view" class="view-section hidden transition-all duration-300">
-            <button onclick="showSection('destination-choice-view')" class="mb-6 inline-flex items-center text-sm font-bold text-enactus-dark hover:text-enactus-yellowDark transition">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Retour aux Options
-            </button>
-
-            <div class="poster-card rounded-3xl p-6 sm:p-10 max-w-3xl mx-auto space-y-6">
-                
-                <div class="flex items-center justify-between border-b border-enactus-border pb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Option 1 : Quiz -->
+                <div onclick="startQuiz()" class="bg-amber-50 border-2 border-amber-300 hover:border-black p-6 rounded-2xl cursor-pointer transition transform hover:-translate-y-1 shadow-sm flex flex-col justify-between">
                     <div>
-                        <span class="text-xs font-black uppercase tracking-wider text-enactus-yellowDark">Option 1 - Quiz Unifié</span>
-                        <h2 class="text-2xl font-black font-poster text-enactus-dark">Évaluation de vos Compétences</h2>
+                        <div class="bg-amber-400 text-black font-extrabold text-xs px-3 py-1 rounded-full inline-block mb-3">OPTION 1</div>
+                        <h3 class="text-xl font-extrabold text-black mb-2">Quiz d'Orientation Intelligent</h3>
+                        <p class="text-sm text-gray-700">Répondez au questionnaire unifié pour découvrir instantanément le pôle et le poste parfaits pour vos compétences.</p>
                     </div>
-                    <div class="w-32 bg-enactus-grayBg h-3 rounded-full overflow-hidden border border-enactus-border">
-                        <div id="quiz-progress" class="bg-enactus-yellow h-full w-1/4 transition-all duration-300"></div>
-                    </div>
-                </div>
-
-                <!-- Unified Question 1 -->
-                <div class="quiz-step space-y-4" data-step="1">
-                    <h3 class="text-base font-bold text-enactus-dark">1. Dans quel type d'activité vous sentez-vous le plus performant ?</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="answerQuiz('finances')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Chiffres, Budgets & Négociation</span>
-                            <span class="text-xs text-gray-500">Finances, recherche de sponsoring et contrats</span>
-                        </button>
-                        <button onclick="answerQuiz('design')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Création Graphique & Identité Visuelle</span>
-                            <span class="text-xs text-gray-500">Affiches, visuels, branding et vidéos</span>
-                        </button>
-                        <button onclick="answerQuiz('dev')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Développement Web & Code</span>
-                            <span class="text-xs text-gray-500">Plateformes web, applications et algorithmes</span>
-                        </button>
-                        <button onclick="answerQuiz('projets')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Projets Sociaux & Terrain</span>
-                            <span class="text-xs text-gray-500">Coordination d'actions à impact et innovation BTP</span>
-                        </button>
+                    <div class="mt-6 flex items-center text-black font-bold text-sm">
+                        Lancer le test →
                     </div>
                 </div>
 
-                <!-- Unified Question 2 -->
-                <div class="quiz-step space-y-4 hidden" data-step="2">
-                    <h3 class="text-base font-bold text-enactus-dark">2. Quelle est votre principale qualité dans un groupe ?</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="answerQuiz('finances')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Rigueur, organisation et gestion rigoureuse</span>
-                        </button>
-                        <button onclick="answerQuiz('design')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Sens de l'esthétisme et créativité sans limite</span>
-                        </button>
-                        <button onclick="answerQuiz('dev')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Esprit logique et résolution de problèmes complexes</span>
-                        </button>
-                        <button onclick="answerQuiz('projets')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Leadership, empathie et travail d'équipe</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Unified Question 3 -->
-                <div class="quiz-step space-y-4 hidden" data-step="3">
-                    <h3 class="text-base font-bold text-enactus-dark">3. Quel type de réalisation souhaitez-vous accomplir ce mandat ?</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="answerQuiz('finances')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Signer des partenariats et financer nos projets</span>
-                        </button>
-                        <button onclick="answerQuiz('design')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Concevoir l'image de marque et la communication</span>
-                        </button>
-                        <button onclick="answerQuiz('dev')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Créer l'application et les outils numériques du club</span>
-                        </button>
-                        <button onclick="answerQuiz('projets')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Déployer un projet écologique ou solidaire sur le terrain</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Unified Question 4 -->
-                <div class="quiz-step space-y-4 hidden" data-step="4">
-                    <h3 class="text-base font-bold text-enactus-dark">4. Quel outil ou environnement préférez-vous utiliser ?</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <button onclick="answerQuiz('finances')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Tableurs (Excel), bilans et dossiers sponsoring</span>
-                        </button>
-                        <button onclick="answerQuiz('design')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Figma, Photoshop, Illustrator ou Canva</span>
-                        </button>
-                        <button onclick="answerQuiz('dev')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">VS Code, GitHub, JavaScript et Frameworks Web</span>
-                        </button>
-                        <button onclick="answerQuiz('projets')" class="p-4 rounded-2xl bg-enactus-grayBg hover:bg-enactus-yellow/20 border border-enactus-border text-left transition">
-                            <span class="font-bold text-enactus-dark block text-sm">Gestion de projet (Trello, réunion, terrain BTP)</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Quiz Result Personalised Section -->
-                <div id="quiz-result" class="hidden space-y-6 text-center py-6">
-                    <div class="w-20 h-20 rounded-3xl bg-enactus-yellow text-enactus-dark mx-auto flex items-center justify-center text-4xl font-black shadow-xl">
-                        <i class="fa-solid fa-trophy"></i>
-                    </div>
+                <!-- Option 2 : Postes & Organigramme -->
+                <div onclick="showOrganigram()" class="bg-gray-50 border-2 border-gray-300 hover:border-black p-6 rounded-2xl cursor-pointer transition transform hover:-translate-y-1 shadow-sm flex flex-col justify-between">
                     <div>
-                        <span id="result-pole-badge" class="px-4 py-1.5 rounded-full bg-enactus-yellow/30 text-enactus-dark text-xs font-black uppercase tracking-wider">
-                            Pôle Idéal Recommandé
-                        </span>
-                        <h3 id="result-title" class="text-3xl font-black font-poster text-enactus-dark mt-3">--</h3>
-                        <p id="result-desc" class="text-gray-600 text-sm max-w-lg mx-auto mt-2 leading-relaxed font-medium">--</p>
+                        <div class="bg-black text-amber-400 font-extrabold text-xs px-3 py-1 rounded-full inline-block mb-3">OPTION 2</div>
+                        <h3 class="text-xl font-extrabold text-black mb-2">Organigramme & Postes Disponibles</h3>
+                        <p class="text-sm text-gray-700">Découvrez le Bureau Exécutif (Team Leader, Vice Team Leader) et les Cellules de Membres Actifs.</p>
                     </div>
-
-                    <div class="p-4 rounded-2xl bg-enactus-grayBg border border-enactus-border max-w-lg mx-auto text-left">
-                        <h4 class="text-xs font-black uppercase text-enactus-yellowDark mb-1">Pourquoi ce pôle ?</h4>
-                        <p id="result-why" class="text-xs text-gray-700 leading-relaxed">--</p>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
-                        <button onclick="showSection('organigramme-view')" class="w-full sm:w-auto px-6 py-3.5 rounded-full enactus-btn-yellow text-xs font-black uppercase shadow">
-                            Voir ce Poste dans l'Organigramme <i class="fa-solid fa-arrow-right ml-1"></i>
-                        </button>
-                        <button onclick="showSection('ai-assistant-view')" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-enactus-dark text-white font-black text-xs uppercase hover:bg-enactus-charcoal transition">
-                            <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-enactus-yellow"></i> Générer mon Pitch IA
-                        </button>
-                        <button onclick="resetQuiz()" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-enactus-grayBg text-enactus-dark font-black text-xs uppercase border border-enactus-border hover:bg-gray-200 transition">
-                            Refaire le Quiz
-                        </button>
+                    <div class="mt-6 flex items-center text-black font-bold text-sm">
+                        Explorer l'organigramme →
                     </div>
                 </div>
+            </div>
 
+            <div class="text-center">
+                <button onclick="switchView('poster')" class="px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold rounded-xl text-sm transition">
+                    ← Retour à l'affiche officielle
+                </button>
             </div>
         </section>
 
-        <section id="organigramme-view" class="view-section hidden transition-all duration-300">
-            <button onclick="showSection('destination-choice-view')" class="mb-6 inline-flex items-center text-sm font-bold text-enactus-dark hover:text-enactus-yellowDark transition">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Retour aux Options
-            </button>
-
-            <div class="space-y-8">
-                <div class="text-center max-w-2xl mx-auto space-y-2">
-                    <span class="px-3.5 py-1 rounded-full bg-enactus-dark text-enactus-yellow text-xs font-black uppercase">Option 2</span>
-                    <h2 class="text-3xl font-black font-poster text-enactus-dark">Organigramme & Pouvoirs des Postes</h2>
-                    <p class="text-gray-500 text-sm">Du Bureau Exécutif aux Membres Actifs d'Enactus IFMBTP</p>
-                </div>
-
-                <!-- Bureau Exécutif Section -->
-                <div class="poster-card rounded-3xl p-6 sm:p-8">
-                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-enactus-border">
-                        <h3 class="text-xs font-black uppercase tracking-widest text-enactus-yellowDark font-poster">
-                            <i class="fa-solid fa-crown mr-2"></i> Bureau Exécutif (Leadership & Directoire)
-                        </h3>
-                        <span class="text-[11px] font-bold text-gray-500 uppercase">Pouvoir Décisionnel Supérieur</span>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Team Leader Card -->
-                        <div class="p-6 rounded-2xl bg-enactus-grayBg border-2 border-enactus-yellow flex flex-col justify-between space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-14 h-14 rounded-2xl bg-enactus-yellow text-enactus-dark font-black font-poster text-xl flex items-center justify-center shrink-0 shadow">
-                                    AB
-                                </div>
-                                <div>
-                                    <span class="px-2.5 py-0.5 rounded-md bg-enactus-yellow/40 text-enactus-dark text-[10px] font-black uppercase">Team Leader</span>
-                                    <h4 class="text-lg font-black text-enactus-dark font-poster mt-0.5">ANOUAR BOUKILI</h4>
-                                    <p class="text-xs text-gray-600 font-bold">Full Stack Dev & UI/UX Expert - IFMBTP</p>
-                                </div>
-                            </div>
-                            <div class="text-xs text-gray-700 bg-white p-3.5 rounded-xl border border-enactus-border space-y-1">
-                                <span class="font-bold text-enactus-dark block uppercase text-[10px] text-enactus-yellowDark">Pouvoirs & Rôle :</span>
-                                <p>Direction stratégique globale, représentation légale du club auprès d'Enactus Maroc et de la direction IFMBTP, supervision de l'ensemble des pôles et validation finale des projets.</p>
-                            </div>
-                        </div>
-
-                        <!-- Vice Team Leader Card -->
-                        <div class="p-6 rounded-2xl bg-enactus-grayBg border-2 border-enactus-dark flex flex-col justify-between space-y-4">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-14 h-14 rounded-2xl bg-enactus-dark text-enactus-yellow font-black font-poster text-xl flex items-center justify-center shrink-0">
-                                    SA
-                                </div>
-                                <div>
-                                    <span class="px-2.5 py-0.5 rounded-md bg-gray-200 text-enactus-dark text-[10px] font-black uppercase">Vice Team Leader</span>
-                                    <h4 class="text-lg font-black text-enactus-dark font-poster mt-0.5">SARA ACHOUBAL</h4>
-                                    <p class="text-xs text-gray-600 font-bold">Coordination & Management - IFMBTP</p>
-                                </div>
-                            </div>
-                            <div class="text-xs text-gray-700 bg-white p-3.5 rounded-xl border border-enactus-border space-y-1">
-                                <span class="font-bold text-enactus-dark block uppercase text-[10px] text-gray-500">Pouvoirs & Rôle :</span>
-                                <p>Coordination interne, suivi opérationnel des responsables de pôles, gestion du calendrier d'exécution des projets et intérim de la gouvernance.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Pôles & Membres Actifs -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
-                    <!-- Pôle Finance & Sponsoring -->
-                    <div class="poster-card rounded-2xl p-6 space-y-4">
-                        <div class="flex items-center space-x-3 pb-3 border-b border-enactus-border">
-                            <div class="w-10 h-10 rounded-xl bg-enactus-yellow/20 text-enactus-dark flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-wallet text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-enactus-dark text-base font-poster">Pôle Finance & Sponsoring</h4>
-                                <p class="text-xs text-gray-500">Gestion financière & levées de fonds</p>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-3.5 rounded-xl bg-enactus-grayBg flex justify-between items-center border border-enactus-border">
-                                <div>
-                                    <h5 class="font-bold text-sm text-enactus-dark">Trésorier du Club</h5>
-                                    <p class="text-xs text-gray-500">Gestion des budgets & comptabilité</p>
-                                </div>
-                                <button onclick="openRoleModal('Trésorier', 'Pôle Finance', 'Superviser les comptes du club, établir les budgets prévisionnels et valider les dépenses de chaque projet avec le Bureau Exécutif.')" class="px-3 py-1.5 rounded-lg enactus-btn-yellow text-xs font-bold">Détails</button>
-                            </div>
-                            <div class="p-3.5 rounded-xl bg-enactus-grayBg flex justify-between items-center border border-enactus-border">
-                                <div>
-                                    <h5 class="font-bold text-sm text-enactus-dark">Chargé de Sponsoring</h5>
-                                    <p class="text-xs text-gray-500">Négociation & Partenariats entreprises</p>
-                                </div>
-                                <button onclick="openRoleModal('Chargé de Sponsoring', 'Pôle Finance', 'Contacter les entreprises du secteur BTP et autres partenaires, négocier les conventions de sponsoring et assurer les levées de fonds.')" class="px-3 py-1.5 rounded-lg enactus-btn-yellow text-xs font-bold">Détails</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pôle Digital & Web -->
-                    <div class="poster-card rounded-2xl p-6 space-y-4">
-                        <div class="flex items-center space-x-3 pb-3 border-b border-enactus-border">
-                            <div class="w-10 h-10 rounded-xl bg-enactus-yellow/20 text-enactus-dark flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-code text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-enactus-dark text-base font-poster">Pôle Design & Web Digital</h4>
-                                <p class="text-xs text-gray-500">Applications, site web & communication</p>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-3.5 rounded-xl bg-enactus-grayBg flex justify-between items-center border border-enactus-border">
-                                <div>
-                                    <h5 class="font-bold text-sm text-enactus-dark">Full Stack Developer</h5>
-                                    <p class="text-xs text-gray-500">Développement de la plateforme Enactus</p>
-                                </div>
-                                <button onclick="openRoleModal('Full Stack Developer', 'Pôle Design & Web', 'Développer, mettre à jour et maintenir la plateforme web et l\'application interactive du club Enactus IFMBTP.')" class="px-3 py-1.5 rounded-lg enactus-btn-yellow text-xs font-bold">Détails</button>
-                            </div>
-                            <div class="p-3.5 rounded-xl bg-enactus-grayBg flex justify-between items-center border border-enactus-border">
-                                <div>
-                                    <h5 class="font-bold text-sm text-enactus-dark">Graphic & UI/UX Designer</h5>
-                                    <p class="text-xs text-gray-500">Conception visuelle & affiches</p>
-                                </div>
-                                <button onclick="openRoleModal('Graphic & UI/UX Designer', 'Pôle Design & Web', 'Créer l\'ensemble des visuels officiels, affiches de recrutement, maquettes d\'interface et chartes graphiques.')" class="px-3 py-1.5 rounded-lg enactus-btn-yellow text-xs font-bold">Détails</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pôle Projets & Innovation BTP -->
-                    <div class="poster-card rounded-2xl p-6 space-y-4">
-                        <div class="flex items-center space-x-3 pb-3 border-b border-enactus-border">
-                            <div class="w-10 h-10 rounded-xl bg-enactus-yellow/20 text-enactus-dark flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-lightbulb text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-enactus-dark text-base font-poster">Pôle Projets & Innovation</h4>
-                                <p class="text-xs text-gray-500">Déploiement des solutions durables</p>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-3.5 rounded-xl bg-enactus-grayBg flex justify-between items-center border border-enactus-border">
-                                <div>
-                                    <h5 class="font-bold text-sm text-enactus-dark">Chef de Projet Social / BTP</h5>
-                                    <p class="text-xs text-gray-500">Pilotage terrain des initiatives</p>
-                                </div>
-                                <button onclick="openRoleModal('Chef de Projet Social', 'Pôle Projets', 'Coordonner la mise en œuvre des projets entrepreneuriaux et durables de l\'IFMBTP sur le terrain avec les communautés.')" class="px-3 py-1.5 rounded-lg enactus-btn-yellow text-xs font-bold">Détails</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pôle Communication & Event -->
-                    <div class="poster-card rounded-2xl p-6 space-y-4">
-                        <div class="flex items-center space-x-3 pb-3 border-b border-enactus-border">
-                            <div class="w-10 h-10 rounded-xl bg-enactus-yellow/20 text-enactus-dark flex items-center justify-center font-bold">
-                                <i class="fa-solid fa-bullhorn text-lg"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-black text-enactus-dark text-base font-poster">Pôle Communication & Événementiel</h4>
-                                <p class="text-xs text-gray-500">Réseaux sociaux & organisation d'évènements</p>
-                            </div>
-                        </div>
-                        <div class="space-y-3">
-                            <div class="p-3.5 rounded-xl bg-enactus-grayBg flex justify-between items-center border border-enactus-border">
-                                <div>
-                                    <h5 class="font-bold text-sm text-enactus-dark">Community Manager & Media</h5>
-                                    <p class="text-xs text-gray-500">Gestion des réseaux & contenu</p>
-                                </div>
-                                <button onclick="openRoleModal('Community Manager', 'Pôle Communication', 'Gérer les comptes sociaux officiels, rédiger les publications et promouvoir l\'image d\'Enactus IFMBTP.')" class="px-3 py-1.5 rounded-lg enactus-btn-yellow text-xs font-bold">Détails</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+        <!-- VUE 3 : SECTION QUIZ UNIFIÉ -->
+        <section id="view-quiz" class="hidden bg-white border-4 border-amber-400 rounded-3xl p-6 md:p-10 shadow-xl">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-black uppercase text-black">Test d'Orientation - Enactus IFMBTP</h3>
+                <button onclick="switchView('options')" class="text-xs font-bold bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg">Retour</button>
+            </div>
+            
+            <div id="quiz-container" class="space-y-6">
+                <!-- Dynamically injected via JS -->
             </div>
         </section>
 
-        <section id="ai-assistant-view" class="view-section hidden transition-all duration-300">
-            <button onclick="showSection('destination-choice-view')" class="mb-6 inline-flex items-center text-sm font-bold text-enactus-dark hover:text-enactus-yellowDark transition">
-                <i class="fa-solid fa-arrow-left mr-2"></i> Retour aux Options
-            </button>
+        <!-- VUE 4 : ORGANIGRAMME & POSTES -->
+        <section id="view-organigram" class="hidden bg-white border-4 border-amber-400 rounded-3xl p-6 md:p-10 shadow-xl space-y-8">
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <h3 class="text-2xl font-black uppercase text-black">Organigramme & Postes Enactus IFMBTP</h3>
+                    <p class="text-sm text-gray-600">Structure complète du Bureau Exécutif aux Membres Actifs</p>
+                </div>
+                <button onclick="switchView('options')" class="text-xs font-bold bg-gray-100 hover:bg-gray-200 px-3 py-1.5 rounded-lg">Retour</button>
+            </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="poster-card rounded-3xl p-6 sm:p-8">
-                        <div class="flex items-center space-x-3 mb-4">
-                            <div class="w-10 h-10 rounded-xl bg-enactus-yellow text-enactus-dark flex items-center justify-center text-lg font-bold shadow">
-                                <i class="fa-solid fa-feather-pointed"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-black font-poster text-enactus-dark">Générateur de Pitch IA</h3>
-                                <p class="text-xs text-gray-500">Rédigez votre motivation sur mesure</p>
-                            </div>
-                        </div>
-
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-xs font-bold uppercase text-enactus-dark mb-1">Poste ou Pôle Visé</label>
-                                <select id="ai-role-select" class="w-full bg-enactus-grayBg border border-enactus-border rounded-xl px-4 py-2.5 text-sm text-enactus-dark focus:outline-none focus:border-enactus-yellow font-medium">
-                                    <option value="Trésorier / Pôle Finance">Trésorier / Pôle Finance</option>
-                                    <option value="Chargé de Sponsoring">Chargé de Sponsoring</option>
-                                    <option value="Full Stack Developer / Pôle Web">Full Stack Developer / Pôle Web</option>
-                                    <option value="UI/UX & Graphic Designer">UI/UX & Graphic Designer</option>
-                                    <option value="Chef de Projet Social BTP">Chef de Projet Social BTP</option>
-                                    <option value="Community Manager">Community Manager</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold uppercase text-enactus-dark mb-1">Vos points forts / Compétences</label>
-                                <textarea id="ai-user-skills" rows="3" placeholder="Ex: Organisé, passionné par la technologie BTP, esprit d'équipe..." class="w-full bg-enactus-grayBg border border-enactus-border rounded-xl p-3 text-sm text-enactus-dark focus:outline-none focus:border-enactus-yellow resize-none font-medium"></textarea>
-                            </div>
-
-                            <button onclick="generateAIPitch()" id="generate-pitch-btn" class="w-full py-3.5 rounded-full enactus-btn-yellow text-sm font-poster uppercase tracking-wider shadow">
-                                <i class="fa-solid fa-sparkles mr-2"></i> Générer mon Pitch
-                            </button>
-
-                            <div id="ai-pitch-output" class="hidden p-4 rounded-2xl bg-enactus-grayBg border border-enactus-border space-y-3">
-                                <span class="text-[10px] font-bold uppercase tracking-wider text-enactus-yellowDark block">Pitch sur Mesure Généré</span>
-                                <p id="pitch-text" class="text-sm text-enactus-dark italic leading-relaxed"></p>
-                                <div class="flex justify-between items-center pt-2 border-t border-enactus-border">
-                                    <button onclick="copyPitchText()" class="text-xs text-enactus-dark font-bold flex items-center">
-                                        <i class="fa-solid fa-copy mr-1 text-enactus-yellowDark"></i> Copier
-                                    </button>
-                                    <button onclick="speakPitchTTS()" class="text-xs text-enactus-dark font-bold flex items-center">
-                                        <i class="fa-solid fa-volume-high mr-1 text-enactus-yellowDark"></i> Écouter
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+            <!-- BUREAU EXÉCUTIF -->
+            <div>
+                <h4 class="text-lg font-black uppercase bg-black text-amber-400 px-4 py-2 rounded-xl mb-4">1. Bureau Exécutif</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="border-2 border-amber-400 bg-amber-50 p-4 rounded-xl shadow-sm text-center">
+                        <div class="w-12 h-12 bg-amber-400 rounded-full mx-auto flex items-center justify-center font-black text-lg mb-2">👑</div>
+                        <h5 class="font-extrabold text-black">Team Leader</h5>
+                        <p class="text-sm font-bold text-amber-700 mt-1">Anouar Boukili[cite: 3]</p>
+                        <p class="text-xs text-gray-600 mt-2">Pilotage global, vision stratégique & représentation institutionnelle.</p>
+                    </div>
+                    <div class="border-2 border-amber-400 bg-amber-50 p-4 rounded-xl shadow-sm text-center">
+                        <div class="w-12 h-12 bg-amber-400 rounded-full mx-auto flex items-center justify-center font-black text-lg mb-2">⭐</div>
+                        <h5 class="font-extrabold text-black">Vice-Team Leader</h5>
+                        <p class="text-sm font-bold text-amber-700 mt-1">Sara Achoubal[cite: 3]</p>
+                        <p class="text-xs text-gray-600 mt-2">Coordination opérationnelle des pôles & suivi des projets.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">VP Communication</h5>
+                        <p class="text-xs text-gray-600 mt-2">Stratégie média & visibilité.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Projet Manager</h5>
+                        <p class="text-xs text-gray-600 mt-2">Gestion et déploiement des projets sociaux.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">HR Manager</h5>
+                        <p class="text-xs text-gray-600 mt-2">Gestion des talents & cohésion d'équipe.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">VP Sponsorship</h5>
+                        <p class="text-xs text-gray-600 mt-2">Partenariats & relations entreprises.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Media Lead / Graphic Designer</h5>
+                        <p class="text-xs text-gray-600 mt-2">Design visuel & identité de marque.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Audiovisuel & Community Manager</h5>
+                        <p class="text-xs text-gray-600 mt-2">Création vidéo & animation réseaux.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Vice-Project Manager</h5>
+                        <p class="text-xs text-gray-600 mt-2">Appui à la gestion des projets.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Finance & Fundraising Officer</h5>
+                        <p class="text-xs text-gray-600 mt-2">Levée de fonds & gestion financière.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Event & Logistics Manager</h5>
+                        <p class="text-xs text-gray-600 mt-2">Organisation d'événements & logistique BTP.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Training & Pitch Coach</h5>
+                        <p class="text-xs text-gray-600 mt-2">Formation des membres & préparation aux pitchs.</p>
+                    </div>
+                    <div class="border border-gray-200 p-4 rounded-xl shadow-sm text-center">
+                        <h5 class="font-bold text-gray-900">Trésorier</h5>
+                        <p class="text-xs text-gray-600 mt-2">Tenue des comptes & suivi budgétaire.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="poster-card rounded-3xl p-6 sm:p-8 flex flex-col h-[480px]">
-                        <div class="flex items-center space-x-3 pb-4 border-b border-enactus-border">
-                            <div class="w-10 h-10 rounded-xl bg-enactus-dark text-enactus-yellow flex items-center justify-center text-lg font-bold">
-                                <i class="fa-solid fa-robot"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-lg font-black font-poster text-enactus-dark">Assistant Recrutement Enactus</h3>
-                                <p class="text-xs text-gray-500">Posez vos questions sur IFMBTP</p>
-                            </div>
-                        </div>
-
-                        <div id="chat-messages" class="flex-grow overflow-y-auto my-4 space-y-3 pr-2 text-xs sm:text-sm">
-                            <div class="p-3 rounded-2xl bg-enactus-grayBg text-enactus-dark max-w-[85%] self-start border border-enactus-border font-medium">
-                                Bonjour ! 🚀 Des questions sur le test de compétences ou les postes dans les pôles ? Je suis là pour vous aider !
-                            </div>
-                        </div>
-
-                        <div class="flex items-center space-x-2 pt-2 border-t border-enactus-border">
-                            <input type="text" id="chat-input" onkeypress="if(event.key==='Enter') sendChatMessage()" placeholder="Posez votre question..." class="flex-grow bg-enactus-grayBg border border-enactus-border rounded-xl px-4 py-2.5 text-sm text-enactus-dark focus:outline-none focus:border-enactus-yellow">
-                            <button onclick="sendChatMessage()" class="p-2.5 rounded-xl enactus-btn-yellow text-enactus-dark">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </div>
+            <!-- MEMBRES ACTIFS PAR CELLULES -->
+            <div>
+                <h4 class="text-lg font-black uppercase bg-gray-800 text-white px-4 py-2 rounded-xl mb-4">2. Membres Actifs par Cellules</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl">
+                        <h5 class="font-extrabold text-black text-sm mb-2 border-b pb-1">Cellule Projets & R&D</h5>
+                        <ul class="text-xs text-gray-700 space-y-1">
+                            <li>• Concepteur d'innovations BTP</li>
+                            <li>• Analyste d'impact social</li>
+                            <li>• Développeur de prototypes</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl">
+                        <h5 class="font-extrabold text-black text-sm mb-2 border-b pb-1">Cellule Communication & Média</h5>
+                        <ul class="text-xs text-gray-700 space-y-1">
+                            <li>• Rédacteur de contenus</li>
+                            <li>• Monteur vidéo / Reels</li>
+                            <li>• Graphiste Web & Support</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl">
+                        <h5 class="font-extrabold text-black text-sm mb-2 border-b pb-1">Cellule Événementiel & Logistique</h5>
+                        <ul class="text-xs text-gray-700 space-y-1">
+                            <li>• Coordinateur de terrain</li>
+                            <li>• Responsable matériel & accueil</li>
+                            <li>• Planificateur de workshops</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl">
+                        <h5 class="font-extrabold text-black text-sm mb-2 border-b pb-1">Membres Affectés aux Projets Spécifiques</h5>
+                        <ul class="text-xs text-gray-700 space-y-1">
+                            <li>• Chargé de mission RSE</li>
+                            <li>• Assistant de gestion de projet</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -638,235 +259,135 @@
 
     </main>
 
-    <footer class="bg-white border-t border-enactus-border mt-12 py-6 text-center text-xs text-gray-500">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 font-medium">
-            <p>© 2026-2027 Enactus IFMBTP - Institut de Formation aux Métiers du Bâtiment et des Travaux Publics.</p>
-            <p>Conçu & Développé par <span class="text-enactus-dark font-extrabold font-poster">Anouar Boukili</span> (Team Leader)</p>
-        </div>
-    </footer>
-
-    <!-- Role Detail Modal -->
-    <div id="role-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="poster-card border-2 border-enactus-yellow rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 relative">
-            <button onclick="closeRoleModal()" class="absolute top-5 right-5 text-gray-400 hover:text-enactus-dark transition">
-                <i class="fa-solid fa-xmark text-xl"></i>
-            </button>
-            <div>
-                <span id="modal-pole" class="text-xs font-bold uppercase text-enactus-yellowDark">--</span>
-                <h3 id="modal-title" class="text-2xl font-black font-poster text-enactus-dark mt-1">--</h3>
-            </div>
-            <p id="modal-desc" class="text-gray-600 text-sm leading-relaxed">--</p>
-            <div class="pt-2 flex justify-end space-x-3">
-                <button onclick="closeRoleModal()" class="px-4 py-2 rounded-xl bg-enactus-grayBg text-enactus-dark font-bold text-xs hover:bg-gray-200 transition">Fermer</button>
-                <a href="https://boukilanwar5-cloud.github.io/recrutement-enactus/" target="_blank" class="px-5 py-2 rounded-full enactus-btn-yellow text-xs font-bold">
-                    Accéder au Formulaire <i class="fa-solid fa-arrow-right ml-1"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function showSection(sectionId) {
-            document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
-            const target = document.getElementById(sectionId);
-            if(target) {
-                target.classList.remove('hidden');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Génération du QR Code vers le lien web interactif
+        window.onload = function() {
+            const qrContainer = document.getElementById("qrcode");
+            qrContainer.innerHTML = "";
+            try {
+                const qr = qrcode(0, 'M');
+                qr.addData('https://boukilanwar5-cloud.github.io/recrutement-enactus/');
+                qr.make();
+                qrContainer.innerHTML = qr.createImgTag(5);
+            } catch (e) {
+                qrContainer.innerHTML = "<p class='text-xs text-red-500'>QR Code indisponible</p>";
             }
-        }
+        };
 
-        function startUnifiedQuiz() {
-            resetQuiz();
-            showSection('quiz-view');
-        }
+        function switchView(viewName) {
+            document.getElementById('view-poster').classList.add('hidden');
+            document.getElementById('view-options').classList.add('hidden');
+            document.getElementById('view-quiz').classList.add('hidden');
+            document.getElementById('view-organigram').classList.add('hidden');
 
-        let quizAnswers = { finances: 0, design: 0, dev: 0, projets: 0 };
-        let currentStep = 1;
-        const totalSteps = 4;
-
-        function answerQuiz(category) {
-            if(quizAnswers.hasOwnProperty(category)) quizAnswers[category]++;
-            document.querySelector(`.quiz-step[data-step="${currentStep}"]`)?.classList.add('hidden');
-            currentStep++;
-            
-            const nextEl = document.querySelector(`.quiz-step[data-step="${currentStep}"]`);
-            document.getElementById('quiz-progress').style.width = ((currentStep - 1) / totalSteps * 100) + '%';
-
-            if(nextEl) {
-                nextEl.classList.remove('hidden');
-            } else {
-                finishQuiz();
+            if (viewName === 'poster') {
+                document.getElementById('view-poster').classList.remove('hidden');
+            } else if (viewName === 'options') {
+                document.getElementById('view-options').classList.remove('hidden');
+            } else if (viewName === 'quiz') {
+                document.getElementById('view-quiz').classList.remove('hidden');
+                initQuiz();
+            } else if (viewName === 'organigram') {
+                document.getElementById('view-organigram').classList.remove('hidden');
             }
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
 
-        function finishQuiz() {
-            document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
-            document.getElementById('quiz-result').classList.remove('hidden');
-            document.getElementById('quiz-progress').style.width = '100%';
+        function startQuiz() {
+            switchView('quiz');
+        }
 
-            let topCategory = 'projets';
-            let maxVal = -1;
-            for(let cat in quizAnswers) {
-                if(quizAnswers[cat] > maxVal) {
-                    maxVal = quizAnswers[cat];
-                    topCategory = cat;
-                }
+        function showOrganigram() {
+            switchView('organigram');
+        }
+
+        // Quiz Logique Unifiée
+        const quizQuestions = [
+            {
+                q: "Quel est votre domaine de prédilection ou d'études principal ?",
+                options: [
+                    { text: "Génie Civil / BTP / Innovation technique", pole: "Projets & R&D" },
+                    { text: "Design, Graphisme, Médias & Création", pole: "Communication & Média" },
+                    { text: "Organisation, Logistique & Événementiel", pole: "Événementiel & Logistique" },
+                    { text: "Finance, Chiffrage & Partenariats Sponsoring", pole: "Finance & Sponsoring" }
+                ]
+            },
+            {
+                q: "Comment préférez-vous contribuer au sein d'une équipe ?",
+                options: [
+                    { text: "Concevoir des solutions pratiques sur le terrain", pole: "Projets & R&D" },
+                    { text: "Transmettre des messages percutants et visuels", pole: "Communication & Média" },
+                    { text: "Coordonner les équipes et planifier les actions", pole: "Événementiel & Logistique" },
+                    { text: "Gérer les budgets et négocier avec les partenaires", pole: "Finance & Sponsoring" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let userAnswers = {};
+
+        function initQuiz() {
+            currentQuestion = 0;
+            userAnswers = {};
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const container = document.getElementById('quiz-container');
+            if (currentQuestion >= quizQuestions.length) {
+                showQuizResult();
+                return;
             }
 
-            const recs = {
-                finances: { 
-                    title: "Pôle Finance & Sponsoring (Trésorier / Chargé de Sponsoring)", 
-                    pole: "Pôle Finance", 
-                    desc: "Votre profil méthodique et votre sens des chiffres sont essentiels pour assurer la rentabilité, les levées de fonds et les partenariats d'Enactus IFMBTP.",
-                    why: "Vous avez montré un grand intérêt pour la rigueur budgétaire, la négociation avec les partenaires et la structuration des ressources."
-                },
-                design: { 
-                    title: "Pôle Design & Communication (UI/UX & Graphic Designer)", 
-                    pole: "Pôle Design & Web", 
-                    desc: "Votre créativité est l'arma idéale pour valoriser la marque Enactus IFMBTP sur tous les visuels et réseaux sociaux.",
-                    why: "Vos réponses soulignent une forte sensibilité visuelle et une volonté d'impacter le public par l'image et l'esthétisme."
-                },
-                dev: { 
-                    title: "Pôle Digital & Innovation Web (Full Stack Developer)", 
-                    pole: "Pôle Design & Web", 
-                    desc: "Votre esprit logique vous permettra de concevoir et maintenir les applications web et outils numériques du club.",
-                    why: "Vous privilégiez la résolution de problèmes complexes, le code et l'architecture des solutions digitales."
-                },
-                projets: { 
-                    title: "Pôle Projets & Innovation Sociale (Chef de Projet BTP)", 
-                    pole: "Pôle Projets & Innovation", 
-                    desc: "Votre leadership et esprit d'équipe vous destinent à conduire des actions concrètes et durables sur le terrain.",
-                    why: "Vous aimez la coordination directe, l'impact social et le travail avec les équipes d'ingénierie du BTP."
-                }
-            };
+            const qData = quizQuestions[currentQuestion];
+            let html = `
+                <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200">
+                    <span class="text-xs font-extrabold text-amber-700 bg-amber-200 px-3 py-1 rounded-full">Question ${currentQuestion + 1} sur ${quizQuestions.length}</span>
+                    <h4 class="text-xl font-bold text-black mt-3 mb-6">${qData.q}</h4>
+                    <div class="space-y-3">
+            `;
 
-            const rec = recs[topCategory];
-            document.getElementById('result-title').innerText = rec.title;
-            document.getElementById('result-pole-badge').innerText = rec.pole;
-            document.getElementById('result-desc').innerText = rec.desc;
-            document.getElementById('result-why').innerText = rec.why;
-        }
-
-        function resetQuiz() {
-            quizAnswers = { finances: 0, design: 0, dev: 0, projets: 0 };
-            currentStep = 1;
-            document.getElementById('quiz-progress').style.width = '0%';
-            document.getElementById('quiz-result').classList.add('hidden');
-            document.querySelectorAll('.quiz-step').forEach((el, idx) => {
-                if(idx === 0) el.classList.remove('hidden');
-                else el.classList.add('hidden');
+            qData.options.forEach((opt, idx) => {
+                html += `
+                    <button onclick="selectAnswer('${opt.pole}')" class="w-full text-left p-4 bg-white hover:bg-amber-100 border-2 border-gray-200 hover:border-black font-semibold rounded-xl transition shadow-sm">
+                        ${opt.text}
+                    </button>
+                `;
             });
+
+            html += `</div></div>`;
+            container.innerHTML = html;
         }
 
-        function openRoleModal(title, pole, desc) {
-            document.getElementById('modal-title').innerText = title;
-            document.getElementById('modal-pole').innerText = pole;
-            document.getElementById('modal-desc').innerText = desc;
-            document.getElementById('role-modal').classList.remove('hidden');
+        function selectAnswer(pole) {
+            userAnswers[currentQuestion] = pole;
+            currentQuestion++;
+            renderQuestion();
         }
 
-        function closeRoleModal() {
-            document.getElementById('role-modal').classList.add('hidden');
-        }
-
-        async function fetchGeminiWithRetry(url, payload, maxRetries = 2) {
-            for (let i = 0; i < maxRetries; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (response.ok) return await response.json();
-                } catch (e) {}
-                await new Promise(r => setTimeout(r, 1000));
+        function showQuizResult() {
+            const container = document.getElementById('quiz-container');
+            let counts = {};
+            for (let key in userAnswers) {
+                let p = userAnswers[key];
+                counts[p] = (counts[p] || 0) + 1;
             }
-            throw new Error('API Timeout');
-        }
+            let bestPole = Object.keys(counts).reduce((a, b) => counts[a] > counts[b] ? a : b, "Projets & R&D");
 
-        async function generateAIPitch() {
-            const role = document.getElementById('ai-role-select').value;
-            const skills = document.getElementById('ai-user-skills').value.trim();
-            const btn = document.getElementById('generate-pitch-btn');
-            const pitchText = document.getElementById('pitch-text');
-
-            btn.disabled = true;
-            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Génération en cours...`;
-
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            const userSkillsText = skills || "Motivation, leadership et esprit d'équipe";
-            const payload = {
-                contents: [{ parts: [{ text: `Rédige un pitch de motivation percutant de 3 phrases pour poser sa candidature au poste de ${role} au sein du club Enactus IFMBTP. Compétences clés à valoriser: ${userSkillsText}` }] }]
-            };
-
-            try {
-                const data = await fetchGeminiWithRetry(apiUrl, payload);
-                const generated = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-                pitchText.innerText = generated || "Je souhaite intégrer le pôle d'Enactus IFMBTP pour mettre mes compétences au service de projets durables et innovants dans le domaine du BTP.";
-            } catch(e) {
-                pitchText.innerText = "Passionné par l'innovation sociale et le secteur du BTP, je souhaite rejoindre l'équipe d'Enactus IFMBTP pour contribuer activement aux projets du club.";
-            } finally {
-                document.getElementById('ai-pitch-output').classList.remove('hidden');
-                btn.disabled = false;
-                btn.innerHTML = `<i class="fa-solid fa-sparkles mr-2"></i> Générer mon Pitch`;
-            }
-        }
-
-        function copyPitchText() {
-            const text = document.getElementById('pitch-text').innerText;
-            if(text) {
-                const tempTextArea = document.createElement('textarea');
-                tempTextArea.value = text;
-                document.body.appendChild(tempTextArea);
-                tempTextArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempTextArea);
-                alert("Pitch copié dans votre presse-papier !");
-            }
-        }
-
-        async function speakPitchTTS() {
-            const text = document.getElementById('pitch-text').innerText;
-            if ('speechSynthesis' in window && text) {
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.lang = 'fr-FR';
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        async function sendChatMessage() {
-            const inputEl = document.getElementById('chat-input');
-            const messagesContainer = document.getElementById('chat-messages');
-            const query = inputEl.value.trim();
-            if(!query) return;
-
-            const userDiv = document.createElement('div');
-            userDiv.className = 'p-3 rounded-2xl bg-enactus-yellow text-enactus-dark font-bold max-w-[85%] self-end ml-auto shadow-sm';
-            userDiv.innerText = query;
-            messagesContainer.appendChild(userDiv);
-
-            inputEl.value = '';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-            const botDiv = document.createElement('div');
-            botDiv.className = 'p-3 rounded-2xl bg-enactus-grayBg text-enactus-dark max-w-[85%] self-start border border-enactus-border font-medium';
-            botDiv.innerText = 'Analyse de votre question...';
-            messagesContainer.appendChild(botDiv);
-
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            try {
-                const data = await fetchGeminiWithRetry(apiUrl, {
-                    contents: [{ parts: [{ text: `Tu es l'assistant de recrutement virtuel du club Enactus IFMBTP. Réponds de manière très concise et enthousiaste en français: ${query}` }] }]
-                });
-                botDiv.innerText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Rejoindre Enactus IFMBTP vous permet de développer de vraies compétences entrepreneuriales tout en étudiant au BTP !";
-            } catch(e) {
-                botDiv.innerText = "Nos recrutements sont ouverts à tous les étudiants d'IFMBTP motivés à faire la différence !";
-            }
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            container.innerHTML = `
+                <div class="bg-amber-50 border-2 border-amber-400 p-8 rounded-2xl text-center space-y-4">
+                    <div class="text-4xl">🎉</div>
+                    <h4 class="text-2xl font-black text-black uppercase">Résultat de votre test d'orientation</h4>
+                    <p class="text-gray-700">D'après vos réponses, le pôle idéal fait pour vous au sein d'Enactus IFMBTP est :</p>
+                    <div class="inline-block bg-black text-amber-400 font-black text-xl px-6 py-3 rounded-xl uppercase tracking-wider">
+                        ${bestPole}
+                    </div>
+                    <div class="pt-4 flex justify-center space-x-4">
+                        <button onclick="showOrganigram()" class="btn-yellow px-6 py-3 rounded-xl text-sm uppercase">Voir les postes associés</button>
+                        <button onclick="initQuiz()" class="bg-gray-200 hover:bg-gray-300 font-bold px-6 py-3 rounded-xl text-sm">Recommencer le test</button>
+                    </div>
+                </div>
+            `;
         }
     </script>
 </body>
