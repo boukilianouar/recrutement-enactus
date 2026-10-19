@@ -72,7 +72,6 @@
                 transform: translateY(-4px) scale(1.02);
             }
         }
-        /* Hierarchy connecting lines */
         .tree-line-v {
             width: 2px;
             background-color: #0F1115;
@@ -91,6 +90,13 @@
         .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #CBD5E1;
             border-radius: 9999px;
+        }
+        .option-card {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .option-card:hover {
+            transform: translateY(-2px);
+            border-color: #FFC20E;
         }
     </style>
 </head>
@@ -122,7 +128,7 @@
                     <i class="fa-solid fa-users text-enactus-yellowDark"></i> <span>Membres Actifs</span>
                 </button>
                 <button onclick="showSection('destination-choice-view')" class="px-3.5 py-2 rounded-xl text-enactus-dark hover:bg-enactus-grayBg transition flex items-center space-x-1.5">
-                    <i class="fa-solid fa-vial-circle-check text-enactus-yellowDark"></i> <span>Test d'Orientation</span>
+                    <i class="fa-solid fa-compass text-enactus-yellowDark"></i> <span>Test d'Orientation</span>
                 </button>
             </nav>
 
@@ -170,7 +176,7 @@
                         </div>
 
                         <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
-                            Découvrez la structure du Bureau Exécutif et des Membres Actifs d'Enactus IFMBTP. Tous les postes sont ouverts à la candidature avec des fiches détaillées pour vous guider !
+                            Découvrez la structure du Bureau Exécutif et des Membres Actifs d'Enactus IFMBTP. Passez notre test d'orientation interactif en 12 questions pour identifier immédiatement le poste qui correspond le mieux à vos talents !
                         </p>
 
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2">
@@ -181,7 +187,7 @@
                                 <i class="fa-solid fa-users mr-2 text-sm"></i> MEMBRES ACTIFS
                             </button>
                             <button onclick="showSection('destination-choice-view')" class="w-full sm:w-auto px-4 py-3 rounded-2xl bg-enactus-dark text-white text-xs font-bold font-poster tracking-wider hover:bg-enactus-charcoal transition flex items-center justify-center">
-                                TEST <i class="fa-solid fa-chevron-right ml-1.5 text-xs"></i>
+                                TEST ORIENTATION <i class="fa-solid fa-compass ml-1.5 text-xs text-enactus-yellow"></i>
                             </button>
                         </div>
                     </div>
@@ -203,7 +209,6 @@
         </section>
 
         <section id="organigramme-view" class="view-section hidden transition-all duration-300">
-            
             <div class="flex items-center justify-between mb-3">
                 <button onclick="showSection('poster-view')" class="inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
                     <i class="fa-solid fa-chevron-left mr-1.5 text-xs"></i> Retour Accueil
@@ -214,7 +219,6 @@
             </div>
 
             <div class="poster-card rounded-2xl sm:rounded-3xl p-3 sm:p-6 lg:p-8 space-y-4">
-                
                 <div class="text-center space-y-1 border-b border-enactus-border pb-3">
                     <h2 class="text-2xl sm:text-4xl font-black font-poster text-enactus-dark tracking-wide uppercase">BUREAU EXÉCUTIF</h2>
                     <p class="text-[11px] sm:text-xs text-gray-500 font-medium">Postes à responsabilité & management de pôles Enactus IFMBTP</p>
@@ -557,56 +561,44 @@
                 <!-- Active Members Grid (Responsive 4 Columns for Cellules) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <!-- CELLULE 1: PROJETS & R&D (Indigo Theme) -->
+                    <!-- CELLULE 1: PROJETS & R&D -->
                     <div class="bg-indigo-50/50 rounded-2xl p-4 border-2 border-indigo-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-indigo-200">
                             <span class="text-[10px] font-black uppercase text-indigo-700 tracking-wider">Cellule 01</span>
                             <h3 class="font-black font-poster text-xs sm:text-sm text-indigo-950 uppercase">CELLULE PROJETS & R&D</h3>
                         </div>
 
-                        <!-- 6 Avatar Slots (2 columns x 3 rows) -->
                         <div class="grid grid-cols-2 gap-2.5 my-2">
-                            <!-- Slot 1 -->
                             <div onclick="openRoleModal('membre-projet-1')" class="tree-node bg-white border-2 border-indigo-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-1 text-indigo-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-indigo-900 block leading-tight">Membre R&D 1</span>
                             </div>
-
-                            <!-- Slot 2 -->
                             <div onclick="openRoleModal('membre-projet-2')" class="tree-node bg-white border-2 border-indigo-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-1 text-indigo-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-indigo-900 block leading-tight">Membre R&D 2</span>
                             </div>
-
-                            <!-- Slot 3 -->
                             <div onclick="openRoleModal('membre-projet-3')" class="tree-node bg-white border-2 border-indigo-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-1 text-indigo-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-indigo-900 block leading-tight">Membre R&D 3</span>
                             </div>
-
-                            <!-- Slot 4 -->
                             <div onclick="openRoleModal('membre-projet-4')" class="tree-node bg-white border-2 border-indigo-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-1 text-indigo-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-indigo-900 block leading-tight">Membre R&D 4</span>
                             </div>
-
-                            <!-- Slot 5 -->
                             <div onclick="openRoleModal('membre-projet-5')" class="tree-node bg-white border-2 border-indigo-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-1 text-indigo-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-indigo-900 block leading-tight">Membre R&D 5</span>
                             </div>
-
-                            <!-- Slot 6 -->
                             <div onclick="openRoleModal('membre-projet-6')" class="tree-node bg-white border-2 border-indigo-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-indigo-100 border-2 border-indigo-400 mx-auto flex items-center justify-center mb-1 text-indigo-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
@@ -620,40 +612,32 @@
                         </a>
                     </div>
 
-                    <!-- CELLULE 2: COMMUNICATION & MEDIA (Rose Theme) -->
+                    <!-- CELLULE 2: COMMUNICATION & MEDIA -->
                     <div class="bg-rose-50/50 rounded-2xl p-4 border-2 border-rose-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-rose-200">
                             <span class="text-[10px] font-black uppercase text-rose-700 tracking-wider">Cellule 02</span>
                             <h3 class="font-black font-poster text-xs sm:text-sm text-rose-950 uppercase">CELLULE COMMUNICATION & MÉDIA</h3>
                         </div>
 
-                        <!-- 4 Avatar Slots (2 columns x 2 rows) -->
                         <div class="grid grid-cols-2 gap-2.5 my-2">
-                            <!-- Slot 1 -->
                             <div onclick="openRoleModal('membre-com-1')" class="tree-node bg-white border-2 border-rose-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-rose-100 border-2 border-rose-400 mx-auto flex items-center justify-center mb-1 text-rose-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-rose-900 block leading-tight">Membre Com 1</span>
                             </div>
-
-                            <!-- Slot 2 -->
                             <div onclick="openRoleModal('membre-com-2')" class="tree-node bg-white border-2 border-rose-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-rose-100 border-2 border-rose-400 mx-auto flex items-center justify-center mb-1 text-rose-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-rose-900 block leading-tight">Membre Com 2</span>
                             </div>
-
-                            <!-- Slot 3 -->
                             <div onclick="openRoleModal('membre-com-3')" class="tree-node bg-white border-2 border-rose-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-rose-100 border-2 border-rose-400 mx-auto flex items-center justify-center mb-1 text-rose-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-rose-900 block leading-tight">Membre Com 3</span>
                             </div>
-
-                            <!-- Slot 4 -->
                             <div onclick="openRoleModal('membre-com-4')" class="tree-node bg-white border-2 border-rose-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-rose-100 border-2 border-rose-400 mx-auto flex items-center justify-center mb-1 text-rose-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
@@ -667,40 +651,32 @@
                         </a>
                     </div>
 
-                    <!-- CELLULE 3: ÉVÉNEMENTIEL & LOGISTIQUE (Teal Theme) -->
+                    <!-- CELLULE 3: ÉVÉNEMENTIEL & LOGISTIQUE -->
                     <div class="bg-teal-50/50 rounded-2xl p-4 border-2 border-teal-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-teal-200">
                             <span class="text-[10px] font-black uppercase text-teal-700 tracking-wider">Cellule 03</span>
                             <h3 class="font-black font-poster text-xs sm:text-sm text-teal-950 uppercase">CELLULE ÉVÉNEMENTIEL & LOGISTIQUE</h3>
                         </div>
 
-                        <!-- 4 Avatar Slots (2 columns x 2 rows) -->
                         <div class="grid grid-cols-2 gap-2.5 my-2">
-                            <!-- Slot 1 -->
                             <div onclick="openRoleModal('membre-event-1')" class="tree-node bg-white border-2 border-teal-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-teal-100 border-2 border-teal-400 mx-auto flex items-center justify-center mb-1 text-teal-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-teal-900 block leading-tight">Membre Logistique 1</span>
                             </div>
-
-                            <!-- Slot 2 -->
                             <div onclick="openRoleModal('membre-event-2')" class="tree-node bg-white border-2 border-teal-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-teal-100 border-2 border-teal-400 mx-auto flex items-center justify-center mb-1 text-teal-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-teal-900 block leading-tight">Membre Logistique 2</span>
                             </div>
-
-                            <!-- Slot 3 -->
                             <div onclick="openRoleModal('membre-event-3')" class="tree-node bg-white border-2 border-teal-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-teal-100 border-2 border-teal-400 mx-auto flex items-center justify-center mb-1 text-teal-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-teal-900 block leading-tight">Membre Logistique 3</span>
                             </div>
-
-                            <!-- Slot 4 -->
                             <div onclick="openRoleModal('membre-event-4')" class="tree-node bg-white border-2 border-teal-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-teal-100 border-2 border-teal-400 mx-auto flex items-center justify-center mb-1 text-teal-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
@@ -714,56 +690,44 @@
                         </a>
                     </div>
 
-                    <!-- CELLULE 4: MEMBRES AFFECTÉS AUX PROJETS SPÉCIFIQUES (Amber Theme) -->
+                    <!-- CELLULE 4: PROJETS SPÉCIFIQUES -->
                     <div class="bg-amber-50/50 rounded-2xl p-4 border-2 border-amber-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-amber-200">
                             <span class="text-[10px] font-black uppercase text-amber-700 tracking-wider">Cellule 04</span>
                             <h3 class="font-black font-poster text-xs sm:text-sm text-amber-950 uppercase">PROJETS SPÉCIFIQUES</h3>
                         </div>
 
-                        <!-- 6 Avatar Slots (2 columns x 3 rows) -->
                         <div class="grid grid-cols-2 gap-2.5 my-2">
-                            <!-- Slot 1 -->
                             <div onclick="openRoleModal('membre-specifique-1')" class="tree-node bg-white border-2 border-amber-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-amber-100 border-2 border-amber-400 mx-auto flex items-center justify-center mb-1 text-amber-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-amber-900 block leading-tight">Membre Projet Spécifique 1</span>
                             </div>
-
-                            <!-- Slot 2 -->
                             <div onclick="openRoleModal('membre-specifique-2')" class="tree-node bg-white border-2 border-amber-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-amber-100 border-2 border-amber-400 mx-auto flex items-center justify-center mb-1 text-amber-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-amber-900 block leading-tight">Membre Projet Spécifique 2</span>
                             </div>
-
-                            <!-- Slot 3 -->
                             <div onclick="openRoleModal('membre-specifique-3')" class="tree-node bg-white border-2 border-amber-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-amber-100 border-2 border-amber-400 mx-auto flex items-center justify-center mb-1 text-amber-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-amber-900 block leading-tight">Membre Projet Spécifique 3</span>
                             </div>
-
-                            <!-- Slot 4 -->
                             <div onclick="openRoleModal('membre-specifique-4')" class="tree-node bg-white border-2 border-amber-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-amber-100 border-2 border-amber-400 mx-auto flex items-center justify-center mb-1 text-amber-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-amber-900 block leading-tight">Membre Projet Spécifique 4</span>
                             </div>
-
-                            <!-- Slot 5 -->
                             <div onclick="openRoleModal('membre-specifique-5')" class="tree-node bg-white border-2 border-amber-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-amber-100 border-2 border-amber-400 mx-auto flex items-center justify-center mb-1 text-amber-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
                                 </div>
                                 <span class="font-bold text-[9px] text-amber-900 block leading-tight">Membre Projet Spécifique 5</span>
                             </div>
-
-                            <!-- Slot 6 -->
                             <div onclick="openRoleModal('membre-specifique-6')" class="tree-node bg-white border-2 border-amber-300 rounded-xl p-2.5 text-center shadow-sm">
                                 <div class="w-10 h-10 rounded-full bg-amber-100 border-2 border-amber-400 mx-auto flex items-center justify-center mb-1 text-amber-600 font-bold">
                                     <i class="fa-solid fa-question text-base"></i>
@@ -788,23 +752,122 @@
             </button>
 
             <div class="poster-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-2xl mx-auto space-y-6">
-                <div class="text-center space-y-2">
-                    <span class="px-3 py-1 rounded-full bg-enactus-yellow/20 text-enactus-dark text-[10px] sm:text-xs font-black uppercase tracking-wider">Test d'Orientation Mobile</span>
-                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark">Trouvez Votre Poste Idéal</h2>
-                    <p class="text-gray-600 text-xs">Choisissez votre domaine d'intérêt pour découvrir le rôle qui correspond à votre profil.</p>
+                
+                <!-- Quiz Intro State -->
+                <div id="quiz-intro" class="text-center space-y-4">
+                    <div class="w-16 h-16 rounded-2xl bg-enactus-yellow/20 border-2 border-enactus-yellow text-enactus-dark flex items-center justify-center mx-auto text-2xl shadow-sm">
+                        <i class="fa-solid fa-compass animate-spin" style="animation-duration: 10s;"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <span class="px-3 py-1 rounded-full bg-enactus-yellow/20 text-enactus-dark text-[10px] sm:text-xs font-black uppercase tracking-wider">Test d'Orientation Interactif</span>
+                        <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark">Révélez Votre Impact Enactus</h2>
+                        <p class="text-gray-600 text-xs sm:text-sm max-w-md mx-auto font-medium">12 mises en situation concrètes et indirectes pour déterminer précisément votre profil idéal au sein d'Enactus IFMBTP.</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2 text-left pt-2 max-w-md mx-auto text-[11px] font-bold text-gray-600">
+                        <div class="p-2.5 bg-enactus-grayBg rounded-xl flex items-center space-x-2">
+                            <i class="fa-solid fa-clock text-enactus-yellowDark"></i>
+                            <span>Temps : 2 min</span>
+                        </div>
+                        <div class="p-2.5 bg-enactus-grayBg rounded-xl flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-pie text-enactus-yellowDark"></i>
+                            <span>Analyse 4 axes</span>
+                        </div>
+                    </div>
+
+                    <button onclick="startFullQuiz()" class="w-full py-4 rounded-xl enactus-btn-yellow text-xs sm:text-sm font-black uppercase tracking-wider shadow-lg flex items-center justify-center space-x-2 font-poster">
+                        <span>DÉMARRER LE TEST</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
                 </div>
 
-                <button onclick="startUnifiedQuiz()" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider shadow">
-                    Lancer le Test Rapide <i class="fa-solid fa-play ml-1.5 text-xs"></i>
-                </button>
+                <!-- Active Quiz State -->
+                <div id="quiz-active" class="hidden space-y-5">
+                    
+                    <!-- Progress Bar & Header -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between text-xs font-black font-poster">
+                            <span id="quiz-progress-text" class="text-enactus-dark">Question 1 / 12</span>
+                            <span id="quiz-progress-percent" class="text-enactus-yellowDark">8%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
+                            <div id="quiz-progress-bar" class="bg-enactus-yellow h-full transition-all duration-300" style="width: 8.33%;"></div>
+                        </div>
+                    </div>
 
-                <div id="quiz-container" class="space-y-4 hidden pt-3 border-t border-enactus-border"></div>
-                <div id="quiz-results" class="hidden space-y-4"></div>
+                    <!-- Question Box -->
+                    <div class="space-y-4 pt-2">
+                        <div class="p-4 rounded-2xl bg-enactus-dark text-white space-y-1 shadow-sm">
+                            <span id="question-category" class="text-[9px] font-black uppercase tracking-widest text-enactus-yellow">Mise en situation</span>
+                            <h3 id="question-title" class="text-xs sm:text-sm font-bold font-poster leading-relaxed">Chargement de la question...</h3>
+                        </div>
+
+                        <!-- 4 Interactive Answer Options -->
+                        <div id="question-options" class="grid grid-cols-1 gap-2.5">
+                            <!-- Options injected dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Results State -->
+                <div id="quiz-results-container" class="hidden space-y-6">
+                    <div class="text-center space-y-3">
+                        <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl shadow">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-700 block">Profil Détecté avec succès !</span>
+                            <h3 id="result-role-title" class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark">TITRE DU POSTE</h3>
+                            <p id="result-role-subtitle" class="text-xs font-bold text-enactus-yellowDark mt-0.5">Rattachement : Pôle Spécifique</p>
+                        </div>
+                    </div>
+
+                    <!-- Match Explanation Box -->
+                    <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-2 text-xs">
+                        <span class="font-black text-amber-900 block uppercase tracking-wider text-[10px]">Pourquoi ce rôle vous convient parfaitement :</span>
+                        <p id="result-role-desc" class="text-gray-700 font-medium leading-relaxed">...</p>
+                    </div>
+
+                    <!-- Breakdown Radar Cards -->
+                    <div class="space-y-2">
+                        <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 block">Votre répartition d'affinités</span>
+                        <div class="grid grid-cols-2 gap-2 text-[10px] font-bold">
+                            <div class="p-2.5 bg-rose-50 border border-rose-200 rounded-xl flex justify-between items-center text-rose-950">
+                                <span><i class="fa-solid fa-bullhorn mr-1 text-rose-600"></i> Communication</span>
+                                <span id="score-com" class="font-black text-xs">0%</span>
+                            </div>
+                            <div class="p-2.5 bg-blue-50 border border-blue-200 rounded-xl flex justify-between items-center text-blue-950">
+                                <span><i class="fa-solid fa-lightbulb mr-1 text-blue-600"></i> Projets / R&D</span>
+                                <span id="score-proj" class="font-black text-xs">0%</span>
+                            </div>
+                            <div class="p-2.5 bg-emerald-50 border border-emerald-200 rounded-xl flex justify-between items-center text-emerald-950">
+                                <span><i class="fa-solid fa-users mr-1 text-emerald-600"></i> RH & Événements</span>
+                                <span id="score-hr" class="font-black text-xs">0%</span>
+                            </div>
+                            <div class="p-2.5 bg-purple-50 border border-purple-200 rounded-xl flex justify-between items-center text-purple-950">
+                                <span><i class="fa-solid fa-handshake mr-1 text-purple-600"></i> Sponsoring / Finance</span>
+                                <span id="score-spon" class="font-black text-xs">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+                        <a id="result-apply-link" href="https://boukilanwar5-cloud.github.io/recrutement-enactus/" target="_blank" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider text-center block shadow">
+                            Postuler à ce poste <i class="fa-solid fa-paper-plane ml-1"></i>
+                        </a>
+                        <button onclick="restartQuiz()" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-enactus-dark text-xs font-black uppercase tracking-wider transition">
+                            Refaire le test
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </main>
 
+    <!-- ROLE MODAL DYNAMIC -->
     <div id="role-modal" class="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-7 space-y-4 shadow-2xl relative border-t-4 sm:border-2 border-enactus-yellow max-h-[85vh] overflow-y-auto">
             
@@ -845,6 +908,7 @@
         </div>
     </div>
 
+    <!-- MOBILE BOTTOM NAVIGATION BAR -->
     <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-enactus-border py-2 px-3 flex justify-around items-center md:hidden z-40 shadow-lg">
         <button onclick="showSection('poster-view')" class="flex flex-col items-center text-gray-600 hover:text-enactus-dark">
             <i class="fa-solid fa-house text-base"></i>
@@ -859,7 +923,7 @@
             <span class="text-[9px] font-bold mt-0.5">Membres</span>
         </button>
         <button onclick="showSection('destination-choice-view')" class="flex flex-col items-center text-gray-600 hover:text-enactus-dark">
-            <i class="fa-solid fa-vial-circle-check text-base"></i>
+            <i class="fa-solid fa-compass text-base"></i>
             <span class="text-[9px] font-bold mt-0.5">Test</span>
         </button>
         <a href="https://boukilanwar5-cloud.github.io/recrutement-enactus/" target="_blank" class="flex flex-col items-center text-enactus-dark">
@@ -879,7 +943,6 @@
 
     <script>
         const rolesData = {
-            // Executive Board Roles
             'team-leader': {
                 title: 'Team Leader',
                 reports: 'Gouvernance globale Enactus IFMBTP',
@@ -1006,25 +1069,21 @@
                 missions: 'Démarchage de subventions, prospection active auprès d’organismes bailleurs de fonds et montage de dossiers financiers de demande de subvention.',
                 skills: 'Prospection téléphonique/email, argumentation commerciale, ténacité, suivi rigoureux.'
             },
-
-            // Active Member Roles (Dynamic Templates)
+            // Active Member Templates
             'membre-projet-1': { title: 'Membre Projets & R&D (Poste 01)', reports: 'Projet Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-indigo-100 text-indigo-900', missions: 'Recherche et développement d’idées d’entrepreneuriat social, participation aux études de terrain et à la conception de prototypes.', skills: 'Pensée critique, curiosité scientifique, travail de terrain, esprit d’innovation.' },
             'membre-projet-2': { title: 'Membre Projets & R&D (Poste 02)', reports: 'Projet Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-indigo-100 text-indigo-900', missions: 'Aide à l’élaboration des modèles économiques (Business Model Canvas) et analyse des besoins des communautés cibles.', skills: 'Esprit analytique, autonomie, sensibilisation à l’impact environnemental et social.' },
             'membre-projet-3': { title: 'Membre Projets & R&D (Poste 03)', reports: 'Projet Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-indigo-100 text-indigo-900', missions: 'Tests utilisateurs sur le terrain, rédaction des comptes-rendus de R&D et amélioration continue du produit.', skills: 'Écoute active, créativité technique, réactivité.' },
             'membre-projet-4': { title: 'Membre Projets & R&D (Poste 04)', reports: 'Projet Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-indigo-100 text-indigo-900', missions: 'Coordination technique entre le prototype et les besoins opérationnels du projet.', skills: 'Compétences en ingénierie/BTP, résolution de problèmes.' },
             'membre-projet-5': { title: 'Membre Projets & R&D (Poste 05)', reports: 'Projet Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-indigo-100 text-indigo-900', missions: 'Recherche d’alternatives éco-responsables et choix des matériaux durables.', skills: 'Sens de la durabilité, méthodologie de recherche.' },
             'membre-projet-6': { title: 'Membre Projets & R&D (Poste 06)', reports: 'Projet Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-indigo-100 text-indigo-900', missions: 'Suivi de la viabilité technique et rédaction des rapports d’expérimentation.', skills: 'Rigueur rédactionnelle, organisation.' },
-
             'membre-com-1': { title: 'Membre Communication & Média (Design)', reports: 'VP Communication', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-rose-100 text-rose-900', missions: 'Création de visuels pour les réseaux sociaux, affiches de recrutement et bannières d’événements.', skills: 'Canva, Photoshop, sensibilité artistique.' },
             'membre-com-2': { title: 'Membre Communication & Média (Vidéo)', reports: 'VP Communication', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-rose-100 text-rose-900', missions: 'Prise de vue vidéo lors des événements et montage de contenus courts (Reels, TikTok).', skills: 'CapCut, tournage smartphone, créativité.' },
             'membre-com-3': { title: 'Membre Communication & Média (Rédaction)', reports: 'VP Communication', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-rose-100 text-rose-900', missions: 'Rédaction des légendes de posts, articles et communiqués internes.', skills: 'Excellente orthographe, copywriting.' },
             'membre-com-4': { title: 'Membre Communication & Média (CM)', reports: 'VP Communication', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-rose-100 text-rose-900', missions: 'Modération des messages, planification des publications et engagement avec la communauté.', skills: 'Aisance sur Instagram/LinkedIn, réactivité.' },
-
             'membre-event-1': { title: 'Membre Événementiel & Logistique (Poste 01)', reports: 'Event Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-teal-100 text-teal-900', missions: 'Préparation matérielle et accueil des participants lors des séminaires et formations Enactus.', skills: 'Rigueur, sens de l’accueil, dynamisme.' },
             'membre-event-2': { title: 'Membre Événementiel & Logistique (Poste 02)', reports: 'Event Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-teal-100 text-teal-900', missions: 'Gestion des équipements audio/vidéo et aménagement des espaces d’exposition.', skills: 'Sens de la logistique, débrouillardise.' },
             'membre-event-3': { title: 'Membre Événementiel & Logistique (Poste 03)', reports: 'Event Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-teal-100 text-teal-900', missions: 'Coordination du timing et gestion du flux des participants pendant les compétitions.', skills: 'Gestion du temps, réactivité.' },
             'membre-event-4': { title: 'Membre Événementiel & Logistique (Poste 04)', reports: 'Event Manager', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-teal-100 text-teal-900', missions: 'Gestion des rafraîchissements, pauses café et inventaire du matériel du club.', skills: 'Organisation, souci du détail.' },
-
             'membre-specifique-1': { title: 'Membre Projet Spécifique A', reports: 'Projet Manager & Chef de Projet', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-amber-100 text-amber-900', missions: 'Exécution dédiée sur le terrain pour un projet d’impact social prioritaire d’Enactus IFMBTP.', skills: 'Engagement terrain, esprit d’équipe.' },
             'membre-specifique-2': { title: 'Membre Projet Spécifique B', reports: 'Projet Manager & Chef de Projet', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-amber-100 text-amber-900', missions: 'Gestion des relations avec les bénéficiaires directs du projet ciblé.', skills: 'Empathie, communication verbale.' },
             'membre-specifique-3': { title: 'Membre Projet Spécifique C', reports: 'Projet Manager & Chef de Projet', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-amber-100 text-amber-900', missions: 'Suivi de la production ou de la mise en œuvre de la solution technique du projet.', skills: 'Savoir-faire technique, rigueur.' },
@@ -1032,6 +1091,133 @@
             'membre-specifique-5': { title: 'Membre Projet Spécifique E', reports: 'Projet Manager & Chef de Projet', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-amber-100 text-amber-900', missions: 'Collecte des données d’impact environnemental et social (indicateurs Enactus).', skills: 'Collecte de données, rigueur.' },
             'membre-specifique-6': { title: 'Membre Projet Spécifique F', reports: 'Projet Manager & Chef de Projet', holder: 'Poste À Pourvoir', status: 'Poste À Pourvoir', statusClass: 'bg-amber-100 text-amber-900', missions: 'Assistance logistique et promotionnelle directe lors du lancement du projet.', skills: 'Polyvalence, enthousiasme.' }
         };
+
+        // 12 INDIRECT MOTIVATING QUESTIONS FOR ORIENTATION
+        const questionsDatabase = [
+            {
+                category: "1. Réaction sous Pression",
+                title: "Lorsqu'une crise imprévue survient 1 heure avant un événement important, quelle est votre première réaction ?",
+                options: [
+                    { text: "Je prends immédiatement la parole pour rassurer les personnes et coordonner la logistique.", type: "hr" },
+                    { text: "Je rédige rapidement une communication claire et percutante pour informer le public.", type: "com" },
+                    { text: "J'analyse méthodiquement le problème technique pour trouver une solution alternative viable.", type: "proj" },
+                    { text: "Je négocie avec les prestataires ou sponsors pour minimiser l'impact financier.", type: "spon" }
+                ]
+            },
+            {
+                category: "2. Environnement de Travail",
+                title: "Quel type d'activité vous procure la plus grande satisfaction personnelle ?",
+                options: [
+                    { text: "Convaincre un partenaire exigeant de croire en nos projets et nous financer.", type: "spon" },
+                    { text: "Concevoir un visuel ou une vidéo mémorable qui déclenche des centaines de réactions.", type: "com" },
+                    { text: "Construire un prototype écologique et mesurer son impact direct sur les bénéficiaires.", type: "proj" },
+                    { text: "Animer un atelier, motiver une équipe et voir les membres progresser.", type: "hr" }
+                ]
+            },
+            {
+                category: "3. Projet de Weekend",
+                title: "Si vous deviez organiser une journée portes ouvertes pour votre école, que préféreriez-vous faire ?",
+                options: [
+                    { text: "Créer l'affiche officielle, la charte graphique et la campagne Instagram.", type: "com" },
+                    { text: "Définir l'aménagement de la salle, le timing et la formation des guides d'accueil.", type: "hr" },
+                    { text: "Trouver des sponsors de restauration ou de boisson pour financer la journée.", type: "spon" },
+                    { text: "Modéliser la maquette d'exposition et présenter les innovations techniques.", type: "proj" }
+                ]
+            },
+            {
+                category: "4. Style de Réflexion",
+                title: "Quand vous abordez un tout nouveau projet, votre cerveau se focalise d'abord sur :",
+                options: [
+                    { text: "L'angle d'innovation, le modèle économique et le problème concret à résoudre.", type: "proj" },
+                    { text: "Les budgets nécessaires, le retour sur investissement et les sponsors potentiels.", type: "spon" },
+                    { text: "L'histoire à raconter (storytelling) et la stratégie d'image de marque.", type: "com" },
+                    { text: "Les compétences humaines nécessaires et le bien-être de l'équipe mobilisée.", type: "hr" }
+                ]
+            },
+            {
+                category: "5. Outil Préféré",
+                title: "Quel univers logiciel ou outil résonne le plus avec votre façon de travailler ?",
+                options: [
+                    { text: "Photoshop, Canva, Premiere Pro, CapCut ou Illustrator.", type: "com" },
+                    { text: "Excel, tableurs financiers, présentations institutionnelles et contrats.", type: "spon" },
+                    { text: "Formulaires de feedback, plannings d'équipe, modules de formation oral.", type: "hr" },
+                    { text: "Business Model Canvas, AutoCAD, modélisation 3D ou fiches de prototypage.", type: "proj" }
+                ]
+            },
+            {
+                category: "6. Super-Pouvoir Social",
+                title: "Vos amis vous demandent généralement de l'aide quand il s'agit de :",
+                options: [
+                    { text: "Les aider à s'entraîner pour un exposé oral ou régler un conflit relationnel.", type: "hr" },
+                    { text: "Obtenir une réduction, négocier un prix ou gérer les comptes d'un voyage.", type: "spon" },
+                    { text: "Retoucher une photo, embellir un CV ou faire une vidéo originale.", type: "com" },
+                    { text: "Résoudre un problème technique complexe ou structurer une idée compliquée.", type: "proj" }
+                ]
+            },
+            {
+                category: "7. Défi Compétition",
+                title: "Lors des compétitions nationales Enactus, quel moment vous fait le plus vibrer ?",
+                options: [
+                    { text: "Le moment où le pitch est récité avec éloquence sur scène face aux jurys.", type: "hr" },
+                    { text: "Le stand d'exposition mettant en valeur les prototypes physiques créés.", type: "proj" },
+                    { text: "La diffusion de la vidéo de présentation (Executive Summary) sur grand écran.", type: "com" },
+                    { text: "L'annonce des investissements ou bourses remportés par le club.", type: "spon" }
+                ]
+            },
+            {
+                category: "8. Gestion de Ressources",
+                title: "Si on vous confie une enveloppe budget de 10.000 MAD pour Enactus, où l'investissez-vous ?",
+                options: [
+                    { text: "Dans le matériel de prototypage et les tests de terrain auprès de la population.", type: "proj" },
+                    { text: "Dans du matériel de tournage/photo professionnel pour booster la notoriété du club.", type: "com" },
+                    { text: "Dans une campagne de prospection de grands donateurs pour quadrupler ce montant.", type: "spon" },
+                    { text: "Dans un séminaire de formation, de coaching oral et de team-building pour l'équipe.", type: "hr" }
+                ]
+            },
+            {
+                category: "9. Approche de Communication",
+                title: "Pour convaincre une personne de vous rejoindre, vous comptez surtout sur :",
+                options: [
+                    { text: "Des visuels attractifs et un message accrocheur publié sur les réseaux.", type: "com" },
+                    { text: "Un échange individuel sincère pour comprendre ses motivations et compétences.", type: "hr" },
+                    { text: "Des données d'impact chiffrées et la preuve de la viabilité du projet.", type: "proj" },
+                    { text: "La démonstration des avantages stratégiques et opportunités de réseau.", type: "spon" }
+                ]
+            },
+            {
+                category: "10. Résolution de Problèmes",
+                title: "Un produit social développé par le club ne fonctionne pas comme prévu sur le terrain. Vous :",
+                options: [
+                    { text: "Consultez les utilisateurs sur place pour retravailler la formule technique.", type: "proj" },
+                    { text: "Cherchez un nouvel investisseur prêt à financer la version 2.0 améliorée.", type: "spon" },
+                    { text: "Réorganisez les équipes de terrain pour redynamiser la motivation collective.", type: "hr" },
+                    { text: "Ajustez la façon dont le projet est présenté au public pour valoriser l'apprentissage.", type: "com" }
+                ]
+            },
+            {
+                category: "11. Vision du Succès",
+                title: "À la fin de l'année universitaire, vous considérez votre mandat réussi si :",
+                options: [
+                    { text: "Le club dispose d'un réseau solide de partenaires et d'une trésorerie saine.", type: "spon" },
+                    { text: "Chaque membre a grandi, pris confiance en soi et trouvé sa place exacte.", type: "hr" },
+                    { text: "L'image d'Enactus IFMBTP est rayonnante et reconnue dans toutes les écoles.", type: "com" },
+                    { text: "Nos projets sociaux sont autonomes, pérennes et changent des vies concrètement.", type: "proj" }
+                ]
+            },
+            {
+                category: "12. Attitude au Quotidien",
+                title: "Quel adjectif qualifie le mieux votre plus grande force naturelle ?",
+                options: [
+                    { text: "Créatif & Visuel", type: "com" },
+                    { text: "Méthodique & Innovateur", type: "proj" },
+                    { text: "Empathique & Fédérateur", type: "hr" },
+                    { text: "Persuasif & Stratège", type: "spon" }
+                ]
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let quizScores = { com: 0, proj: 0, hr: 0, spon: 0 };
 
         function showSection(sectionId) {
             document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
@@ -1072,48 +1258,120 @@
             document.body.style.overflow = '';
         }
 
-        function startUnifiedQuiz() {
-            const container = document.getElementById('quiz-container');
-            container.classList.remove('hidden');
-            container.innerHTML = `
-                <div class="space-y-3">
-                    <h4 class="font-black text-xs sm:text-sm text-enactus-dark font-poster">Quel est votre domaine d'intérêt principal ?</h4>
-                    <div class="grid grid-cols-1 gap-2">
-                        <button onclick="finishQuiz('vp-communication')" class="p-3 rounded-xl border border-enactus-border active:border-enactus-yellow bg-enactus-grayBg text-left font-bold text-xs flex items-center justify-between">
-                            <span><i class="fa-solid fa-bullhorn mr-2 text-rose-600"></i> Communication, Design & Vidéo</span>
-                            <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i>
-                        </button>
-                        <button onclick="finishQuiz('projet-manager')" class="p-3 rounded-xl border border-enactus-border active:border-enactus-yellow bg-enactus-grayBg text-left font-bold text-xs flex items-center justify-between">
-                            <span><i class="fa-solid fa-lightbulb mr-2 text-blue-600"></i> Projets & R&D Innovation Sociale</span>
-                            <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i>
-                        </button>
-                        <button onclick="finishQuiz('hr-manager')" class="p-3 rounded-xl border border-enactus-border active:border-enactus-yellow bg-enactus-grayBg text-left font-bold text-xs flex items-center justify-between">
-                            <span><i class="fa-solid fa-users mr-2 text-emerald-600"></i> RH, Événements & Coaching</span>
-                            <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i>
-                        </button>
-                        <button onclick="finishQuiz('vp-sponsorship')" class="p-3 rounded-xl border border-enactus-border active:border-enactus-yellow bg-enactus-grayBg text-left font-bold text-xs flex items-center justify-between">
-                            <span><i class="fa-solid fa-handshake mr-2 text-purple-600"></i> Sponsoring & Levée de Fonds</span>
-                            <i class="fa-solid fa-chevron-right text-gray-400 text-xs"></i>
-                        </button>
-                    </div>
-                </div>
-            `;
+        // QUIZ ENGINE FUNCTIONS
+        function startFullQuiz() {
+            currentQuestionIndex = 0;
+            quizScores = { com: 0, proj: 0, hr: 0, spon: 0 };
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-results-container').classList.add('hidden');
+            document.getElementById('quiz-active').classList.remove('hidden');
+            renderQuestion();
         }
 
-        function finishQuiz(matchedKey) {
-            const role = rolesData[matchedKey];
-            const res = document.getElementById('quiz-results');
-            res.classList.remove('hidden');
-            res.innerHTML = `
-                <div class="p-4 rounded-xl bg-enactus-yellow/20 border-2 border-enactus-yellow text-center space-y-2.5">
-                    <span class="text-[10px] font-black uppercase text-enactus-yellowDark block">Résultat de votre orientation</span>
-                    <h3 class="text-xl font-black font-poster text-enactus-dark">${role.title}</h3>
-                    <p class="text-xs text-gray-700 font-medium leading-relaxed">${role.missions}</p>
-                    <button onclick="openRoleModal('${matchedKey}')" class="px-5 py-2.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase shadow">
-                        Fiche de poste & Postuler
-                    </button>
-                </div>
-            `;
+        function renderQuestion() {
+            const q = questionsDatabase[currentQuestionIndex];
+            const total = questionsDatabase.length;
+            const progressPercent = Math.round(((currentQuestionIndex + 1) / total) * 100);
+
+            document.getElementById('quiz-progress-text').innerText = `Question ${currentQuestionIndex + 1} / ${total}`;
+            document.getElementById('quiz-progress-percent').innerText = `${progressPercent}%`;
+            document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+
+            document.getElementById('question-category').innerText = q.category;
+            document.getElementById('question-title').innerText = q.title;
+
+            const optionsContainer = document.getElementById('question-options');
+            optionsContainer.innerHTML = '';
+
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = "option-card p-3.5 rounded-xl border border-gray-200 bg-white text-left text-xs font-semibold text-enactus-dark flex items-start space-x-3 shadow-xs hover:bg-enactus-yellowLight";
+                btn.onclick = () => selectOption(opt.type);
+                btn.innerHTML = `
+                    <span class="w-5 h-5 rounded-full bg-enactus-grayBg border border-gray-300 flex items-center justify-center font-black text-[10px] shrink-0 mt-0.5 text-gray-600">
+                        ${String.fromCharCode(65 + idx)}
+                    </span>
+                    <span class="leading-snug">${opt.text}</span>
+                `;
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(type) {
+            quizScores[type]++;
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questionsDatabase.length) {
+                renderQuestion();
+            } else {
+                calculateResults();
+            }
+        }
+
+        function calculateResults() {
+            document.getElementById('quiz-active').classList.add('hidden');
+            const resContainer = document.getElementById('quiz-results-container');
+            resContainer.classList.remove('hidden');
+
+            const totalQ = questionsDatabase.length;
+            const comPct = Math.round((quizScores.com / totalQ) * 100);
+            const projPct = Math.round((quizScores.proj / totalQ) * 100);
+            const hrPct = Math.round((quizScores.hr / totalQ) * 100);
+            const sponPct = Math.round((quizScores.spon / totalQ) * 100);
+
+            document.getElementById('score-com').innerText = `${comPct}%`;
+            document.getElementById('score-proj').innerText = `${projPct}%`;
+            document.getElementById('score-hr').innerText = `${hrPct}%`;
+            document.getElementById('score-spon').innerText = `${sponPct}%`;
+
+            // Determine dominant trait
+            let dominant = 'com';
+            let maxVal = quizScores.com;
+
+            if (quizScores.proj > maxVal) { dominant = 'proj'; maxVal = quizScores.proj; }
+            if (quizScores.hr > maxVal) { dominant = 'hr'; maxVal = quizScores.hr; }
+            if (quizScores.spon > maxVal) { dominant = 'spon'; maxVal = quizScores.spon; }
+
+            let recommendedRole = { title: "", reports: "", desc: "", roleKey: "" };
+
+            if (dominant === 'com') {
+                recommendedRole = {
+                    title: "VP COMMUNICATION / MEDIA LEAD",
+                    reports: "Pôle Communication & Image de Marque",
+                    desc: "Votre fibre créative, votre sensibilité aux visuels et votre storytelling captivant indiquent que vous excellerez dans la création de contenus, la gestion des réseaux sociaux et la construction du rayonnement d'Enactus IFMBTP.",
+                    roleKey: "vp-communication"
+                };
+            } else if (dominant === 'proj') {
+                recommendedRole = {
+                    title: "PROJET MANAGER / R&D SOCIAL",
+                    reports: "Pôle Innovation & Projets Sociaux",
+                    desc: "Votre esprit logique, votre goût pour la résolution de problèmes et votre orientation terrain montrent que vous êtes taillé pour développer des Business Models écologiques et piloter des projets d'entrepreneuriat social.",
+                    roleKey: "projet-manager"
+                };
+            } else if (dominant === 'hr') {
+                recommendedRole = {
+                    title: "HR MANAGER / EVENT & PITCH COACH",
+                    reports: "Pôle Capital Humain & Événementiel",
+                    desc: "Votre intelligence relationnelle, votre capacité à rassembler et votre sens de l'organisation font de vous la personne idéale pour coacher les membres, gérer la logistique et dynamiser la cohésion du club.",
+                    roleKey: "hr-manager"
+                };
+            } else {
+                recommendedRole = {
+                    title: "VP SPONSORSHIP / FUNDRAISING",
+                    reports: "Pôle Partenariats & Trésorerie",
+                    desc: "Votre sens de la persuasion, votre vision stratégique et votre aisance commerciale vous qualifient naturellement pour négocier des partenariats entreprise, convaincre les bailleurs de fonds et sécuriser la santé financière d'Enactus.",
+                    roleKey: "vp-sponsorship"
+                };
+            }
+
+            document.getElementById('result-role-title').innerText = recommendedRole.title;
+            document.getElementById('result-role-subtitle').innerText = `Rattachement recommandé : ${recommendedRole.reports}`;
+            document.getElementById('result-role-desc').innerText = recommendedRole.desc;
+        }
+
+        function restartQuiz() {
+            document.getElementById('quiz-results-container').classList.add('hidden');
+            document.getElementById('quiz-intro').classList.remove('hidden');
         }
     </script>
 </body>
