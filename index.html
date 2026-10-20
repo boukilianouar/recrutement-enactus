@@ -1330,69 +1330,74 @@
         }
 
         // ══════════════════════════════════════════════════════════════
-        //  CONFIGURATION — APPS SCRIPT (email + Google Sheets)
-        //  Étapes (2 minutes) :
-        //  1. Va sur script.google.com → Nouveau projet
-        //  2. Colle le code du fichier APPS_SCRIPT_EMAIL.js
-        //  3. Déployer → Nouvelle version → Application Web
-        //     ▸ Exécuter en tant que : Moi
-        //     ▸ Accès : Tout le monde
-        //  4. Copie l'URL ici :
-        const APPS_SCRIPT_URL = 'VOTRE_URL_APPS_SCRIPT_ICI';
+        //  EMAIL DESTINATION — AUCUNE CONFIGURATION REQUISE
+        //  Les candidatures arrivent directement dans cette boîte mail.
+        const EMAIL_DEST = 'ifmbtpenactus@gmail.com';
         // ══════════════════════════════════════════════════════════════
 
-        async function submitCandidature(event) {
+        function submitCandidature(event) {
             event.preventDefault();
             const form = event.target;
             const btn = document.getElementById('submit-candidature-btn');
             const statusMsg = document.getElementById('form-status-msg');
 
-            btn.disabled = true;
-            btn.innerHTML = `<span>ENVOI EN COURS...</span> <i class="fa-solid fa-circle-notch animate-spin text-xs ml-2"></i>`;
-            statusMsg.className = 'hidden';
+            // Récupérer les données
+            const nom      = (form.querySelector('[name="nom_complet"]').value   || '').trim();
+            const email    = (form.querySelector('[name="email"]').value          || '').trim();
+            const tel      = (form.querySelector('[name="telephone"]').value      || '').trim();
+            const filiere  = (form.querySelector('[name="filiere_niveau"]').value || '').trim();
+            const poste    = (form.querySelector('[name="poste_souhaite"]').value || '').trim();
+            const motiv    = (form.querySelector('[name="motivation"]').value     || '').trim();
+            const cv       = (form.querySelector('[name="portfolio_cv"]').value   || '').trim();
+            const date     = new Date().toLocaleString('fr-FR');
 
-            const formData = new FormData(form);
-            const data = {
-                timestamp:      new Date().toLocaleString('fr-FR'),
-                nom_complet:    formData.get('nom_complet')    || '',
-                email:          formData.get('email')          || '',
-                telephone:      formData.get('telephone')      || '',
-                filiere_niveau: formData.get('filiere_niveau') || '',
-                poste:          formData.get('poste_souhaite') || '',
-                motivation:     formData.get('motivation')     || '',
-                portfolio_cv:   formData.get('portfolio_cv')  || ''
-            };
-
-            if (APPS_SCRIPT_URL === 'VOTRE_URL_APPS_SCRIPT_ICI') {
-                // Mode test local : afficher succès pour vérifier le formulaire
+            // Validation
+            if (!nom || !email || !filiere || !poste || !motiv) {
                 statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-amber-100 text-amber-800';
-                statusMsg.innerText = '⚠ Configure l\'URL Apps Script pour activer l\'envoi email. Voir instructions ci-dessus.';
-                btn.disabled = false;
-                btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
+                statusMsg.innerText = '⚠ Merci de remplir tous les champs obligatoires.';
                 return;
             }
 
-            // Envoi vers Apps Script → Gmail (email) + Google Sheets
-            try {
-                await fetch(APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                });
+            // Construire le corps de l'email
+            const sujet = `[Enactus IFMBTP] Candidature – ${poste} – ${nom}`;
+            const corps = `NOUVELLE CANDIDATURE ENACTUS IFMBTP FÈS
+════════════════════════════════════════
 
-                // no-cors ne retourne pas de status, on considère succès si pas d'exception
+Date        : ${date}
+Nom complet : ${nom}
+Email       : ${email}
+Téléphone   : ${tel || 'non fourni'}
+Filière     : ${filiere}
+Poste       : ${poste}
+
+LETTRE DE MOTIVATION :
+────────────────────
+${motiv}
+
+CV / PORTFOLIO :
+────────────────
+${cv || 'non fourni'}
+
+════════════════════════════════════════
+Pour répondre : ${email}`;
+
+            // Ouvrir l'application email avec tout pré-rempli
+            const mailtoLink = `mailto:${EMAIL_DEST}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+
+            // Bouton animation
+            btn.disabled = true;
+            btn.innerHTML = `<span>OUVERTURE EMAIL...</span> <i class="fa-solid fa-circle-notch animate-spin text-xs ml-2"></i>`;
+
+            // Déclencher l'ouverture de l'app email
+            window.location.href = mailtoLink;
+
+            // Retour visuel après 1s
+            setTimeout(() => {
                 statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
-                statusMsg.innerText = '✓ Candidature envoyée ! L\'équipe Enactus IFMBTP te répondra à ' + data.email;
-                form.reset();
-
-            } catch (e) {
-                statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-rose-100 text-rose-800';
-                statusMsg.innerText = 'Erreur réseau. Contacte-nous : ifmbtpenactus@gmail.com';
-            } finally {
+                statusMsg.innerHTML = `✓ Ton application email s'est ouverte avec ta candidature pré-remplie.<br><span class="font-normal">Clique simplement sur <strong>Envoyer</strong> dans ton email pour finaliser.</span>`;
                 btn.disabled = false;
                 btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
-            }
+            }, 1200);
         }
 
         function openRoleModal(roleKey) {
