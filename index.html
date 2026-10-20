@@ -102,6 +102,7 @@
 </head>
 <body class="h-full flex flex-col font-sans bg-[#F4F4F0] text-[#0F1115] antialiased pb-16 md:pb-0">
 
+    <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-40 bg-white/95 border-b border-enactus-border backdrop-blur-md shadow-sm">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             
@@ -116,7 +117,7 @@
                 </div>
             </div>
 
-            <!-- Desktop Nav Links -->
+            <!-- Navigation Bureau / Membres / Test -->
             <nav class="hidden md:flex items-center space-x-1 font-bold text-xs">
                 <button onclick="showSection('poster-view')" class="px-3.5 py-2 rounded-xl text-enactus-dark hover:bg-enactus-grayBg transition flex items-center space-x-1.5">
                     <i class="fa-solid fa-house text-enactus-yellowDark"></i> <span>Accueil</span>
@@ -132,18 +133,20 @@
                 </button>
             </nav>
 
+            <!-- BOUTON POSTULER GOOGLE FORM HAUT DE PAGE -->
             <div class="flex items-center space-x-2">
                 <button onclick="showSection('apply-form-view')" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full enactus-btn-yellow text-[11px] sm:text-xs font-black shadow flex items-center tracking-wider uppercase">
-                    <i class="fa-solid fa-paper-plane mr-1.5 sm:mr-2"></i>
-                    <span>Postuler Directement</span>
+                    <i class="fa-brands fa-google mr-1.5 sm:mr-2"></i>
+                    <span>Postuler (Google Form)</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- MAIN CONTENT AREA -->
+    <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-7xl w-full mx-auto p-3 sm:p-6 lg:p-8">
 
+        <!-- VUE ACCUEIL / BANNIÈRE -->
         <section id="poster-view" class="view-section transition-all duration-300">
             <div class="poster-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 lg:p-12 relative overflow-hidden space-y-6">
                 
@@ -176,29 +179,33 @@
                         </div>
 
                         <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
-                            Découvrez la structure du Bureau Exécutif et des Membres Actifs d'Enactus IFMBTP. Passez notre test d'orientation interactif en 12 questions ou remplissez directement le formulaire de candidature ci-dessous !
+                            Découvrez la structure du Bureau Exécutif et des Membres Actifs d'Enactus IFMBTP. Passez notre test d'orientation interactif ou remplissez directement notre Google Form officiel pour soumettre votre candidature !
                         </p>
 
+                        <!-- BOUTONS INTERFACE PRINCIPALE (Accès direct conservés) -->
                         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2">
                             <button onclick="showSection('apply-form-view')" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl enactus-btn-yellow text-xs font-black font-poster tracking-wider shadow-md flex items-center justify-center uppercase">
-                                <i class="fa-solid fa-pen-to-square mr-2 text-sm"></i> FORMULAIRE DE CANDIDATURE
+                                <i class="fa-brands fa-google mr-2 text-sm"></i> FORMULAIRE GOOGLE FORM
                             </button>
                             <button onclick="showSection('organigramme-view')" class="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-enactus-dark text-white text-xs font-black font-poster tracking-wider transition flex items-center justify-center shadow-md hover:bg-enactus-charcoal">
                                 <i class="fa-solid fa-sitemap mr-2 text-sm text-enactus-yellow"></i> BUREAU EXÉCUTIF
                             </button>
+                            <button onclick="showSection('membres-actifs-view')" class="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-slate-800 text-white text-xs font-black font-poster tracking-wider transition flex items-center justify-center shadow-md hover:bg-slate-900">
+                                <i class="fa-solid fa-users mr-2 text-sm text-enactus-yellow"></i> MEMBRES ACTIFS
+                            </button>
                             <button onclick="showSection('destination-choice-view')" class="w-full sm:w-auto px-4 py-3.5 rounded-2xl bg-gray-200 text-enactus-dark text-xs font-bold font-poster tracking-wider hover:bg-gray-300 transition flex items-center justify-center">
-                                TEST ORIENTATION <i class="fa-solid fa-compass ml-1.5 text-xs text-enactus-yellowDark"></i>
+                                TEST D'INTÉRÊT <i class="fa-solid fa-compass ml-1.5 text-xs text-enactus-yellowDark"></i>
                             </button>
                         </div>
                     </div>
 
                     <div class="lg:col-span-5 flex flex-col items-center justify-center pt-2 lg:pt-0">
                         <div class="bg-white rounded-2xl p-5 border-2 border-enactus-yellow text-center space-y-3 w-full max-w-sm shadow-md">
-                            <i class="fa-solid fa-paper-plane text-enactus-yellowDark text-2xl"></i>
-                            <h3 class="text-xs font-black uppercase tracking-wider font-poster text-enactus-dark">CANDIDATURE DIRECTE</h3>
-                            <p class="text-[11px] text-gray-500">Envoyez directement vos informations à l'adresse officielle : <br><strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
+                            <i class="fa-brands fa-google text-enactus-yellowDark text-3xl"></i>
+                            <h3 class="text-xs font-black uppercase tracking-wider font-poster text-enactus-dark">FORMULAIRE OFFICIEL GOOGLE FORMS</h3>
+                            <p class="text-[11px] text-gray-500">Candidatures centralisées pour la commission de recrutement. Contact direct : <br><strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
                             <button onclick="showSection('apply-form-view')" class="w-full py-3 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider shadow block">
-                                REMPLIR LE FORMULAIRE <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                                POSTULER VIA GOOGLE FORM <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
                             </button>
                         </div>
                     </div>
@@ -206,97 +213,47 @@
             </div>
         </section>
 
-        <!-- FORMULAIRE DE CANDIDATURE INTEGRÉ -->
+        <!-- VUE FORMULAIRE DE CANDIDATURE GOOGLE FORM -->
         <section id="apply-form-view" class="view-section hidden transition-all duration-300">
             <button onclick="showSection('poster-view')" class="mb-3 inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
-                <i class="fa-solid fa-chevron-left mr-1.5 text-xs"></i> Retour
+                <i class="fa-solid fa-chevron-left mr-1.5 text-xs"></i> Retour Accueil
             </button>
 
-            <div class="poster-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-3xl mx-auto space-y-6">
+            <div class="poster-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-4xl mx-auto space-y-6">
                 <div class="text-center space-y-2 border-b border-enactus-border pb-4">
                     <div class="w-12 h-12 rounded-2xl bg-enactus-yellow/20 text-enactus-dark flex items-center justify-center mx-auto text-xl shadow-xs font-black">
-                        <i class="fa-solid fa-file-signature"></i>
+                        <i class="fa-brands fa-google text-2xl text-enactus-yellowDark"></i>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Formulaire de Candidature</h2>
-                    <p class="text-xs text-gray-500 font-medium">Vos informations seront directement envoyées à : <span class="font-bold text-enactus-dark">ifmbtpenactus@gmail.com</span></p>
+                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Google Form - Candidature Officielle</h2>
+                    <p class="text-xs text-gray-500 font-medium">Postulez aux équipes du Bureau Exécutif ou des Membres Actifs d'Enactus IFMBTP. <br>Email officiel : <span class="font-bold text-enactus-dark">ifmbtpenactus@gmail.com</span></p>
+                    
+                    <div class="pt-2 flex justify-center gap-2">
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_Example_Enactus_IFMBTP/viewform" target="_blank" class="inline-flex items-center px-4 py-2 rounded-xl bg-enactus-dark text-white text-xs font-bold hover:bg-enactus-charcoal transition shadow">
+                            <i class="fa-solid fa-up-right-from-square mr-2 text-enactus-yellow"></i> Ouvrir Google Form dans une nouvelle fenêtre
+                        </a>
+                    </div>
                 </div>
 
-                <form id="enactus-application-form" action="https://formspree.io/f/xbjnqpyz" method="POST" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                    <!-- Champ Masqué pour l'email destinataire -->
-                    <input type="hidden" name="_to" value="ifmbtpenactus@gmail.com">
-                    <input type="hidden" name="_subject" value="Nouvelle Candidature Enactus IFMBTP 2026-2027">
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="space-y-1">
-                            <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Nom Complet *</label>
-                            <input type="text" name="nom_complet" required placeholder="Ex: Mohamed El Amrani" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none">
-                        </div>
-
-                        <div class="space-y-1">
-                            <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Adresse Email *</label>
-                            <input type="email" name="email" required placeholder="Ex: amrani@gmail.com" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none">
-                        </div>
+                <!-- GOOGLE FORMS IFRAME / INTÉGRATION HAUT DE PAGE -->
+                <div class="w-full bg-gray-50 rounded-2xl p-2 border border-gray-200 overflow-hidden shadow-inner">
+                    <div class="relative w-full overflow-hidden pt-[120%] sm:pt-[80%] rounded-xl bg-white">
+                        <iframe 
+                            src="https://docs.google.com/forms/d/e/1FAIpQLSc_Example_Enactus_IFMBTP/viewform?embedded=true" 
+                            class="absolute top-0 left-0 bottom-0 right-0 w-full h-full border-0" 
+                            marginheight="0" 
+                            marginwidth="0">
+                            Chargement du Google Form en cours...
+                        </iframe>
                     </div>
+                </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div class="space-y-1">
-                            <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Téléphone / WhatsApp *</label>
-                            <input type="tel" name="telephone" required placeholder="Ex: 0612345678" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none">
-                        </div>
-
-                        <div class="space-y-1">
-                            <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Filière / Niveau à l'IFMBTP *</label>
-                            <input type="text" name="filiere_niveau" required placeholder="Ex: TS Conducteur de Travaux - 1ère année" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none">
-                        </div>
-                    </div>
-
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Poste ou Pôle Souhaité *</label>
-                        <select id="form-role-select" name="poste_souhaite" required class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none bg-white">
-                            <option value="">-- Sélectionnez un poste --</option>
-                            <optgroup label="Bureau Exécutif">
-                                <option value="VP Communication">VP Communication</option>
-                                <option value="Media Lead / Graphic Designer">Media Lead / Graphic Designer</option>
-                                <option value="Audiovisuel & Community Manager">Audiovisuel & Community Manager</option>
-                                <option value="Projet Manager">Projet Manager</option>
-                                <option value="Vice-Project Manager">Vice-Project Manager</option>
-                                <option value="Finance Officer Projets">Finance Officer Projets</option>
-                                <option value="HR Manager">HR Manager</option>
-                                <option value="Event & Logistics Manager">Event & Logistics Manager</option>
-                                <option value="Training & Pitch Coach">Training & Pitch Coach</option>
-                                <option value="VP Sponsorship">VP Sponsorship</option>
-                                <option value="Trésorier">Trésorier</option>
-                                <option value="Fundraising Officer">Fundraising Officer</option>
-                            </optgroup>
-                            <optgroup label="Membres Actifs (Pôles Operatifs)">
-                                <option value="Membre - Cellule Projets & R&D">Membre - Cellule Projets & R&D</option>
-                                <option value="Membre - Cellule Communication & Média">Membre - Cellule Communication & Média</option>
-                                <option value="Membre - Cellule Événementiel & Logistique">Membre - Cellule Événementiel & Logistique</option>
-                                <option value="Membre - Projets Spécifiques">Membre - Projets Spécifiques</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Pourquoi souhaitez-vous rejoindre Enactus IFMBTP ? *</label>
-                        <textarea name="motivation" rows="3" required placeholder="Décrivez brièvement votre motivation, vos compétences ou projets passés..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none"></textarea>
-                    </div>
-
-                    <div class="space-y-1">
-                        <label class="text-[11px] font-black uppercase tracking-wider text-enactus-dark">Lien Portfolio / CV / LinkedIn (Optionnel)</label>
-                        <input type="url" name="portfolio_cv" placeholder="https://..." class="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-enactus-yellow focus:outline-none">
-                    </div>
-
-                    <div id="form-status-msg" class="hidden p-3 rounded-xl text-xs font-bold text-center"></div>
-
-                    <button type="submit" id="submit-btn" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider shadow-md flex items-center justify-center space-x-2">
-                        <span>ENVOYER MA CANDIDATURE</span>
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                    </button>
-                </form>
+                <div class="text-center text-xs text-gray-500 pt-2 border-t border-gray-200">
+                    <p>En cas de soucis d'affichage du formulaire Google, vous pouvez envoyer votre dossier directement à : <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
+                </div>
             </div>
         </section>
 
+        <!-- VUE ORGANIGRAMME BUREAU EXÉCUTIF -->
         <section id="organigramme-view" class="view-section hidden transition-all duration-300">
             <div class="flex items-center justify-between mb-3">
                 <button onclick="showSection('poster-view')" class="inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
@@ -313,13 +270,12 @@
                     <p class="text-[11px] sm:text-xs text-gray-500 font-medium">Postes à responsabilité & management de pôles Enactus IFMBTP</p>
                 </div>
 
-                <!-- MOBILE ACCORDION / LIST VIEW (< 768px) -->
+                <!-- Mobile Accordion View -->
                 <div class="block md:hidden space-y-3 pt-2">
                     <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 font-medium flex items-center justify-between">
                         <span><i class="fa-solid fa-mobile-retro mr-1.5 text-enactus-yellowDark"></i> Cliquez sur un poste pour consulter ses détails.</span>
                     </div>
 
-                    <!-- LEVEL 1: TOP MANAGEMENT MOBILE -->
                     <div class="space-y-2">
                         <div class="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-1">1. Présidence & Vice-Présidence</div>
                         <div class="grid grid-cols-2 gap-2">
@@ -341,11 +297,9 @@
                         </div>
                     </div>
 
-                    <!-- LEVEL 2: PÔLES MOBILE -->
                     <div class="space-y-3 pt-2">
                         <div class="text-[10px] font-black uppercase tracking-widest text-gray-400 pl-1">2. Pôles Executifs</div>
 
-                        <!-- BRANCH COMMUNICATION -->
                         <div class="border border-rose-200 rounded-2xl p-3 bg-rose-50/40 space-y-2">
                             <div onclick="openRoleModal('vp-communication')" class="tree-node bg-white border-2 border-rose-500 rounded-xl p-3 flex items-center justify-between shadow-sm">
                                 <div class="flex items-center space-x-2.5">
@@ -370,7 +324,6 @@
                             </div>
                         </div>
 
-                        <!-- BRANCH PROJET MANAGER -->
                         <div class="border border-blue-200 rounded-2xl p-3 bg-blue-50/40 space-y-2">
                             <div onclick="openRoleModal('projet-manager')" class="tree-node bg-white border-2 border-blue-500 rounded-xl p-3 flex items-center justify-between shadow-sm">
                                 <div class="flex items-center space-x-2.5">
@@ -395,7 +348,6 @@
                             </div>
                         </div>
 
-                        <!-- BRANCH HR MANAGER -->
                         <div class="border border-emerald-200 rounded-2xl p-3 bg-emerald-50/40 space-y-2">
                             <div onclick="openRoleModal('hr-manager')" class="tree-node bg-white border-2 border-emerald-600 rounded-xl p-3 flex items-center justify-between shadow-sm">
                                 <div class="flex items-center space-x-2.5">
@@ -420,7 +372,6 @@
                             </div>
                         </div>
 
-                        <!-- BRANCH VP SPONSORSHIP -->
                         <div class="border border-purple-200 rounded-2xl p-3 bg-purple-50/40 space-y-2">
                             <div onclick="openRoleModal('vp-sponsorship')" class="tree-node bg-white border-2 border-purple-600 rounded-xl p-3 flex items-center justify-between shadow-sm">
                                 <div class="flex items-center space-x-2.5">
@@ -448,10 +399,9 @@
                     </div>
                 </div>
 
-                <!-- DESKTOP FULL EXECUTIVE TREE GRAPH (>= 768px) -->
+                <!-- Desktop Tree Graph View -->
                 <div class="hidden md:block overflow-x-auto custom-scrollbar pb-6">
                     <div class="min-w-[980px] py-6 px-2 flex flex-col items-center">
-                        
                         <div class="flex items-center justify-center space-x-16 relative">
                             <div onclick="openRoleModal('team-leader')" class="tree-node bg-white border-2 border-enactus-yellow rounded-2xl p-4 w-52 text-center shadow-md relative">
                                 <div class="w-14 h-14 rounded-full bg-amber-100 mx-auto border-2 border-enactus-dark flex items-center justify-center overflow-hidden mb-2 text-enactus-dark">
@@ -483,10 +433,7 @@
                             <div class="h-8 tree-line-v"></div>
                         </div>
 
-                        <!-- 4 BRANCHES -->
                         <div class="w-full flex justify-between items-start gap-3">
-                            
-                            <!-- BRANCH 1: VP COMMUNICATION (Rose/Red) -->
                             <div class="flex flex-col items-center w-52">
                                 <div onclick="openRoleModal('vp-communication')" class="tree-node bg-rose-50/50 border-2 border-rose-500 rounded-2xl p-3.5 w-full text-center shadow-md relative">
                                     <div class="w-12 h-12 rounded-full bg-rose-100 border-2 border-rose-500 mx-auto flex items-center justify-center mb-1.5 text-rose-600 font-bold">
@@ -520,7 +467,6 @@
                                 </div>
                             </div>
 
-                            <!-- BRANCH 2: PROJET MANAGER (Blue) -->
                             <div class="flex flex-col items-center w-52">
                                 <div onclick="openRoleModal('projet-manager')" class="tree-node bg-blue-50/50 border-2 border-blue-500 rounded-2xl p-3.5 w-full text-center shadow-md relative">
                                     <div class="w-12 h-12 rounded-full bg-blue-100 border-2 border-blue-500 mx-auto flex items-center justify-center mb-1.5 text-blue-600 font-bold">
@@ -554,7 +500,6 @@
                                 </div>
                             </div>
 
-                            <!-- BRANCH 3: HR MANAGER (Emerald) -->
                             <div class="flex flex-col items-center w-52">
                                 <div onclick="openRoleModal('hr-manager')" class="tree-node bg-emerald-50/50 border-2 border-emerald-600 rounded-2xl p-3.5 w-full text-center shadow-md relative">
                                     <div class="w-12 h-12 rounded-full bg-emerald-100 border-2 border-emerald-600 mx-auto flex items-center justify-center mb-1.5 text-emerald-600 font-bold">
@@ -588,7 +533,6 @@
                                 </div>
                             </div>
 
-                            <!-- BRANCH 4: VP SPONSORSHIP (Purple) -->
                             <div class="flex flex-col items-center w-52">
                                 <div onclick="openRoleModal('vp-sponsorship')" class="tree-node bg-purple-50/50 border-2 border-purple-600 rounded-2xl p-3.5 w-full text-center shadow-md relative">
                                     <div class="w-12 h-12 rounded-full bg-purple-100 border-2 border-purple-600 mx-auto flex items-center justify-center mb-1.5 text-purple-600 font-bold">
@@ -621,7 +565,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
@@ -630,6 +573,7 @@
             </div>
         </section>
 
+        <!-- VUE MEMBRES ACTIFS -->
         <section id="membres-actifs-view" class="view-section hidden transition-all duration-300">
             <div class="flex items-center justify-between mb-3">
                 <button onclick="showSection('poster-view')" class="inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
@@ -647,10 +591,8 @@
                     <p class="text-[11px] sm:text-xs text-gray-500 font-medium">Cellules opérationnelles & membres affectés aux projets</p>
                 </div>
 
-                <!-- Active Members Grid (Responsive 4 Columns for Cellules) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <!-- CELLULE 1: PROJETS & R&D -->
                     <div class="bg-indigo-50/50 rounded-2xl p-4 border-2 border-indigo-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-indigo-200">
                             <span class="text-[10px] font-black uppercase text-indigo-700 tracking-wider">Cellule 01</span>
@@ -696,12 +638,11 @@
                             </div>
                         </div>
 
-                        <button onclick="applyForRoleDirectly('Membre - Cellule Projets & R&D')" class="w-full py-2 rounded-xl bg-indigo-600 text-white font-black text-[10px] uppercase text-center block hover:bg-indigo-700 transition">
-                            Postuler à ce pôle
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-indigo-600 text-white font-black text-[10px] uppercase text-center block hover:bg-indigo-700 transition">
+                            Postuler à ce pôle (Google Form)
                         </button>
                     </div>
 
-                    <!-- CELLULE 2: COMMUNICATION & MEDIA -->
                     <div class="bg-rose-50/50 rounded-2xl p-4 border-2 border-rose-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-rose-200">
                             <span class="text-[10px] font-black uppercase text-rose-700 tracking-wider">Cellule 02</span>
@@ -735,12 +676,11 @@
                             </div>
                         </div>
 
-                        <button onclick="applyForRoleDirectly('Membre - Cellule Communication & Média')" class="w-full py-2 rounded-xl bg-rose-600 text-white font-black text-[10px] uppercase text-center block hover:bg-rose-700 transition">
-                            Postuler à ce pôle
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-rose-600 text-white font-black text-[10px] uppercase text-center block hover:bg-rose-700 transition">
+                            Postuler à ce pôle (Google Form)
                         </button>
                     </div>
 
-                    <!-- CELLULE 3: ÉVÉNEMENTIEL & LOGISTIQUE -->
                     <div class="bg-teal-50/50 rounded-2xl p-4 border-2 border-teal-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-teal-200">
                             <span class="text-[10px] font-black uppercase text-teal-700 tracking-wider">Cellule 03</span>
@@ -774,12 +714,11 @@
                             </div>
                         </div>
 
-                        <button onclick="applyForRoleDirectly('Membre - Cellule Événementiel & Logistique')" class="w-full py-2 rounded-xl bg-teal-600 text-white font-black text-[10px] uppercase text-center block hover:bg-teal-700 transition">
-                            Postuler à ce pôle
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-teal-600 text-white font-black text-[10px] uppercase text-center block hover:bg-teal-700 transition">
+                            Postuler à ce pôle (Google Form)
                         </button>
                     </div>
 
-                    <!-- CELLULE 4: PROJETS SPÉCIFIQUES -->
                     <div class="bg-amber-50/50 rounded-2xl p-4 border-2 border-amber-200 space-y-3 flex flex-col justify-between">
                         <div class="text-center space-y-1 pb-2 border-b border-amber-200">
                             <span class="text-[10px] font-black uppercase text-amber-700 tracking-wider">Cellule 04</span>
@@ -825,8 +764,8 @@
                             </div>
                         </div>
 
-                        <button onclick="applyForRoleDirectly('Membre - Projets Spécifiques')" class="w-full py-2 rounded-xl bg-amber-600 text-white font-black text-[10px] uppercase text-center block hover:bg-amber-700 transition">
-                            Postuler à ce pôle
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-amber-600 text-white font-black text-[10px] uppercase text-center block hover:bg-amber-700 transition">
+                            Postuler à ce pôle (Google Form)
                         </button>
                     </div>
 
@@ -835,6 +774,7 @@
             </div>
         </section>
 
+        <!-- VUE TEST D'INTÉRÊT / ORIENTATION -->
         <section id="destination-choice-view" class="view-section hidden transition-all duration-300">
             <button onclick="showSection('poster-view')" class="mb-3 inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
                 <i class="fa-solid fa-chevron-left mr-1.5 text-xs"></i> Retour
@@ -842,15 +782,14 @@
 
             <div class="poster-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-2xl mx-auto space-y-6">
                 
-                <!-- Quiz Intro State -->
                 <div id="quiz-intro" class="text-center space-y-4">
                     <div class="w-16 h-16 rounded-2xl bg-enactus-yellow/20 border-2 border-enactus-yellow text-enactus-dark flex items-center justify-center mx-auto text-2xl shadow-sm">
                         <i class="fa-solid fa-compass animate-spin" style="animation-duration: 10s;"></i>
                     </div>
                     <div class="space-y-1">
-                        <span class="px-3 py-1 rounded-full bg-enactus-yellow/20 text-enactus-dark text-[10px] sm:text-xs font-black uppercase tracking-wider">Test d'Orientation Interactif</span>
+                        <span class="px-3 py-1 rounded-full bg-enactus-yellow/20 text-enactus-dark text-[10px] sm:text-xs font-black uppercase tracking-wider">Test d'Intérêt & Orientation</span>
                         <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark">Révélez Votre Impact Enactus</h2>
-                        <p class="text-gray-600 text-xs sm:text-sm max-w-md mx-auto font-medium">12 mises en situation concrètes et indirectes pour déterminer précisément votre profil idéal au sein d'Enactus IFMBTP.</p>
+                        <p class="text-gray-600 text-xs sm:text-sm max-w-md mx-auto font-medium">12 mises en situation concrètes pour déterminer précisément votre profil idéal au sein d'Enactus IFMBTP.</p>
                     </div>
 
                     <div class="grid grid-cols-2 gap-2 text-left pt-2 max-w-md mx-auto text-[11px] font-bold text-gray-600">
@@ -870,10 +809,7 @@
                     </button>
                 </div>
 
-                <!-- Active Quiz State -->
                 <div id="quiz-active" class="hidden space-y-5">
-                    
-                    <!-- Progress Bar & Header -->
                     <div class="space-y-2">
                         <div class="flex items-center justify-between text-xs font-black font-poster">
                             <span id="quiz-progress-text" class="text-enactus-dark">Question 1 / 12</span>
@@ -884,21 +820,16 @@
                         </div>
                     </div>
 
-                    <!-- Question Box -->
                     <div class="space-y-4 pt-2">
                         <div class="p-4 rounded-2xl bg-enactus-dark text-white space-y-1 shadow-sm">
                             <span id="question-category" class="text-[9px] font-black uppercase tracking-widest text-enactus-yellow">Mise en situation</span>
                             <h3 id="question-title" class="text-xs sm:text-sm font-bold font-poster leading-relaxed">Chargement de la question...</h3>
                         </div>
 
-                        <!-- 4 Interactive Answer Options -->
-                        <div id="question-options" class="grid grid-cols-1 gap-2.5">
-                            <!-- Options injected dynamically -->
-                        </div>
+                        <div id="question-options" class="grid grid-cols-1 gap-2.5"></div>
                     </div>
                 </div>
 
-                <!-- Quiz Results State -->
                 <div id="quiz-results-container" class="hidden space-y-6">
                     <div class="text-center space-y-3">
                         <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl shadow">
@@ -911,13 +842,11 @@
                         </div>
                     </div>
 
-                    <!-- Match Explanation Box -->
                     <div class="p-4 rounded-2xl bg-amber-50/60 border border-amber-200 space-y-2 text-xs">
                         <span class="font-black text-amber-900 block uppercase tracking-wider text-[10px]">Pourquoi ce rôle vous convient parfaitement :</span>
                         <p id="result-role-desc" class="text-gray-700 font-medium leading-relaxed">...</p>
                     </div>
 
-                    <!-- Breakdown Radar Cards -->
                     <div class="space-y-2">
                         <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 block">Votre répartition d'affinités</span>
                         <div class="grid grid-cols-2 gap-2 text-[10px] font-bold">
@@ -940,10 +869,9 @@
                         </div>
                     </div>
 
-                    <!-- Actions -->
                     <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
-                        <button id="result-apply-btn" onclick="applyForRoleDirectly(selectedRoleForForm)" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider text-center block shadow">
-                            Postuler à ce poste <i class="fa-solid fa-paper-plane ml-1"></i>
+                        <button id="result-apply-btn" onclick="showSection('apply-form-view')" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider text-center block shadow">
+                            Postuler (Google Form) <i class="fa-solid fa-paper-plane ml-1"></i>
                         </button>
                         <button onclick="restartQuiz()" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-enactus-dark text-xs font-black uppercase tracking-wider transition">
                             Refaire le test
@@ -956,7 +884,7 @@
 
     </main>
 
-    <!-- ROLE MODAL DYNAMIC -->
+    <!-- MODALE DESCRIPTION DES POSTES (DÉTAILS & BOUTON POSTULER GOOGLE FORM) -->
     <div id="role-modal" class="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 hidden flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="bg-white rounded-t-3xl sm:rounded-3xl max-w-lg w-full p-5 sm:p-7 space-y-4 shadow-2xl relative border-t-4 sm:border-2 border-enactus-yellow max-h-[85vh] overflow-y-auto">
             
@@ -992,12 +920,12 @@
             </div>
 
             <button id="modal-apply-btn" onclick="applyForRoleFromModal()" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider text-center block shadow">
-                Postuler à ce poste <i class="fa-solid fa-paper-plane ml-1"></i>
+                Postuler via Google Form <i class="fa-brands fa-google ml-1"></i>
             </button>
         </div>
     </div>
 
-    <!-- MOBILE BOTTOM NAVIGATION BAR -->
+    <!-- MOBILE NAVIGATION FOOTER BAR -->
     <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-enactus-border py-2 px-3 flex justify-around items-center md:hidden z-40 shadow-lg">
         <button onclick="showSection('poster-view')" class="flex flex-col items-center text-gray-600 hover:text-enactus-dark">
             <i class="fa-solid fa-house text-base"></i>
@@ -1017,7 +945,7 @@
         </button>
         <button onclick="showSection('apply-form-view')" class="flex flex-col items-center text-enactus-dark">
             <div class="w-6 h-6 rounded-full bg-enactus-yellow flex items-center justify-center text-xs font-black">
-                <i class="fa-solid fa-paper-plane"></i>
+                <i class="fa-brands fa-google"></i>
             </div>
             <span class="text-[8px] font-black mt-0.5 uppercase">Postuler</span>
         </button>
@@ -1026,7 +954,7 @@
     <footer class="hidden md:block bg-white border-t border-enactus-border py-6 mt-8 text-center text-xs text-gray-500 font-medium">
         <div class="max-w-7xl mx-auto px-4 space-y-1">
             <p class="font-black font-poster text-enactus-dark">ENACTUS IFMBTP FÈS</p>
-            <p>© 2026-2027 Organigramme Officiel & Candidatures Directes vers ifmbtpenactus@gmail.com</p>
+            <p>© 2026-2027 Organigramme Officiel & Candidatures via Google Form : ifmbtpenactus@gmail.com</p>
         </div>
     </footer>
 
@@ -1162,7 +1090,6 @@
             }
         };
 
-        // 12 INDIRECT MOTIVATING QUESTIONS FOR ORIENTATION
         const questionsDatabase = [
             {
                 category: "1. Réaction sous Pression",
@@ -1298,24 +1225,9 @@
             }
         }
 
-        function applyForRoleDirectly(roleTitle) {
-            showSection('apply-form-view');
-            const select = document.getElementById('form-role-select');
-            if (select && roleTitle) {
-                for (let i = 0; i < select.options.length; i++) {
-                    if (select.options[i].value.toLowerCase().includes(roleTitle.toLowerCase()) || 
-                        roleTitle.toLowerCase().includes(select.options[i].value.toLowerCase())) {
-                        select.selectedIndex = i;
-                        break;
-                    }
-                }
-            }
-        }
-
         function applyForRoleFromModal() {
             closeRoleModal();
-            const title = document.getElementById('modal-role-title').innerText;
-            applyForRoleDirectly(title);
+            showSection('apply-form-view');
         }
 
         function openRoleModal(roleKey) {
@@ -1349,39 +1261,6 @@
             document.body.style.overflow = '';
         }
 
-        async function handleFormSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const submitBtn = document.getElementById('submit-btn');
-            const statusMsg = document.getElementById('form-status-msg');
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<span>ENVOI EN COURS...</span> <i class="fa-solid fa-circle-notch animate-spin text-xs"></i>`;
-
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: new FormData(form),
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    statusMsg.className = "p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800 block";
-                    statusMsg.innerText = "✓ Félicitations ! Votre candidature a été transmise directement à ifmbtpenactus@gmail.com !";
-                    form.reset();
-                } else {
-                    throw new Error("Erreur de soumission");
-                }
-            } catch (error) {
-                statusMsg.className = "p-3 rounded-xl text-xs font-bold text-center bg-rose-100 text-rose-800 block";
-                statusMsg.innerText = "Une erreur est survenue. Vous pouvez aussi envoyer votre candidature directement par email à ifmbtpenactus@gmail.com.";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs"></i>`;
-            }
-        }
-
-        // QUIZ ENGINE FUNCTIONS
         function startFullQuiz() {
             currentQuestionIndex = 0;
             quizScores = { com: 0, proj: 0, hr: 0, spon: 0 };
@@ -1447,7 +1326,6 @@
             document.getElementById('score-hr').innerText = `${hrPct}%`;
             document.getElementById('score-spon').innerText = `${sponPct}%`;
 
-            // Determine dominant trait
             let dominant = 'com';
             let maxVal = quizScores.com;
 
