@@ -1329,13 +1329,17 @@
             }, 100);
         }
 
-        // ── URL Google Apps Script ─────────────────────────────────────
-        // 1. Ouvre ton Google Sheets → Extensions → Apps Script
-        // 2. Colle le code Apps Script → Déployer → Application Web
-        //    (Exécuter en tant que : Moi | Accès : Tout le monde)
-        // 3. Copie l'URL de déploiement ici :
+        // ══════════════════════════════════════════════════════════════
+        //  CONFIGURATION — APPS SCRIPT (email + Google Sheets)
+        //  Étapes (2 minutes) :
+        //  1. Va sur script.google.com → Nouveau projet
+        //  2. Colle le code du fichier APPS_SCRIPT_EMAIL.js
+        //  3. Déployer → Nouvelle version → Application Web
+        //     ▸ Exécuter en tant que : Moi
+        //     ▸ Accès : Tout le monde
+        //  4. Copie l'URL ici :
         const APPS_SCRIPT_URL = 'VOTRE_URL_APPS_SCRIPT_ICI';
-        // ──────────────────────────────────────────────────────────────
+        // ══════════════════════════════════════════════════════════════
 
         async function submitCandidature(event) {
             event.preventDefault();
@@ -1349,7 +1353,7 @@
 
             const formData = new FormData(form);
             const data = {
-                timestamp:      new Date().toISOString(),
+                timestamp:      new Date().toLocaleString('fr-FR'),
                 nom_complet:    formData.get('nom_complet')    || '',
                 email:          formData.get('email')          || '',
                 telephone:      formData.get('telephone')      || '',
@@ -1359,34 +1363,32 @@
                 portfolio_cv:   formData.get('portfolio_cv')  || ''
             };
 
-            // Envoi vers Google Sheets (silencieux, arrière-plan)
-            if (APPS_SCRIPT_URL !== 'VOTRE_URL_APPS_SCRIPT_ICI') {
-                fetch(APPS_SCRIPT_URL, {
+            if (APPS_SCRIPT_URL === 'VOTRE_URL_APPS_SCRIPT_ICI') {
+                // Mode test local : afficher succès pour vérifier le formulaire
+                statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-amber-100 text-amber-800';
+                statusMsg.innerText = '⚠ Configure l\'URL Apps Script pour activer l\'envoi email. Voir instructions ci-dessus.';
+                btn.disabled = false;
+                btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
+                return;
+            }
+
+            // Envoi vers Apps Script → Gmail (email) + Google Sheets
+            try {
+                await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
-                }).catch(() => {});
-            }
-
-            // Envoi par email via Formspree
-            try {
-                const resp = await fetch('https://formspree.io/f/xbjnqpyz', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
                 });
 
-                if (resp.ok) {
-                    statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
-                    statusMsg.innerText = '✓ Candidature envoyée ! Tu recevras une réponse à ' + data.email;
-                    form.reset();
-                } else {
-                    throw new Error('Erreur');
-                }
+                // no-cors ne retourne pas de status, on considère succès si pas d'exception
+                statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
+                statusMsg.innerText = '✓ Candidature envoyée ! L\'équipe Enactus IFMBTP te répondra à ' + data.email;
+                form.reset();
+
             } catch (e) {
                 statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-rose-100 text-rose-800';
-                statusMsg.innerText = 'Erreur d\'envoi. Contacte-nous directement : ifmbtpenactus@gmail.com';
+                statusMsg.innerText = 'Erreur réseau. Contacte-nous : ifmbtpenactus@gmail.com';
             } finally {
                 btn.disabled = false;
                 btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
