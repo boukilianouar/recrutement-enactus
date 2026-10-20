@@ -1330,12 +1330,13 @@
         }
 
         // ══════════════════════════════════════════════════════════════
-        //  EMAIL DESTINATION — AUCUNE CONFIGURATION REQUISE
-        //  Les candidatures arrivent directement dans cette boîte mail.
-        const EMAIL_DEST = 'ifmbtpenactus@gmail.com';
+        //  CONFIGURATION — colle ton URL Apps Script ici après déploiement
+        //  (voir APPS_SCRIPT_EMAIL.js pour le code à coller)
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyk40J9ECWYt4n5nBsKee-ZAuNBPcEDxLogFhobGWjmKL8RUuvrTXB4pjFvVgGVkh8VhA/exec';
+        const EMAIL_DEST      = 'ifmbtpenactus@gmail.com';
         // ══════════════════════════════════════════════════════════════
 
-        function submitCandidature(event) {
+        async function submitCandidature(event) {
             event.preventDefault();
             const form = event.target;
             const btn = document.getElementById('submit-candidature-btn');
@@ -1358,46 +1359,43 @@
                 return;
             }
 
-            // Construire le corps de l'email
-            const sujet = `[Enactus IFMBTP] Candidature – ${poste} – ${nom}`;
-            const corps = `NOUVELLE CANDIDATURE ENACTUS IFMBTP FÈS
-════════════════════════════════════════
-
-Date        : ${date}
-Nom complet : ${nom}
-Email       : ${email}
-Téléphone   : ${tel || 'non fourni'}
-Filière     : ${filiere}
-Poste       : ${poste}
-
-LETTRE DE MOTIVATION :
-────────────────────
-${motiv}
-
-CV / PORTFOLIO :
-────────────────
-${cv || 'non fourni'}
-
-════════════════════════════════════════
-Pour répondre : ${email}`;
-
-            // Ouvrir l'application email avec tout pré-rempli
-            const mailtoLink = `mailto:${EMAIL_DEST}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
-
-            // Bouton animation
             btn.disabled = true;
-            btn.innerHTML = `<span>OUVERTURE EMAIL...</span> <i class="fa-solid fa-circle-notch animate-spin text-xs ml-2"></i>`;
+            btn.innerHTML = `<span>ENVOI EN COURS...</span> <i class="fa-solid fa-circle-notch animate-spin text-xs ml-2"></i>`;
+            statusMsg.className = 'hidden';
 
-            // Déclencher l'ouverture de l'app email
-            window.location.href = mailtoLink;
+            const data = { timestamp: date, nom_complet: nom, email, telephone: tel,
+                           filiere_niveau: filiere, poste, motivation: motiv, portfolio_cv: cv };
 
-            // Retour visuel après 1s
+            // ── Méthode 1 : Apps Script (email + Google Sheet) ─────────
+            if (APPS_SCRIPT_URL !== 'COLLER_URL_ICI') {
+                try {
+                    await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST', mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                    });
+                    // no-cors = pas de réponse, mais si pas d'exception = OK
+                    statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
+                    statusMsg.innerHTML = '✅ Candidature envoyée ! L\'équipe Enactus IFMBTP te contactera à <strong>' + email + '</strong>';
+                    form.reset();
+                    btn.disabled = false;
+                    btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
+                    return;
+                } catch(e) { /* tombe sur méthode 2 */ }
+            }
+
+            // ── Méthode 2 : mailto (fonctionne toujours, zéro config) ──
+            const sujet = `[Enactus IFMBTP] Candidature – ${poste} – ${nom}`;
+            const corps = `NOUVELLE CANDIDATURE ENACTUS IFMBTP FÈS\n${'═'.repeat(40)}\n\nDate        : ${date}\nNom complet : ${nom}\nEmail       : ${email}\nTéléphone   : ${tel||'non fourni'}\nFilière     : ${filiere}\nPoste       : ${poste}\n\nLETTRE DE MOTIVATION :\n${'─'.repeat(20)}\n${motiv}\n\nCV / PORTFOLIO :\n${'─'.repeat(16)}\n${cv||'non fourni'}\n\n${'═'.repeat(40)}\nRépondre à : ${email}`;
+
+            window.location.href = `mailto:${EMAIL_DEST}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
+
             setTimeout(() => {
                 statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
-                statusMsg.innerHTML = `✓ Ton application email s'est ouverte avec ta candidature pré-remplie.<br><span class="font-normal">Clique simplement sur <strong>Envoyer</strong> dans ton email pour finaliser.</span>`;
+                statusMsg.innerHTML = `✅ Ton application email s'est ouverte avec ta candidature pré-remplie.<br><span class="font-normal text-emerald-700">Clique <strong>Envoyer</strong> dans ton email pour finaliser → ${EMAIL_DEST}</span>`;
                 btn.disabled = false;
                 btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
-            }, 1200);
+            }, 1000);
         }
 
         function openRoleModal(roleKey) {
