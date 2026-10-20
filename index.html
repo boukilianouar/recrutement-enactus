@@ -1369,19 +1369,27 @@
             // ── Méthode 1 : Apps Script (email + Google Sheet) ─────────
             if (APPS_SCRIPT_URL !== 'COLLER_URL_ICI') {
                 try {
-                    await fetch(APPS_SCRIPT_URL, {
-                        method: 'POST', mode: 'no-cors',
+                    const resp = await fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'cors',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
-                    // no-cors = pas de réponse, mais si pas d'exception = OK
-                    statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
-                    statusMsg.innerHTML = '✅ Candidature envoyée ! L\'équipe Enactus IFMBTP te contactera à <strong>' + email + '</strong>';
-                    form.reset();
-                    btn.disabled = false;
-                    btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
-                    return;
-                } catch(e) { /* tombe sur méthode 2 */ }
+                    const result = await resp.json();
+                    if (result.success) {
+                        statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
+                        statusMsg.innerHTML = '✅ Candidature envoyée ! L\'équipe Enactus IFMBTP te contactera à <strong>' + email + '</strong>';
+                        form.reset();
+                        btn.disabled = false;
+                        btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
+                        return;
+                    } else {
+                        throw new Error(result.error || 'Erreur Apps Script');
+                    }
+                } catch(e) {
+                    console.warn('Apps Script erreur:', e.message);
+                    /* tombe sur méthode mailto ci-dessous */
+                }
             }
 
             // ── Méthode 2 : mailto (fonctionne toujours, zéro config) ──
