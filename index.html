@@ -98,6 +98,14 @@
             transform: translateY(-2px);
             border-color: #FFC20E;
         }
+        .hero-nav-btn {
+            cursor: pointer;
+        }
+        #enactus-candidature-form input:focus,
+        #enactus-candidature-form select:focus,
+        #enactus-candidature-form textarea:focus {
+            box-shadow: 0 0 0 3px rgba(255, 194, 14, 0.2);
+        }
     </style>
 </head>
 <body class="h-full flex flex-col font-sans bg-[#F4F4F0] text-[#0F1115] antialiased pb-16 md:pb-0">
@@ -135,9 +143,9 @@
 
             <!-- BOUTON POSTULER GOOGLE FORM HAUT DE PAGE -->
             <div class="flex items-center space-x-2">
-                <button onclick="showSection('apply-form-view')" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full enactus-btn-yellow text-[11px] sm:text-xs font-black shadow flex items-center tracking-wider uppercase">
-                    <i class="fa-brands fa-google mr-1.5 sm:mr-2"></i>
-                    <span>Postuler (Google Form)</span>
+                <button onclick="showSection('apply-form-view')" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full enactus-btn-yellow text-[11px] sm:text-xs font-black shadow flex items-center tracking-wider uppercase">
+                    <i class="fa-solid fa-paper-plane mr-1.5 sm:mr-2"></i>
+                    <span>POSTULER</span>
                 </button>
             </div>
         </div>
@@ -169,86 +177,163 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
-                    <div class="lg:col-span-7 space-y-4 sm:space-y-6">
-                        <div class="space-y-0.5 sm:space-y-1">
+                <div class="space-y-4 sm:space-y-8">
+                        <div class="space-y-0.5 sm:space-y-1 text-center">
                             <span class="text-[10px] sm:text-xs font-extrabold text-enactus-yellowDark tracking-widest uppercase block">Rejoignez l'Impact Social</span>
                             <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-poster tracking-tight uppercase text-enactus-yellow leading-tight">
                                 MEMBERSHIPS ARE NOW OPEN
                             </h1>
                         </div>
 
-                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium">
-                            Découvrez la structure du Bureau Exécutif et des Membres Actifs d'Enactus IFMBTP. Passez notre test d'orientation interactif ou remplissez directement notre Google Form officiel pour soumettre votre candidature !
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed font-medium text-center max-w-2xl mx-auto">
+                            Tu veux changer des vies, innover et laisser ta marque ? Enactus IFMBTP recrute des talents ambitieux. Explore notre organisation et rejoins l'équipe qui fait la différence.
                         </p>
 
-                        <!-- BOUTONS INTERFACE PRINCIPALE (Accès direct conservés) -->
-                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2">
-                            <button onclick="showSection('apply-form-view')" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl enactus-btn-yellow text-xs font-black font-poster tracking-wider shadow-md flex items-center justify-center uppercase">
-                                <i class="fa-brands fa-google mr-2 text-sm"></i> FORMULAIRE GOOGLE FORM
-                            </button>
-                            <button onclick="showSection('organigramme-view')" class="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-enactus-dark text-white text-xs font-black font-poster tracking-wider transition flex items-center justify-center shadow-md hover:bg-enactus-charcoal">
-                                <i class="fa-solid fa-sitemap mr-2 text-sm text-enactus-yellow"></i> BUREAU EXÉCUTIF
-                            </button>
-                            <button onclick="showSection('membres-actifs-view')" class="w-full sm:w-auto px-5 py-3.5 rounded-2xl bg-slate-800 text-white text-xs font-black font-poster tracking-wider transition flex items-center justify-center shadow-md hover:bg-slate-900">
-                                <i class="fa-solid fa-users mr-2 text-sm text-enactus-yellow"></i> MEMBRES ACTIFS
-                            </button>
-                            <button onclick="showSection('destination-choice-view')" class="w-full sm:w-auto px-4 py-3.5 rounded-2xl bg-gray-200 text-enactus-dark text-xs font-bold font-poster tracking-wider hover:bg-gray-300 transition flex items-center justify-center">
-                                TEST D'INTÉRÊT <i class="fa-solid fa-compass ml-1.5 text-xs text-enactus-yellowDark"></i>
-                            </button>
-                        </div>
-                    </div>
+                        <!-- 3 BOUTONS CENTRÉS INTERACTIFS -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-2 max-w-3xl mx-auto">
 
-                    <div class="lg:col-span-5 flex flex-col items-center justify-center pt-2 lg:pt-0">
-                        <div class="bg-white rounded-2xl p-5 border-2 border-enactus-yellow text-center space-y-3 w-full max-w-sm shadow-md">
-                            <i class="fa-brands fa-google text-enactus-yellowDark text-3xl"></i>
-                            <h3 class="text-xs font-black uppercase tracking-wider font-poster text-enactus-dark">FORMULAIRE OFFICIEL GOOGLE FORMS</h3>
-                            <p class="text-[11px] text-gray-500">Candidatures centralisées pour la commission de recrutement. Contact direct : <br><strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
-                            <button onclick="showSection('apply-form-view')" class="w-full py-3 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider shadow block">
-                                POSTULER VIA GOOGLE FORM <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                            <!-- BUREAU EXÉCUTIF -->
+                            <button onclick="showSection('organigramme-view')" class="hero-nav-btn group relative overflow-hidden rounded-2xl border-2 border-enactus-dark bg-enactus-dark text-white p-5 sm:p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:border-enactus-yellow hover:shadow-[0_0_30px_rgba(255,194,14,0.35)] hover:-translate-y-1 active:scale-95">
+                                <div class="w-14 h-14 rounded-xl bg-enactus-yellow/15 flex items-center justify-center mb-3 group-hover:bg-enactus-yellow/30 transition-all duration-300">
+                                    <i class="fa-solid fa-sitemap text-enactus-yellow text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                                </div>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-enactus-yellow mb-1 block">Leadership</span>
+                                <h3 class="font-black font-poster text-sm sm:text-base leading-tight uppercase mb-2">BUREAU EXÉCUTIF</h3>
+                                <p class="text-[10px] text-gray-400 font-medium leading-snug mb-3">Préside, stratégie et manage les 4 pôles</p>
+                                <div class="flex items-center text-enactus-yellow text-[10px] font-black uppercase tracking-wider group-hover:gap-2 gap-1 transition-all">
+                                    <span>Découvrir</span> <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                                <div class="absolute inset-0 bg-enactus-yellow/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                             </button>
+
+                            <!-- MEMBRES ACTIFS -->
+                            <button onclick="showSection('membres-actifs-view')" class="hero-nav-btn group relative overflow-hidden rounded-2xl border-2 border-enactus-yellow bg-enactus-yellow text-enactus-dark p-5 sm:p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,194,14,0.55)] hover:-translate-y-2 active:scale-95">
+                                <div class="w-14 h-14 rounded-xl bg-enactus-dark/10 flex items-center justify-center mb-3 group-hover:bg-enactus-dark/20 transition-all duration-300">
+                                    <i class="fa-solid fa-users text-enactus-dark text-xl group-hover:scale-110 transition-transform duration-300"></i>
+                                </div>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-enactus-dark/60 mb-1 block">Action & Terrain</span>
+                                <h3 class="font-black font-poster text-sm sm:text-base leading-tight uppercase mb-2">MEMBRES ACTIFS</h3>
+                                <p class="text-[10px] text-enactus-dark/60 font-medium leading-snug mb-3">4 cellules opérationnelles ouvertes</p>
+                                <div class="flex items-center text-enactus-dark text-[10px] font-black uppercase tracking-wider group-hover:gap-2 gap-1 transition-all">
+                                    <span>Explorer</span> <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                                <div class="absolute -top-2 -right-2 w-8 h-8 bg-enactus-dark/10 rounded-full group-hover:scale-150 transition-transform duration-500 pointer-events-none"></div>
+                            </button>
+
+                            <!-- TEST D'ORIENTATION -->
+                            <button onclick="showSection('destination-choice-view')" class="hero-nav-btn group relative overflow-hidden rounded-2xl border-2 border-enactus-dark bg-white text-enactus-dark p-5 sm:p-6 flex flex-col items-center text-center shadow-lg transition-all duration-300 hover:border-enactus-yellow hover:shadow-[0_0_30px_rgba(255,194,14,0.35)] hover:-translate-y-1 active:scale-95">
+                                <div class="w-14 h-14 rounded-xl bg-enactus-yellow/15 flex items-center justify-center mb-3 group-hover:bg-enactus-yellow/30 transition-all duration-300">
+                                    <i class="fa-solid fa-compass text-enactus-yellowDark text-xl group-hover:rotate-45 transition-transform duration-500"></i>
+                                </div>
+                                <span class="text-[10px] font-black uppercase tracking-widest text-enactus-yellowDark mb-1 block">Trouve ton rôle</span>
+                                <h3 class="font-black font-poster text-sm sm:text-base leading-tight uppercase mb-2">TEST D'ORIENTATION</h3>
+                                <p class="text-[10px] text-gray-400 font-medium leading-snug mb-3">12 questions · 2 min · Profil personnalisé</p>
+                                <div class="flex items-center text-enactus-dark text-[10px] font-black uppercase tracking-wider group-hover:gap-2 gap-1 transition-all">
+                                    <span>Démarrer</span> <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+                                </div>
+                                <div class="absolute inset-0 bg-enactus-yellow/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                            </button>
+
                         </div>
-                    </div>
+
+                        <p class="text-center text-[10px] text-gray-400 font-bold pt-2 tracking-wider uppercase">
+                            <i class="fa-solid fa-envelope mr-1 text-enactus-yellowDark"></i> Contact : ifmbtpenactus@gmail.com
+                        </p>
                 </div>
             </div>
         </section>
 
-        <!-- VUE FORMULAIRE DE CANDIDATURE GOOGLE FORM -->
+        <!-- VUE FORMULAIRE DE CANDIDATURE -->
         <section id="apply-form-view" class="view-section hidden transition-all duration-300">
             <button onclick="showSection('poster-view')" class="mb-3 inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
                 <i class="fa-solid fa-chevron-left mr-1.5 text-xs"></i> Retour Accueil
             </button>
 
-            <div class="poster-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-4xl mx-auto space-y-6">
-                <div class="text-center space-y-2 border-b border-enactus-border pb-4">
-                    <div class="w-12 h-12 rounded-2xl bg-enactus-yellow/20 text-enactus-dark flex items-center justify-center mx-auto text-xl shadow-xs font-black">
-                        <i class="fa-brands fa-google text-2xl text-enactus-yellowDark"></i>
+            <div class="poster-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-2xl mx-auto space-y-6">
+                <div class="text-center space-y-2 border-b border-enactus-border pb-5">
+                    <div class="w-14 h-14 rounded-2xl bg-enactus-yellow flex items-center justify-center mx-auto shadow font-black">
+                        <i class="fa-solid fa-paper-plane text-enactus-dark text-2xl"></i>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Google Form - Candidature Officielle</h2>
-                    <p class="text-xs text-gray-500 font-medium">Postulez aux équipes du Bureau Exécutif ou des Membres Actifs d'Enactus IFMBTP. <br>Email officiel : <span class="font-bold text-enactus-dark">ifmbtpenactus@gmail.com</span></p>
-                    
-                    <div class="pt-2 flex justify-center gap-2">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_Example_Enactus_IFMBTP/viewform" target="_blank" class="inline-flex items-center px-4 py-2 rounded-xl bg-enactus-dark text-white text-xs font-bold hover:bg-enactus-charcoal transition shadow">
-                            <i class="fa-solid fa-up-right-from-square mr-2 text-enactus-yellow"></i> Ouvrir Google Form dans une nouvelle fenêtre
-                        </a>
-                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Candidature Officielle</h2>
+                    <p class="text-xs text-gray-500 font-medium">Remplis ce formulaire pour rejoindre Enactus IFMBTP Fès.<br>Toutes les candidatures sont transmises à <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
                 </div>
 
-                <!-- GOOGLE FORMS IFRAME / INTÉGRATION HAUT DE PAGE -->
-                <div class="w-full bg-gray-50 rounded-2xl p-2 border border-gray-200 overflow-hidden shadow-inner">
-                    <div class="relative w-full overflow-hidden pt-[120%] sm:pt-[80%] rounded-xl bg-white">
-                        <iframe 
-                            src="https://docs.google.com/forms/d/e/1FAIpQLSc_Example_Enactus_IFMBTP/viewform?embedded=true" 
-                            class="absolute top-0 left-0 bottom-0 right-0 w-full h-full border-0" 
-                            marginheight="0" 
-                            marginwidth="0">
-                            Chargement du Google Form en cours...
-                        </iframe>
-                    </div>
-                </div>
+                <!-- FORMULAIRE HTML COMPLET -->
+                <form id="enactus-candidature-form" class="space-y-4" onsubmit="submitCandidature(event)">
 
-                <div class="text-center text-xs text-gray-500 pt-2 border-t border-gray-200">
-                    <p>En cas de soucis d'affichage du formulaire Google, vous pouvez envoyer votre dossier directement à : <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Nom Complet *</label>
+                            <input type="text" name="nom_complet" required placeholder="Prénom Nom" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Email *</label>
+                            <input type="email" name="email" required placeholder="ton@email.com" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Téléphone *</label>
+                            <input type="tel" name="telephone" required placeholder="06 XX XX XX XX" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Filière & Niveau *</label>
+                            <input type="text" name="filiere_niveau" required placeholder="Ex: Génie Civil, 2ème Année" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Poste Souhaité *</label>
+                        <select id="poste-select" name="poste_souhaite" required class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white">
+                            <option value="">— Sélectionner un poste —</option>
+                            <optgroup label="🏛 Bureau Exécutif">
+                                <option value="Team Leader">Team Leader</option>
+                                <option value="Vice-Team Leader">Vice-Team Leader</option>
+                                <option value="VP Communication">VP Communication</option>
+                                <option value="Media Lead / Graphic Designer">Media Lead / Graphic Designer</option>
+                                <option value="Audiovisuel & Community Manager">Audiovisuel & Community Manager</option>
+                                <option value="Projet Manager">Projet Manager</option>
+                                <option value="Vice-Project Manager">Vice-Project Manager</option>
+                                <option value="Finance & Fundraising Officer (Projets)">Finance & Fundraising Officer (Projets)</option>
+                                <option value="HR Manager">HR Manager</option>
+                                <option value="Event & Logistics Manager">Event & Logistics Manager</option>
+                                <option value="Training & Pitch Coach">Training & Pitch Coach</option>
+                                <option value="VP Sponsorship">VP Sponsorship</option>
+                                <option value="Trésorier">Trésorier</option>
+                                <option value="Fundraising Officer">Fundraising Officer</option>
+                            </optgroup>
+                            <optgroup label="👥 Membres Actifs">
+                                <option value="Cellule Projets & R&D">Cellule Projets & R&D</option>
+                                <option value="Cellule Communication & Média">Cellule Communication & Média</option>
+                                <option value="Cellule Événementiel & Logistique">Cellule Événementiel & Logistique</option>
+                                <option value="Cellule Projets Spécifiques">Cellule Projets Spécifiques</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Lettre de Motivation *</label>
+                        <textarea name="motivation" required rows="4" placeholder="Pourquoi souhaites-tu rejoindre Enactus IFMBTP ? Quelles compétences apportes-tu ? (min. 50 caractères)" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white resize-none"></textarea>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-widest text-enactus-dark block">Lien CV / Portfolio <span class="text-gray-400 font-normal normal-case">(facultatif)</span></label>
+                        <input type="url" name="portfolio_cv" placeholder="https://drive.google.com/..." class="w-full px-3.5 py-2.5 rounded-xl border-2 border-gray-200 focus:border-enactus-yellow outline-none text-xs font-medium text-enactus-dark transition bg-white">
+                    </div>
+
+                    <!-- MESSAGE DE STATUT -->
+                    <div id="form-status-msg" class="hidden text-xs font-bold text-center p-3 rounded-xl"></div>
+
+                    <!-- BOUTON SOUMETTRE -->
+                    <button type="submit" id="submit-candidature-btn" class="w-full py-4 rounded-xl enactus-btn-yellow font-black text-sm uppercase tracking-widest shadow-lg flex items-center justify-center gap-2 font-poster">
+                        <span>ENVOYER MA CANDIDATURE</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+
+                <div class="text-center text-[10px] text-gray-400 pt-1 border-t border-gray-100">
+                    <p>Contact direct : <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
                 </div>
             </div>
         </section>
@@ -638,8 +723,8 @@
                             </div>
                         </div>
 
-                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-indigo-600 text-white font-black text-[10px] uppercase text-center block hover:bg-indigo-700 transition">
-                            Postuler à ce pôle (Google Form)
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2.5 rounded-xl enactus-btn-yellow font-black text-[11px] uppercase text-center block tracking-widest">
+                            POSTULER
                         </button>
                     </div>
 
@@ -676,8 +761,8 @@
                             </div>
                         </div>
 
-                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-rose-600 text-white font-black text-[10px] uppercase text-center block hover:bg-rose-700 transition">
-                            Postuler à ce pôle (Google Form)
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2.5 rounded-xl enactus-btn-yellow font-black text-[11px] uppercase text-center block tracking-widest">
+                            POSTULER
                         </button>
                     </div>
 
@@ -714,8 +799,8 @@
                             </div>
                         </div>
 
-                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-teal-600 text-white font-black text-[10px] uppercase text-center block hover:bg-teal-700 transition">
-                            Postuler à ce pôle (Google Form)
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2.5 rounded-xl enactus-btn-yellow font-black text-[11px] uppercase text-center block tracking-widest">
+                            POSTULER
                         </button>
                     </div>
 
@@ -764,8 +849,8 @@
                             </div>
                         </div>
 
-                        <button onclick="showSection('apply-form-view')" class="w-full py-2 rounded-xl bg-amber-600 text-white font-black text-[10px] uppercase text-center block hover:bg-amber-700 transition">
-                            Postuler à ce pôle (Google Form)
+                        <button onclick="showSection('apply-form-view')" class="w-full py-2.5 rounded-xl enactus-btn-yellow font-black text-[11px] uppercase text-center block tracking-widest">
+                            POSTULER
                         </button>
                     </div>
 
@@ -870,8 +955,8 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
-                        <button id="result-apply-btn" onclick="showSection('apply-form-view')" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider text-center block shadow">
-                            Postuler (Google Form) <i class="fa-solid fa-paper-plane ml-1"></i>
+                        <button id="result-apply-btn" onclick="showSection('apply-form-view')" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster">
+                            POSTULER <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
                         </button>
                         <button onclick="restartQuiz()" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-enactus-dark text-xs font-black uppercase tracking-wider transition">
                             Refaire le test
@@ -919,8 +1004,8 @@
                 </div>
             </div>
 
-            <button id="modal-apply-btn" onclick="applyForRoleFromModal()" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-xs font-black uppercase tracking-wider text-center block shadow">
-                Postuler via Google Form <i class="fa-brands fa-google ml-1"></i>
+            <button id="modal-apply-btn" onclick="applyForRoleFromModal()" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster">
+                POSTULER <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
             </button>
         </div>
     </div>
@@ -945,7 +1030,7 @@
         </button>
         <button onclick="showSection('apply-form-view')" class="flex flex-col items-center text-enactus-dark">
             <div class="w-6 h-6 rounded-full bg-enactus-yellow flex items-center justify-center text-xs font-black">
-                <i class="fa-brands fa-google"></i>
+                <i class="fa-solid fa-paper-plane"></i>
             </div>
             <span class="text-[8px] font-black mt-0.5 uppercase">Postuler</span>
         </button>
@@ -1226,8 +1311,86 @@
         }
 
         function applyForRoleFromModal() {
+            const roleTitle = document.getElementById('modal-role-title').innerText;
             closeRoleModal();
             showSection('apply-form-view');
+            // Pré-sélectionner le poste dans le formulaire
+            setTimeout(() => {
+                const sel = document.getElementById('poste-select');
+                if (sel && roleTitle) {
+                    for (let i = 0; i < sel.options.length; i++) {
+                        if (sel.options[i].value.toLowerCase().includes(roleTitle.toLowerCase().split(' ')[0]) ||
+                            roleTitle.toLowerCase().includes(sel.options[i].value.toLowerCase().split(' ')[0])) {
+                            sel.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            }, 100);
+        }
+
+        // ── URL Google Apps Script ─────────────────────────────────────
+        // 1. Ouvre ton Google Sheets → Extensions → Apps Script
+        // 2. Colle le code Apps Script → Déployer → Application Web
+        //    (Exécuter en tant que : Moi | Accès : Tout le monde)
+        // 3. Copie l'URL de déploiement ici :
+        const APPS_SCRIPT_URL = 'VOTRE_URL_APPS_SCRIPT_ICI';
+        // ──────────────────────────────────────────────────────────────
+
+        async function submitCandidature(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = document.getElementById('submit-candidature-btn');
+            const statusMsg = document.getElementById('form-status-msg');
+
+            btn.disabled = true;
+            btn.innerHTML = `<span>ENVOI EN COURS...</span> <i class="fa-solid fa-circle-notch animate-spin text-xs ml-2"></i>`;
+            statusMsg.className = 'hidden';
+
+            const formData = new FormData(form);
+            const data = {
+                timestamp:      new Date().toISOString(),
+                nom_complet:    formData.get('nom_complet')    || '',
+                email:          formData.get('email')          || '',
+                telephone:      formData.get('telephone')      || '',
+                filiere_niveau: formData.get('filiere_niveau') || '',
+                poste:          formData.get('poste_souhaite') || '',
+                motivation:     formData.get('motivation')     || '',
+                portfolio_cv:   formData.get('portfolio_cv')  || ''
+            };
+
+            // Envoi vers Google Sheets (silencieux, arrière-plan)
+            if (APPS_SCRIPT_URL !== 'VOTRE_URL_APPS_SCRIPT_ICI') {
+                fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                }).catch(() => {});
+            }
+
+            // Envoi par email via Formspree
+            try {
+                const resp = await fetch('https://formspree.io/f/xbjnqpyz', {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (resp.ok) {
+                    statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
+                    statusMsg.innerText = '✓ Candidature envoyée ! Tu recevras une réponse à ' + data.email;
+                    form.reset();
+                } else {
+                    throw new Error('Erreur');
+                }
+            } catch (e) {
+                statusMsg.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-rose-100 text-rose-800';
+                statusMsg.innerText = 'Erreur d\'envoi. Contacte-nous directement : ifmbtpenactus@gmail.com';
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<span>ENVOYER MA CANDIDATURE</span> <i class="fa-solid fa-paper-plane text-xs ml-2"></i>`;
+            }
         }
 
         function openRoleModal(roleKey) {
