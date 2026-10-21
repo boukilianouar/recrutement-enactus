@@ -1339,7 +1339,7 @@
         //  par le script CREER_FORMULAIRE_ENACTUS.js
         //  (va sur script.google.com → exécute creerFormulaireEnactus
         //   → copie le lien dans les logs et colle-le ici)
-        const GOOGLE_FORM_URL = 'https://forms.gle/Euxdyw17aX55QRUd8';
+        const GOOGLE_FORM_URL = 'https://forms.gle/5PeMYa4NKnzy57fA6';
         const EMAIL_DEST      = 'ifmbtpenactus@gmail.com';
         // ══════════════════════════════════════════════════════════════
 
@@ -1445,6 +1445,20 @@
             const badge = document.getElementById('modal-status-badge');
             badge.innerText = role.status;
             badge.className = `inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ${role.statusClass}`;
+
+            // Désactiver le bouton POSTULER si poste occupé
+            const applyBtn = document.getElementById('modal-apply-btn');
+            const isOccupe = role.status === 'Occupé';
+            if (isOccupe) {
+                applyBtn.disabled = true;
+                applyBtn.className = 'w-full py-3.5 rounded-xl bg-gray-200 text-gray-400 text-sm font-black uppercase tracking-widest text-center block shadow-none font-poster cursor-not-allowed';
+                applyBtn.innerHTML = '<i class="fa-solid fa-lock mr-2 text-xs"></i> POSTE OCCUPÉ — NON DISPONIBLE';
+            } else {
+                applyBtn.disabled = false;
+                applyBtn.className = 'w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster';
+                applyBtn.innerHTML = 'POSTULER <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>';
+                applyBtn.onclick = applyForRoleFromModal;
+            }
 
             document.getElementById('role-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
