@@ -115,9 +115,28 @@
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             
             <div class="flex items-center space-x-2.5 cursor-pointer" onclick="showSection('poster-view')">
-                <svg class="w-8 h-8 sm:w-10 sm:h-10 text-enactus-yellow" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 80 L70 10 L90 30 Z" fill="#FFC20E"/>
-                    <path d="M30 85 L85 85 L58 45 Z" fill="#0F1115"/>
+                <!-- Logo Enactus IFMBTP FÈS : flèche + grue -->
+                <svg class="h-9 sm:h-11 w-auto" viewBox="0 0 110 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Flèche Enactus (origami) -->
+                  <polygon points="0,38 22,0 22,28" fill="#FFC20E"/>
+                  <polygon points="22,0 44,0 22,28" fill="#E5A800"/>
+                  <polygon points="8,38 22,28 22,52" fill="#FFC20E"/>
+                  <!-- Grue de construction -->
+                  <!-- Mât vertical -->
+                  <rect x="52" y="10" width="4" height="38" fill="#FFC20E"/>
+                  <!-- Flèche horizontale de grue -->
+                  <rect x="52" y="10" width="40" height="3" fill="#FFC20E"/>
+                  <!-- Contrepoids -->
+                  <rect x="46" y="10" width="6" height="3" fill="#E5A800"/>
+                  <rect x="44" y="13" width="4" height="5" fill="#E5A800"/>
+                  <!-- Câble vertical depuis bout de flèche -->
+                  <line x1="88" y1="13" x2="88" y2="30" stroke="#FFC20E" stroke-width="1.5"/>
+                  <!-- Câble diagonal depuis milieu flèche -->
+                  <line x1="70" y1="13" x2="88" y2="30" stroke="#FFC20E" stroke-width="1"/>
+                  <!-- Crochet / charge -->
+                  <rect x="84" y="30" width="8" height="6" rx="1" fill="#FFC20E"/>
+                  <!-- Base grue -->
+                  <rect x="50" y="46" width="8" height="4" rx="1" fill="#E5A800"/>
                 </svg>
                 <div>
                     <span class="font-extrabold text-xl sm:text-2xl tracking-tight font-poster text-enactus-dark leading-none block">enactus</span>
@@ -164,7 +183,7 @@
                             <i class="fa-solid fa-graduation-cap"></i>
                         </div>
                         <div>
-                            <span class="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-enactus-yellowDark block">Institut de Formation Aux Métiers du Bâtiment & Travaux Publics</span>
+                            <span class="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-enactus-yellowDark block">Institut de Formation Aux Métiers du BTP</span>
                             <h2 class="text-xs sm:text-base font-black tracking-tight text-enactus-dark font-poster">
                                 ENACTUS IFMBTP FÈS - RECRUTEMENT
                             </h2>
