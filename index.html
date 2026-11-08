@@ -61,6 +61,9 @@
         .member-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
         .member-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
         .confetti { position: fixed; pointer-events: none; z-index: 9999; }
+        #enactus-form input:focus, #enactus-form select:focus, #enactus-form textarea:focus {
+            box-shadow: 0 0 0 3px rgba(255, 194, 14, 0.25); border-color: #FFC20E;
+        }
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
@@ -108,10 +111,10 @@
                 </button>
             </nav>
 
-            <a href="https://forms.gle/WU6K3uPVPHsP6Fdt5" target="_blank" rel="noopener" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full enactus-btn-yellow text-[11px] sm:text-xs font-black shadow flex items-center tracking-wider uppercase pulse-urgent no-underline" style="animation: pulseUrgent 2s infinite;">
-                <i class="fa-brands fa-google mr-1.5 sm:mr-2"></i>
+            <button onclick="showSection('candidature')" class="px-4 sm:px-6 py-2 sm:py-2.5 rounded-full enactus-btn-yellow text-[11px] sm:text-xs font-black shadow flex items-center tracking-wider uppercase pulse-urgent" style="animation: pulseUrgent 2s infinite;">
+                <i class="fa-solid fa-paper-plane mr-1.5 sm:mr-2"></i>
                 <span>POSTULER</span>
-            </a>
+            </button>
         </div>
     </header>
 
@@ -134,9 +137,9 @@
                             <p class="text-[11px] text-red-100 font-medium">Les entretiens reprennent Mardi, Mercredi et Jeudi — Aucune exception après !</p>
                         </div>
                     </div>
-                    <a href="https://forms.gle/WU6K3uPVPHsP6Fdt5" target="_blank" rel="noopener" class="px-6 py-3 rounded-full bg-white text-red-600 font-black text-xs uppercase tracking-wider shadow-lg hover:bg-yellow-300 hover:text-enactus-dark transition-all shrink-0 no-underline">
+                    <button onclick="showSection('candidature')" class="px-6 py-3 rounded-full bg-white text-red-600 font-black text-xs uppercase tracking-wider shadow-lg hover:bg-yellow-300 hover:text-enactus-dark transition-all shrink-0">
                         <i class="fa-solid fa-rocket mr-2"></i>POSTULER MAINTENANT
-                    </a>
+                    </button>
                 </div>
             </div>
 
@@ -479,25 +482,25 @@
                     <p class="text-[11px] text-gray-500 font-medium">Tu ne vises pas le bureau ? Pas de souci ! Rejoins une cellule terrain et participe directement aux projets.</p>
 
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                        <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 text-center space-y-2 hover:border-indigo-400 transition cursor-pointer" onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')">
+                        <div class="bg-indigo-50 border-2 border-indigo-200 rounded-2xl p-4 text-center space-y-2 hover:border-indigo-400 transition cursor-pointer" onclick="showSection('candidature')">
                             <i class="fa-solid fa-flask text-indigo-600 text-2xl"></i>
                             <h4 class="font-black text-[11px] text-indigo-900 uppercase">Cellule Projets & R&D</h4>
                             <p class="text-[9px] text-gray-500">Prototypage, terrain, innovation sociale</p>
                             <span class="text-[9px] font-black text-indigo-600 uppercase">6 places</span>
                         </div>
-                        <div class="bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 text-center space-y-2 hover:border-rose-400 transition cursor-pointer" onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')">
+                        <div class="bg-rose-50 border-2 border-rose-200 rounded-2xl p-4 text-center space-y-2 hover:border-rose-400 transition cursor-pointer" onclick="showSection('candidature')">
                             <i class="fa-solid fa-camera text-rose-600 text-2xl"></i>
                             <h4 class="font-black text-[11px] text-rose-900 uppercase">Cellule Communication</h4>
                             <p class="text-[9px] text-gray-500">Création, réseaux sociaux, vidéo</p>
                             <span class="text-[9px] font-black text-rose-600 uppercase">4 places</span>
                         </div>
-                        <div class="bg-teal-50 border-2 border-teal-200 rounded-2xl p-4 text-center space-y-2 hover:border-teal-400 transition cursor-pointer" onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')">
+                        <div class="bg-teal-50 border-2 border-teal-200 rounded-2xl p-4 text-center space-y-2 hover:border-teal-400 transition cursor-pointer" onclick="showSection('candidature')">
                             <i class="fa-solid fa-calendar-check text-teal-600 text-2xl"></i>
                             <h4 class="font-black text-[11px] text-teal-900 uppercase">Cellule Événementiel</h4>
                             <p class="text-[9px] text-gray-500">Logistique, organisation, terrain</p>
                             <span class="text-[9px] font-black text-teal-600 uppercase">4 places</span>
                         </div>
-                        <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 text-center space-y-2 hover:border-amber-400 transition cursor-pointer" onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')">
+                        <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 text-center space-y-2 hover:border-amber-400 transition cursor-pointer" onclick="showSection('candidature')">
                             <i class="fa-solid fa-star text-amber-600 text-2xl"></i>
                             <h4 class="font-black text-[11px] text-amber-900 uppercase">Projets Spécifiques</h4>
                             <p class="text-[9px] text-gray-500">Missions ponctuelles & support</p>
@@ -506,9 +509,9 @@
                     </div>
                 </div>
 
-                <a href="https://forms.gle/WU6K3uPVPHsP6Fdt5" target="_blank" rel="noopener" class="block w-full py-4 rounded-2xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster shadow-lg text-center no-underline">
-                    <i class="fa-brands fa-google mr-2"></i>POSTULER MAINTENANT
-                </a>
+                <button onclick="showSection('candidature')" class="w-full py-4 rounded-2xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster shadow-lg">
+                    <i class="fa-solid fa-paper-plane mr-2"></i>POSTULER MAINTENANT
+                </button>
             </div>
         </section>
 
@@ -626,52 +629,210 @@
                     </div>
                 </div>
 
-                <button onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')" class="w-full py-4 rounded-2xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster shadow-lg">
-                    <i class="fa-brands fa-google mr-2"></i>POSTULER MAINTENANT
+                <!-- ANNONCE RÉSEAUX SOCIAUX -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 border-2 border-red-200 rounded-2xl p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-red-700 font-black font-poster text-sm uppercase flex items-center space-x-2">
+                            <i class="fa-solid fa-bullhorn"></i>
+                            <span>Texte d'annonce — Réseaux Sociaux</span>
+                        </h3>
+                        <button onclick="copierAnnonce()" class="px-3 py-1.5 rounded-lg bg-red-600 text-white text-[10px] font-black uppercase tracking-wider hover:bg-red-700 transition">
+                            <i class="fa-solid fa-copy mr-1"></i>Copier
+                        </button>
+                    </div>
+                    <div id="annonce-text" class="bg-white rounded-xl p-4 text-xs text-gray-700 leading-relaxed border border-red-100 whitespace-pre-line font-medium">🚨 DERNIÈRE CHANCE — RECRUTEMENT ENACTUS IFMBTP FÈS 🚨
+
+Salam à tous ! 🙌
+
+C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2027.
+
+📅 Entretiens :
+▸ Mardi 10 Novembre — 12h20 à 14h00
+▸ Mercredi 11 Novembre — 12h20 à 14h00
+▸ Jeudi 12 Novembre — 12h20 à 14h00
+
+🎯 Postes encore ouverts :
+✦ Projet Manager
+✦ Vice-Project Manager
+✦ Media Lead / Graphic Designer
+✦ Event & Logistics Manager
+✦ Training & Pitch Coach
+✦ Trésorier
+✦ Fundraising Officer
+✦ + Membres actifs (20 places)
+
+⚠️ AUCUNE EXCEPTION après ces 3 jours. Si tu veux faire partie de l'aventure Enactus, c'est MAINTENANT ou JAMAIS.
+
+📝 Lien de candidature : https://forms.gle/WU6K3uPVPHsP6Fdt5
+
+📩 Contact : ifmbtpenactus@gmail.com
+
+💛 Enactus IFMBTP Fès — We All Win 🏆</div>
+                </div>
+
+                <button onclick="showSection('candidature')" class="w-full py-4 rounded-2xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster shadow-lg">
+                    <i class="fa-solid fa-paper-plane mr-2"></i>POSTULER MAINTENANT
                 </button>
             </div>
         </section>
 
-        <!-- ═══════════════════ SECTION 5 : CANDIDATURE — GOOGLE FORM ═══════════════════ -->
+        <!-- ═══════════════════ SECTION 5 : FORMULAIRE DE CANDIDATURE ═══════════════════ -->
         <section id="candidature" class="view-section hidden transition-all duration-300">
             <button onclick="showSection('hero')" class="mb-3 inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
                 <i class="fa-solid fa-chevron-left mr-1.5"></i> Retour
             </button>
 
-            <div class="poster-card rounded-2xl sm:rounded-3xl p-5 sm:p-10 max-w-xl mx-auto space-y-6 text-center">
-                <div class="space-y-3">
-                    <div class="w-20 h-20 rounded-2xl bg-enactus-yellow flex items-center justify-center mx-auto shadow-lg">
-                        <i class="fa-brands fa-google text-enactus-dark text-4xl"></i>
+            <div class="poster-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-2xl mx-auto space-y-6">
+                <div class="text-center space-y-2 border-b border-enactus-border pb-5">
+                    <div class="w-14 h-14 rounded-2xl bg-enactus-yellow flex items-center justify-center mx-auto shadow">
+                        <i class="fa-solid fa-paper-plane text-enactus-dark text-2xl"></i>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">POSTULER</h2>
-                    <p class="text-sm text-gray-600 font-medium max-w-sm mx-auto">Remplis le formulaire Google pour soumettre ta candidature. Tu pourras choisir ton poste, ta disponibilité et écrire ta motivation.</p>
+                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Candidature</h2>
+                    <p class="text-xs text-gray-500 font-medium">Remplis le formulaire ci-dessous — tu peux aussi choisir un <strong>2ème choix de poste</strong> !</p>
                 </div>
 
-                <a href="https://forms.gle/WU6K3uPVPHsP6Fdt5" target="_blank" rel="noopener" class="block w-full py-5 rounded-2xl bg-enactus-dark text-enactus-yellow font-black text-base uppercase tracking-widest shadow-xl font-poster hover:bg-enactus-charcoal transition-all active:scale-95 no-underline">
-                    <i class="fa-solid fa-arrow-up-right-from-square mr-3"></i>OUVRIR LE FORMULAIRE
-                </a>
+                <form id="enactus-form" onsubmit="submitForm(event)" class="space-y-4">
+                    <!-- Nom -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Nom Complet *</label>
+                        <input type="text" name="nom" required placeholder="Ex: Mohammed Alami" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
+                    </div>
 
-                <div class="grid grid-cols-3 gap-3 pt-2">
-                    <div class="bg-blue-50 border border-blue-200 rounded-xl p-3 space-y-1">
-                        <i class="fa-solid fa-clock text-blue-500 text-lg"></i>
-                        <p class="text-[10px] font-black text-blue-900 uppercase">2 minutes</p>
-                        <p class="text-[9px] text-gray-500">Pour remplir</p>
+                    <!-- Email + Tel -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Email *</label>
+                            <input type="email" name="email" required placeholder="ton@email.com" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
+                        </div>
+                        <div class="space-y-1">
+                            <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Téléphone *</label>
+                            <input type="tel" name="telephone" required placeholder="06 XX XX XX XX" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
+                        </div>
                     </div>
-                    <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-3 space-y-1">
-                        <i class="fa-solid fa-shield-halved text-emerald-500 text-lg"></i>
-                        <p class="text-[10px] font-black text-emerald-900 uppercase">Confidentiel</p>
-                        <p class="text-[9px] text-gray-500">Données sécurisées</p>
+
+                    <!-- Filière -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Filière / Niveau *</label>
+                        <input type="text" name="filiere" required placeholder="Ex: GC 2ème année, Topo 1ère année..." class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
                     </div>
-                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 space-y-1">
-                        <i class="fa-solid fa-reply text-amber-500 text-lg"></i>
-                        <p class="text-[10px] font-black text-amber-900 uppercase">Réponse rapide</p>
-                        <p class="text-[9px] text-gray-500">Sous 24h</p>
+
+                    <!-- Poste 1er choix -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Poste souhaité — 1er Choix *</label>
+                        <select name="poste1" id="poste1-select" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition bg-white">
+                            <option value="">— Sélectionner un poste —</option>
+                            <optgroup label="Bureau Exécutif — Pôle Projets">
+                                <option value="Projet Manager">Projet Manager</option>
+                                <option value="Vice-Project Manager">Vice-Project Manager</option>
+                                <option value="Finance Officer Projets">Finance & Fundraising Officer (Projets)</option>
+                            </optgroup>
+                            <optgroup label="Bureau Exécutif — Pôle Communication">
+                                <option value="Media Lead / Graphic Designer">Media Lead / Graphic Designer</option>
+                            </optgroup>
+                            <optgroup label="Bureau Exécutif — Pôle RH & Événementiel">
+                                <option value="Event & Logistics Manager">Event & Logistics Manager</option>
+                                <option value="Training & Pitch Coach">Training & Pitch Coach</option>
+                            </optgroup>
+                            <optgroup label="Bureau Exécutif — Pôle Sponsoring">
+                                <option value="Trésorier">Trésorier</option>
+                                <option value="Fundraising Officer">Fundraising Officer</option>
+                            </optgroup>
+                            <optgroup label="Membres Actifs — Cellules">
+                                <option value="Membre Cellule Projets & R&D">Membre — Cellule Projets & R&D</option>
+                                <option value="Membre Cellule Communication">Membre — Cellule Communication & Média</option>
+                                <option value="Membre Cellule Événementiel">Membre — Cellule Événementiel & Logistique</option>
+                                <option value="Membre Projets Spécifiques">Membre — Projets Spécifiques</option>
+                            </optgroup>
+                        </select>
                     </div>
+
+                    <!-- Poste 2ème choix -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block flex items-center space-x-1">
+                            <span>Poste — 2ème Choix</span>
+                            <span class="text-gray-400 font-medium normal-case">(optionnel mais recommandé)</span>
+                        </label>
+                        <select name="poste2" id="poste2-select" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition bg-white">
+                            <option value="">— Pas de 2ème choix —</option>
+                            <optgroup label="Bureau Exécutif — Pôle Projets">
+                                <option value="Projet Manager">Projet Manager</option>
+                                <option value="Vice-Project Manager">Vice-Project Manager</option>
+                                <option value="Finance Officer Projets">Finance & Fundraising Officer (Projets)</option>
+                            </optgroup>
+                            <optgroup label="Bureau Exécutif — Pôle Communication">
+                                <option value="Media Lead / Graphic Designer">Media Lead / Graphic Designer</option>
+                            </optgroup>
+                            <optgroup label="Bureau Exécutif — Pôle RH & Événementiel">
+                                <option value="Event & Logistics Manager">Event & Logistics Manager</option>
+                                <option value="Training & Pitch Coach">Training & Pitch Coach</option>
+                            </optgroup>
+                            <optgroup label="Bureau Exécutif — Pôle Sponsoring">
+                                <option value="Trésorier">Trésorier</option>
+                                <option value="Fundraising Officer">Fundraising Officer</option>
+                            </optgroup>
+                            <optgroup label="Membres Actifs — Cellules">
+                                <option value="Membre Cellule Projets & R&D">Membre — Cellule Projets & R&D</option>
+                                <option value="Membre Cellule Communication">Membre — Cellule Communication & Média</option>
+                                <option value="Membre Cellule Événementiel">Membre — Cellule Événementiel & Logistique</option>
+                                <option value="Membre Projets Spécifiques">Membre — Projets Spécifiques</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Motivation -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Pourquoi Enactus ? (2-3 phrases) *</label>
+                        <textarea name="motivation" required rows="3" placeholder="Dis-nous ce qui te motive à rejoindre Enactus IFMBTP..." class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition resize-none"></textarea>
+                    </div>
+
+                    <!-- Disponibilité entretien -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Disponibilité pour l'entretien *</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <label class="flex items-center space-x-2 bg-blue-50 border-2 border-blue-200 rounded-xl p-3 cursor-pointer hover:border-blue-400 transition has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
+                                <input type="checkbox" name="dispo" value="Mardi 10 Nov" class="accent-blue-500">
+                                <div>
+                                    <span class="text-[10px] font-black text-blue-900 block">MAR 10</span>
+                                    <span class="text-[9px] text-gray-500">12:20-14:00</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-emerald-50 border-2 border-emerald-200 rounded-xl p-3 cursor-pointer hover:border-emerald-400 transition has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
+                                <input type="checkbox" name="dispo" value="Mercredi 11 Nov" class="accent-emerald-500">
+                                <div>
+                                    <span class="text-[10px] font-black text-emerald-900 block">MER 11</span>
+                                    <span class="text-[9px] text-gray-500">12:20-14:00</span>
+                                </div>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-purple-50 border-2 border-purple-200 rounded-xl p-3 cursor-pointer hover:border-purple-400 transition has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
+                                <input type="checkbox" name="dispo" value="Jeudi 12 Nov" class="accent-purple-500">
+                                <div>
+                                    <span class="text-[10px] font-black text-purple-900 block">JEU 12</span>
+                                    <span class="text-[9px] text-gray-500">12:20-14:00</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Status message -->
+                    <div id="form-status" class="hidden"></div>
+
+                    <!-- BOUTONS -->
+                    <div class="space-y-3 pt-2">
+                        <button type="submit" id="submit-btn" class="w-full py-4 rounded-2xl bg-enactus-dark text-enactus-yellow font-black text-sm uppercase tracking-widest shadow-xl flex items-center justify-center gap-3 font-poster hover:bg-enactus-charcoal transition-all active:scale-95">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>ENVOYER MA CANDIDATURE</span>
+                        </button>
+                        <button type="button" onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')" class="w-full py-3 rounded-xl bg-white border-2 border-enactus-dark text-enactus-dark font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-enactus-grayBg transition">
+                            <i class="fa-brands fa-google"></i>
+                            <span>OU REMPLIR LE GOOGLE FORM</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center text-[10px] text-gray-400 border-t border-gray-100 pt-3">
+                    <p><i class="fa-solid fa-shield-halved text-enactus-yellow mr-1"></i> Tes données sont transmises uniquement à <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
                 </div>
-
-                <p class="text-[10px] text-gray-400 font-medium pt-2">
-                    <i class="fa-solid fa-envelope mr-1 text-enactus-yellowDark"></i> Contact : <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong>
-                </p>
             </div>
         </section>
 
@@ -689,7 +850,7 @@
                     <div class="space-y-1">
                         <span class="px-3 py-1 rounded-full bg-enactus-yellow/20 text-enactus-dark text-[10px] sm:text-xs font-black uppercase tracking-wider">Test d'Intérêt & Orientation</span>
                         <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark">Quel poste est fait pour toi ?</h2>
-                        <p class="text-gray-600 text-xs sm:text-sm max-w-md mx-auto font-medium">12 mises en situation · 2 minutes · On te dit directement quel poste est fait pour toi !</p>
+                        <p class="text-gray-600 text-xs sm:text-sm max-w-md mx-auto font-medium">12 questions · 2 minutes · Profil personnalisé pour t'aider à choisir ton rôle dans Enactus.</p>
                     </div>
                     <button onclick="startFullQuiz()" class="w-full py-4 rounded-xl enactus-btn-yellow text-xs sm:text-sm font-black uppercase tracking-wider shadow-lg flex items-center justify-center space-x-2 font-poster">
                         <span>DÉMARRER LE TEST</span>
@@ -720,7 +881,7 @@
                     <div class="text-center space-y-3">
                         <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-2xl shadow"><i class="fa-solid fa-award"></i></div>
                         <div>
-                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-700 block">Ton Poste Détecté !</span>
+                            <span class="text-[10px] font-black uppercase tracking-widest text-emerald-700 block">Profil Détecté !</span>
                             <h3 id="result-title" class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark">—</h3>
                             <p id="result-subtitle" class="text-xs font-bold text-enactus-yellowDark mt-0.5">—</p>
                         </div>
@@ -748,9 +909,9 @@
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
-                        <a href="https://forms.gle/WU6K3uPVPHsP6Fdt5" target="_blank" rel="noopener" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster text-center no-underline">
-                            POSTULER <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
-                        </a>
+                        <button onclick="showSection('candidature')" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster">
+                            POSTULER <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
+                        </button>
                         <button onclick="restartQuiz()" class="w-full sm:w-auto px-5 py-3.5 rounded-xl bg-gray-200 hover:bg-gray-300 text-enactus-dark text-xs font-black uppercase tracking-wider transition">
                             Refaire le test
                         </button>
@@ -788,9 +949,9 @@
                     <span id="modal-holder" class="font-black text-enactus-dark px-2.5 py-1 rounded-full bg-enactus-yellow/20 text-[11px]">Poste Ouvert</span>
                 </div>
             </div>
-            <a id="modal-apply-btn" href="https://forms.gle/WU6K3uPVPHsP6Fdt5" target="_blank" rel="noopener" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster no-underline">
-                POSTULER <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
-            </a>
+            <button id="modal-apply-btn" onclick="showSection('candidature');closeRoleModal();" class="w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster">
+                POSTULER <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
+            </button>
         </div>
     </div>
 
@@ -815,6 +976,7 @@
 
     <script>
         const GOOGLE_FORM_URL = 'https://forms.gle/WU6K3uPVPHsP6Fdt5';
+        const EMAIL_DEST = 'ifmbtpenactus@gmail.com';
 
         const rolesData = {
             'team-leader': { title:'Team Leader', reports:'Gouvernance globale', holder:'Anouar Boukili', status:'Occupé', statusClass:'bg-enactus-dark text-enactus-yellow', missions:'Direction stratégique du club, représentation officielle auprès d’Enactus Maroc et de la direction IFMBTP, supervision globale de tous les pôles.', skills:'Leadership avéré, vision stratégique, prise de décision, diplomatie.' },
@@ -851,156 +1013,129 @@
             badge.className = 'inline-block px-2.5 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider ' + r.statusClass;
             const btn = document.getElementById('modal-apply-btn');
             if (r.status === 'Occupé') {
-                btn.className = 'w-full py-3.5 rounded-xl bg-gray-200 text-gray-400 text-sm font-black uppercase tracking-widest text-center block font-poster cursor-not-allowed no-underline';
+                btn.disabled = true;
+                btn.className = 'w-full py-3.5 rounded-xl bg-gray-200 text-gray-400 text-sm font-black uppercase tracking-widest text-center block font-poster cursor-not-allowed';
                 btn.innerHTML = '<i class="fa-solid fa-lock mr-2 text-xs"></i> POSTE OCCUPÉ';
-                btn.removeAttribute('href');
-                btn.onclick = function(e){ e.preventDefault(); };
             } else {
-                btn.className = 'w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster no-underline';
-                btn.innerHTML = 'POSTULER <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>';
-                btn.href = 'https://forms.gle/WU6K3uPVPHsP6Fdt5';
-                btn.onclick = null;
+                btn.disabled = false;
+                btn.className = 'w-full py-3.5 rounded-xl enactus-btn-yellow text-sm font-black uppercase tracking-widest text-center block shadow font-poster';
+                btn.innerHTML = 'POSTULER <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>';
+                btn.onclick = function(){ showSection('candidature'); closeRoleModal(); };
             }
             document.getElementById('role-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
         function closeRoleModal() { document.getElementById('role-modal').classList.add('hidden'); document.body.style.overflow=''; }
 
+        function copierAnnonce() {
+            const text = document.getElementById('annonce-text').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target.closest('button');
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i>Copié !';
+                btn.classList.replace('bg-red-600','bg-emerald-600');
+                setTimeout(() => { btn.innerHTML = orig; btn.classList.replace('bg-emerald-600','bg-red-600'); }, 2000);
+            });
+        }
 
-        // ═══════ QUIZ — Questions situationnelles indirectes + 2 Darija ═══════
+        function submitForm(e) {
+            e.preventDefault();
+            const f = e.target;
+            const nom = f.nom.value.trim();
+            const email = f.email.value.trim();
+            const tel = f.telephone.value.trim();
+            const filiere = f.filiere.value.trim();
+            const poste1 = f.poste1.value;
+            const poste2 = f.poste2.value;
+            const motiv = f.motivation.value.trim();
+            const dispos = [...f.querySelectorAll('input[name="dispo"]:checked')].map(c=>c.value).join(', ');
+
+            if (!nom||!email||!tel||!filiere||!poste1||!motiv) {
+                const st = document.getElementById('form-status');
+                st.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-amber-100 text-amber-800';
+                st.innerText = 'Merci de remplir tous les champs obligatoires.';
+                return;
+            }
+
+            const sujet = '[Enactus IFMBTP] Candidature – ' + poste1 + ' – ' + nom;
+            const corps = 'CANDIDATURE ENACTUS IFMBTP FÈS\n' + '='.repeat(40) + '\n\n' +
+                'Nom       : ' + nom + '\n' +
+                'Email     : ' + email + '\n' +
+                'Téléphone : ' + tel + '\n' +
+                'Filière   : ' + filiere + '\n\n' +
+                'POSTE 1er CHOIX : ' + poste1 + '\n' +
+                'POSTE 2ème CHOIX : ' + (poste2||'Aucun') + '\n\n' +
+                'MOTIVATION :\n' + motiv + '\n\n' +
+                'DISPONIBILITÉ ENTRETIEN : ' + (dispos||'Non précisé') + '\n\n' +
+                '='.repeat(40);
+
+            window.location.href = 'mailto:' + EMAIL_DEST + '?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
+
+            setTimeout(() => {
+                const st = document.getElementById('form-status');
+                st.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
+                st.innerHTML = '✅ Ton application email s’est ouverte. Clique <strong>Envoyer</strong> pour finaliser !';
+            }, 1000);
+        }
+
+        // ═══════ QUIZ ═══════
         const questions = [
-            { cat:"Situation 1", q:"Samedi matin, tu n’as rien de prévu. Qu’est-ce qui te ferait sortir du lit ?", opts:[
-                {t:"Un ami m’envoie un défi créatif : faire une vidéo en 1 heure.",k:"com"},
-                {t:"Je veux tester une idée de mini-projet que j’ai en tête depuis des jours.",k:"proj"},
-                {t:"Un ami a un problème perso, je veux l’écouter et l’aider.",k:"hr"},
-                {t:"Je vais visiter un salon ou un événement pour rencontrer des gens influents.",k:"spon"}
-            ]},
-            { cat:"Situation 2", q:"Tu trouves 500 MAD par terre. Qu’est-ce que tu fais avec ?", opts:[
-                {t:"J’achète du matériel pour un projet personnel (composants, outils).",k:"proj"},
-                {t:"J’invite mes amis pour un repas et on passe un bon moment ensemble.",k:"hr"},
-                {t:"J’achète un abonnement Canva ou un filtre pour mes photos.",k:"com"},
-                {t:"Je les investis dans un petit business ou je les mets de côté.",k:"spon"}
-            ]},
-            { cat:"Situation 3", q:"Pendant un exposé en classe, le projecteur tombe en panne. Tu fais quoi ?", opts:[
-                {t:"Je dessine un schéma au tableau pour remplacer les slides.",k:"com"},
-                {t:"Je prends la parole et j’improvise sans support, avec confiance.",k:"hr"},
-                {t:"Je démonte le câble et j’essaie de réparer le problème.",k:"proj"},
-                {t:"Je négocie avec le prof pour décaler la présentation et gagner du temps.",k:"spon"}
-            ]},
-            { cat:"Situation 4", q:"Ton groupe de TD doit rendre un rapport. Tu te charges spontanément de :", opts:[
-                {t:"La mise en page, les couleurs, la couverture — que ce soit beau.",k:"com"},
-                {t:"Le contenu technique, les calculs, les schémas.",k:"proj"},
-                {t:"Répartir les tâches et m’assurer que tout le monde contribue.",k:"hr"},
-                {t:"Trouver les ressources et contacts nécessaires pour enrichir le rapport.",k:"spon"}
-            ]},
-            { cat:"Situation 5", q:"Tu scrolles ton téléphone. Qu’est-ce qui capte ton attention en premier ?", opts:[
-                {t:"Une infographie design ou un Reel bien monté.",k:"com"},
-                {t:"Un article sur une startup qui a résolu un vrai problème.",k:"proj"},
-                {t:"Un post motivant sur le développement personnel.",k:"hr"},
-                {t:"Un thread sur comment quelqu’un a décroché un deal ou un financement.",k:"spon"}
-            ]},
-            { cat:"Situation 6", q:"Un ami lance un petit projet étudiant. Il te demande de l’aider. Tu choisis :", opts:[
-                {t:"Faire le logo, les visuels et la page Instagram.",k:"com"},
-                {t:"Analyser si le projet est viable et proposer des améliorations.",k:"proj"},
-                {t:"Recruter les membres et organiser la première réunion.",k:"hr"},
-                {t:"Chercher des sponsors ou des fonds pour le financer.",k:"spon"}
-            ]},
-            { cat:"Situation 7", q:"Tu organises l’anniversaire surprise d’un ami. Ton rôle naturel ?", opts:[
-                {t:"La déco, les photos, la story Instagram du moment.",k:"com"},
-                {t:"Le plan détaillé : lieu, timing, qui fait quoi.",k:"proj"},
-                {t:"M’assurer que tout le monde est là et que personne n’est oublié.",k:"hr"},
-                {t:"Négocier le prix de la salle et collecter l’argent du groupe.",k:"spon"}
-            ]},
-            { cat:"Situation 8", q:"En amphi, le prof pose une question difficile. Personne ne répond. Toi, tu :", opts:[
-                {t:"Tu reformules la question pour la rendre plus claire aux autres.",k:"com"},
-                {t:"Tu essaies de trouver la réponse logique, même si elle n’est pas parfaite.",k:"proj"},
-                {t:"Tu encourages ton voisin à répondre et tu le soutiens.",k:"hr"},
-                {t:"Tu réponds avec assurance même si tu n’es pas sûr à 100%.",k:"spon"}
-            ]},
-            { cat:"Situation 9", q:"Si tu pouvais avoir un super-pouvoir, lequel tu choisirais ?", opts:[
-                {t:"Voir le futur — pour anticiper les tendances et innover.",k:"proj"},
-                {t:"Lire dans les pensées — pour comprendre les gens et les aider.",k:"hr"},
-                {t:"Changer l’apparence de tout — pour tout rendre beau et impactant.",k:"com"},
-                {t:"Convaincre n’importe qui — pour obtenir tout ce que tu veux.",k:"spon"}
-            ]},
-            { cat:"Situation 10", q:"C’est la fin de l’année scolaire. Qu’est-ce qui te rendrait le plus fier ?", opts:[
-                {t:"Avoir réalisé un projet concret qui a aidé des gens.",k:"proj"},
-                {t:"Avoir créé une communauté soudée où tout le monde s’entraide.",k:"hr"},
-                {t:"Avoir bâti une image forte avec des contenus qui ont fait le buzz.",k:"com"},
-                {t:"Avoir décroché des partenariats et laissé le club financièrement solide.",k:"spon"}
-            ]},
-            { cat:"🇲🇦 بالدارجة", q:"صاحبك عندو مشكل مع واحد فالقروب. شنو كتدير ؟", opts:[
-                {t:"كنحاول نفهم الجوج ونصلح بيناتهم.",k:"hr"},
-                {t:"كنقترح نغيرو طريقة الخدمة باش ما يبقاش التوتر.",k:"proj"},
-                {t:"كندير ستوري مضحكة باش نريلاكسي الجو.",k:"com"},
-                {t:"كنقنع الجوج باللي التعاون أحسن من الخلاف.",k:"spon"}
-            ]},
-            { cat:"🇲🇦 بالدارجة", q:"عطاوك فرصة تنظم حفلة فالمعهد. شنو أول حاجة كتفكر فيها ؟", opts:[
-                {t:"الأفيش والستوريات ديال الإعلان.",k:"com"},
-                {t:"البلان : وقتاش، فين، شكون غادي يدير شنو.",k:"proj"},
-                {t:"نجمع الناس ونتأكد كولشي محفز ومشارك.",k:"hr"},
-                {t:"نلقا شي سبونسور إيخلص المصاريف.",k:"spon"}
-            ]}
+            { cat:"1. Réaction sous Pression", q:"Lorsqu’une crise imprévue survient 1 heure avant un événement, quelle est votre première réaction ?", opts:[{t:"Je prends la parole pour rassurer et coordonner la logistique.",k:"hr"},{t:"Je rédige une communication percutante pour informer le public.",k:"com"},{t:"J’analyse le problème technique pour trouver une solution alternative.",k:"proj"},{t:"Je négocie avec les prestataires pour minimiser l’impact financier.",k:"spon"}]},
+            { cat:"2. Satisfaction", q:"Quel type d’activité vous procure la plus grande satisfaction ?", opts:[{t:"Convaincre un partenaire de croire en nos projets et nous financer.",k:"spon"},{t:"Concevoir un visuel qui déclenche des centaines de réactions.",k:"com"},{t:"Construire un prototype et mesurer son impact sur les bénéficiaires.",k:"proj"},{t:"Animer un atelier, motiver une équipe et voir les membres progresser.",k:"hr"}]},
+            { cat:"3. Projet de Weekend", q:"Si vous deviez organiser une journée portes ouvertes, que préféreriez-vous faire ?", opts:[{t:"Créer l’affiche officielle et la campagne Instagram.",k:"com"},{t:"Définir l’aménagement de la salle et former les guides d’accueil.",k:"hr"},{t:"Trouver des sponsors pour financer la journée.",k:"spon"},{t:"Modéliser la maquette d’exposition et présenter les innovations.",k:"proj"}]},
+            { cat:"4. Style de Réflexion", q:"Quand vous abordez un nouveau projet, votre cerveau se focalise sur :", opts:[{t:"L’innovation, le modèle économique et le problème à résoudre.",k:"proj"},{t:"Les budgets, le ROI et les sponsors potentiels.",k:"spon"},{t:"Le storytelling et la stratégie d’image de marque.",k:"com"},{t:"Les compétences humaines et le bien-être de l’équipe.",k:"hr"}]},
+            { cat:"5. Outil Préféré", q:"Quel outil résonne le plus avec votre façon de travailler ?", opts:[{t:"Photoshop, Canva, Premiere Pro, CapCut.",k:"com"},{t:"Excel, tableurs financiers, contrats.",k:"spon"},{t:"Formulaires de feedback, plannings, modules de formation.",k:"hr"},{t:"Business Model Canvas, AutoCAD, modélisation 3D.",k:"proj"}]},
+            { cat:"6. Super-Pouvoir Social", q:"Vos amis vous demandent de l’aide quand il s’agit de :", opts:[{t:"Les entraîner pour un exposé oral ou régler un conflit.",k:"hr"},{t:"Négocier un prix ou gérer les comptes d’un voyage.",k:"spon"},{t:"Retoucher une photo, embellir un CV ou faire une vidéo.",k:"com"},{t:"Résoudre un problème technique complexe.",k:"proj"}]},
+            { cat:"7. Compétition Enactus", q:"Lors des compétitions nationales, quel moment vous fait vibrer ?", opts:[{t:"Le pitch récité avec éloquence face aux jurys.",k:"hr"},{t:"Le stand d’exposition des prototypes.",k:"proj"},{t:"La vidéo de présentation sur grand écran.",k:"com"},{t:"L’annonce des investissements remportés.",k:"spon"}]},
+            { cat:"8. Gestion Budget", q:"Si on vous confie 10.000 MAD pour Enactus, où l’investissez-vous ?", opts:[{t:"Matériel de prototypage et tests terrain.",k:"proj"},{t:"Matériel de tournage/photo professionnel.",k:"com"},{t:"Campagne de prospection de grands donateurs.",k:"spon"},{t:"Séminaire de formation et team-building.",k:"hr"}]},
+            { cat:"9. Convaincre", q:"Pour convaincre quelqu’un de vous rejoindre, vous comptez sur :", opts:[{t:"Des visuels attractifs et un message accrocheur.",k:"com"},{t:"Un échange sincere pour comprendre ses motivations.",k:"hr"},{t:"Des données d’impact chiffrées.",k:"proj"},{t:"La démonstration des avantages stratégiques.",k:"spon"}]},
+            { cat:"10. Problème Terrain", q:"Un produit social du club ne fonctionne pas comme prévu. Vous :", opts:[{t:"Consultez les utilisateurs pour retravailler la formule.",k:"proj"},{t:"Cherchez un nouvel investisseur pour la version 2.0.",k:"spon"},{t:"Réorganisez les équipes pour redynamiser la motivation.",k:"hr"},{t:"Ajustez la présentation au public pour valoriser l’apprentissage.",k:"com"}]},
+            { cat:"11. Vision du Succès", q:"À la fin de l’année, votre mandat est réussi si :", opts:[{t:"Le club a un réseau de partenaires et une trésorerie saine.",k:"spon"},{t:"Chaque membre a grandi et trouvé sa place.",k:"hr"},{t:"L’image d’Enactus est rayonnante dans toutes les écoles.",k:"com"},{t:"Les projets sociaux sont autonomes et changent des vies.",k:"proj"}]},
+            { cat:"12. Force Naturelle", q:"Quel adjectif qualifie le mieux votre plus grande force ?", opts:[{t:"Créatif & Visuel",k:"com"},{t:"Méthodique & Innovateur",k:"proj"},{t:"Empathique & Fédérateur",k:"hr"},{t:"Persuasif & Stratège",k:"spon"}]}
         ];
 
         let qIdx=0, scores={com:0,proj:0,hr:0,spon:0};
 
         function startFullQuiz() {
             qIdx=0; scores={com:0,proj:0,hr:0,spon:0};
-            document.getElementById(‘quiz-intro’).classList.add(‘hidden’);
-            document.getElementById(‘quiz-results’).classList.add(‘hidden’);
-            document.getElementById(‘quiz-active’).classList.remove(‘hidden’);
+            document.getElementById('quiz-intro').classList.add('hidden');
+            document.getElementById('quiz-results').classList.add('hidden');
+            document.getElementById('quiz-active').classList.remove('hidden');
             renderQ();
         }
         function renderQ() {
             const q=questions[qIdx], total=questions.length, pct=Math.round(((qIdx+1)/total)*100);
-            document.getElementById(‘quiz-progress-text’).innerText=’Question ‘+(qIdx+1)+’ / ‘+total;
-            document.getElementById(‘quiz-progress-percent’).innerText=pct+’%’;
-            document.getElementById(‘quiz-progress-bar’).style.width=pct+’%’;
-            document.getElementById(‘question-category’).innerText=q.cat;
-            document.getElementById(‘question-title’).innerText=q.q;
-            const c=document.getElementById(‘question-options’); c.innerHTML=’’;
-            // Shuffle options for fairness
-            const shuffled = q.opts.map((o,i)=>({...o,i})).sort(()=>Math.random()-0.5);
-            shuffled.forEach((o,i)=>{
-                const b=document.createElement(‘button’);
-                b.className="p-3.5 rounded-xl border border-gray-200 bg-white text-left text-xs font-semibold text-enactus-dark flex items-start space-x-3 shadow-xs hover:bg-enactus-yellowLight transition active:scale-[0.98]";
+            document.getElementById('quiz-progress-text').innerText='Question '+(qIdx+1)+' / '+total;
+            document.getElementById('quiz-progress-percent').innerText=pct+'%';
+            document.getElementById('quiz-progress-bar').style.width=pct+'%';
+            document.getElementById('question-category').innerText=q.cat;
+            document.getElementById('question-title').innerText=q.q;
+            const c=document.getElementById('question-options'); c.innerHTML='';
+            q.opts.forEach((o,i)=>{
+                const b=document.createElement('button');
+                b.className="p-3.5 rounded-xl border border-gray-200 bg-white text-left text-xs font-semibold text-enactus-dark flex items-start space-x-3 shadow-xs hover:bg-enactus-yellowLight transition";
                 b.onclick=()=>{scores[o.k]++;qIdx++;qIdx<questions.length?renderQ():showResults();};
-                b.innerHTML=’<span class="w-5 h-5 rounded-full bg-enactus-grayBg border border-gray-300 flex items-center justify-center font-black text-[10px] shrink-0 mt-0.5">’+String.fromCharCode(65+i)+’</span><span class="leading-snug">’+o.t+’</span>’;
+                b.innerHTML='<span class="w-5 h-5 rounded-full bg-enactus-grayBg border border-gray-300 flex items-center justify-center font-black text-[10px] shrink-0 mt-0.5">'+String.fromCharCode(65+i)+'</span><span class="leading-snug">'+o.t+'</span>';
                 c.appendChild(b);
             });
         }
         function showResults() {
-            document.getElementById(‘quiz-active’).classList.add(‘hidden’);
-            document.getElementById(‘quiz-results’).classList.remove(‘hidden’);
+            document.getElementById('quiz-active').classList.add('hidden');
+            document.getElementById('quiz-results').classList.remove('hidden');
             const t=questions.length;
-            document.getElementById(‘score-com’).innerText=Math.round(scores.com/t*100)+’%’;
-            document.getElementById(‘score-proj’).innerText=Math.round(scores.proj/t*100)+’%’;
-            document.getElementById(‘score-hr’).innerText=Math.round(scores.hr/t*100)+’%’;
-            document.getElementById(‘score-spon’).innerText=Math.round(scores.spon/t*100)+’%’;
-            // Determine top score
-            let d=’com’,m=scores.com;
-            if(scores.proj>m){d=’proj’;m=scores.proj;} if(scores.hr>m){d=’hr’;m=scores.hr;} if(scores.spon>m){d=’spon’;m=scores.spon;}
-            // Map to specific POSTS (not poles)
-            const roles={
-                com:{t:"MEDIA LEAD",d:"Tu as l’œil créatif et le sens du storytelling. Tu es fait pour concevoir les visuels, les vidéos et l’identité visuelle d’Enactus. Photoshop, Canva, Reels — c’est ton terrain de jeu."},
-                proj:{t:"PROJET MANAGER",d:"Tu es un problem-solver né. Analyser, planifier, innover — tu transforms les idées en projets concrets. Le club a besoin de ton esprit méthodique pour piloter les projets sociaux."},
-                hr:{t:"TRAINING & PITCH COACH",d:"Tu es un leader humain. Écouter, motiver, fédérer — tu sais tirer le meilleur de chaque personne. Coach l’équipe pour les compétitions et assure la cohésion du groupe."},
-                spon:{t:"FUNDRAISING OFFICER",d:"Tu es un négociateur stratège. Convaincre, closer, développer — tu décroches les partenariats et sécurises les finances. Le club compte sur ton énergie commerciale."}
-            };
-            // If scores are very close, suggest 2nd post
-            const sorted = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+            document.getElementById('score-com').innerText=Math.round(scores.com/t*100)+'%';
+            document.getElementById('score-proj').innerText=Math.round(scores.proj/t*100)+'%';
+            document.getElementById('score-hr').innerText=Math.round(scores.hr/t*100)+'%';
+            document.getElementById('score-spon').innerText=Math.round(scores.spon/t*100)+'%';
+            let d='com',m=scores.com;
+            if(scores.proj>m){d='proj';m=scores.proj;} if(scores.hr>m){d='hr';m=scores.hr;} if(scores.spon>m){d='spon';m=scores.spon;}
+            const roles={com:{t:"VP COMMUNICATION / MEDIA LEAD",s:"Pôle Communication",d:"Votre fibre créative et votre storytelling captivant indiquent que vous excellerez dans la création de contenus et la construction du rayonnement d’Enactus."},proj:{t:"PROJET MANAGER / R&D",s:"Pôle Innovation & Projets",d:"Votre esprit logique et votre goût pour la résolution de problèmes montrent que vous êtes fait pour piloter des projets d’entrepreneuriat social."},hr:{t:"HR MANAGER / PITCH COACH",s:"Pôle Capital Humain",d:"Votre intelligence relationnelle et votre sens de l’organisation font de vous la personne idéale pour coacher les membres et dynamiser la cohésion."},spon:{t:"VP SPONSORSHIP / FUNDRAISING",s:"Pôle Partenariats & Finance",d:"Votre sens de la persuasion et votre vision stratégique vous qualifient pour négocier des partenariats et sécuriser les finances du club."}};
             const r=roles[d];
-            document.getElementById(‘result-title’).innerText=r.t;
-            document.getElementById(‘result-subtitle’).innerText=’Le poste qui te correspond le plus’;
-            document.getElementById(‘result-desc’).innerText=r.d;
-            // If 2nd is close, add suggestion
-            if(sorted.length>1 && sorted[1][1]>0 && sorted[0][1]-sorted[1][1]<=2) {
-                const r2=roles[sorted[1][0]];
-                document.getElementById(‘result-desc’).innerText=r.d+’\n\n💡 Ton 2ème match : ‘+r2.t+’ — ‘+r2.d.split(‘.’)[0]+’.’;
-            }
+            document.getElementById('result-title').innerText=r.t;
+            document.getElementById('result-subtitle').innerText='Rattachement : '+r.s;
+            document.getElementById('result-desc').innerText=r.d;
         }
-        function restartQuiz() { document.getElementById(‘quiz-results’).classList.add(‘hidden’); document.getElementById(‘quiz-intro’).classList.remove(‘hidden’); }
+        function restartQuiz() { document.getElementById('quiz-results').classList.add('hidden'); document.getElementById('quiz-intro').classList.remove('hidden'); }
     </script>
 </body>
 </html>
