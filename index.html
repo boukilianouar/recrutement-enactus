@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="fr" class="h-full bg-[#F4F4F0] text-[#111111]">
 <head>
@@ -61,9 +62,6 @@
         .member-card { transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
         .member-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); }
         .confetti { position: fixed; pointer-events: none; z-index: 9999; }
-        #enactus-form input:focus, #enactus-form select:focus, #enactus-form textarea:focus {
-            box-shadow: 0 0 0 3px rgba(255, 194, 14, 0.25); border-color: #FFC20E;
-        }
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
         .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
@@ -676,162 +674,76 @@ C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2
             </div>
         </section>
 
-        <!-- ═══════════════════ SECTION 5 : FORMULAIRE DE CANDIDATURE ═══════════════════ -->
+        <!-- ═══════════════════ SECTION 5 : CANDIDATURE ═══════════════════ -->
         <section id="candidature" class="view-section hidden transition-all duration-300">
             <button onclick="showSection('hero')" class="mb-3 inline-flex items-center text-xs font-bold text-enactus-dark hover:text-enactus-yellowDark transition py-1">
                 <i class="fa-solid fa-chevron-left mr-1.5"></i> Retour
             </button>
 
             <div class="poster-card rounded-2xl sm:rounded-3xl p-4 sm:p-8 max-w-2xl mx-auto space-y-6">
+                <!-- En-tête -->
                 <div class="text-center space-y-2 border-b border-enactus-border pb-5">
-                    <div class="w-14 h-14 rounded-2xl bg-enactus-yellow flex items-center justify-center mx-auto shadow">
+                    <div class="w-16 h-16 rounded-2xl bg-enactus-yellow flex items-center justify-center mx-auto shadow-lg">
                         <i class="fa-solid fa-paper-plane text-enactus-dark text-2xl"></i>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Candidature</h2>
-                    <p class="text-xs text-gray-500 font-medium">Remplis le formulaire ci-dessous — tu peux aussi choisir un <strong>2ème choix de poste</strong> !</p>
+                    <h2 class="text-2xl sm:text-3xl font-black font-poster text-enactus-dark uppercase">Postuler</h2>
+                    <p class="text-xs text-gray-500 font-medium">Clique sur le bouton ci-dessous pour accéder au formulaire officiel de candidature Google.</p>
                 </div>
 
-                <form id="enactus-form" onsubmit="submitForm(event)" class="space-y-4">
-                    <!-- Nom -->
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Nom Complet *</label>
-                        <input type="text" name="nom" required placeholder="Ex: Mohammed Alami" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
-                    </div>
-
-                    <!-- Email + Tel -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Email *</label>
-                            <input type="email" name="email" required placeholder="ton@email.com" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
+                <!-- Bloc info + bouton Google Form -->
+                <div class="space-y-4">
+                    <!-- Info card -->
+                    <div class="bg-enactus-yellow/10 border-2 border-enactus-yellow rounded-2xl p-5 flex items-start space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-enactus-yellow/30 flex items-center justify-center shrink-0">
+                            <i class="fa-brands fa-google text-enactus-dark text-2xl"></i>
                         </div>
                         <div class="space-y-1">
-                            <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Téléphone *</label>
-                            <input type="tel" name="telephone" required placeholder="06 XX XX XX XX" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
+                            <h3 class="font-black text-sm text-enactus-dark uppercase">Formulaire Google Officiel</h3>
+                            <p class="text-[11px] text-gray-600 font-medium leading-relaxed">Remplis le formulaire en ligne en moins de 2 minutes. Tu peux choisir un <strong class="text-enactus-dark">1er et 2ème choix de poste</strong> pour maximiser tes chances !</p>
                         </div>
                     </div>
 
-                    <!-- Filière -->
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Filière / Niveau *</label>
-                        <input type="text" name="filiere" required placeholder="Ex: GC 2ème année, Topo 1ère année..." class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition">
-                    </div>
-
-                    <!-- Poste 1er choix -->
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Poste souhaité — 1er Choix *</label>
-                        <select name="poste1" id="poste1-select" required class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition bg-white">
-                            <option value="">— Sélectionner un poste —</option>
-                            <optgroup label="Bureau Exécutif — Pôle Projets">
-                                <option value="Projet Manager">Projet Manager</option>
-                                <option value="Vice-Project Manager">Vice-Project Manager</option>
-                                <option value="Finance Officer Projets">Finance & Fundraising Officer (Projets)</option>
-                            </optgroup>
-                            <optgroup label="Bureau Exécutif — Pôle Communication">
-                                <option value="Media Lead / Graphic Designer">Media Lead / Graphic Designer</option>
-                            </optgroup>
-                            <optgroup label="Bureau Exécutif — Pôle RH & Événementiel">
-                                <option value="Event & Logistics Manager">Event & Logistics Manager</option>
-                                <option value="Training & Pitch Coach">Training & Pitch Coach</option>
-                            </optgroup>
-                            <optgroup label="Bureau Exécutif — Pôle Sponsoring">
-                                <option value="Trésorier">Trésorier</option>
-                                <option value="Fundraising Officer">Fundraising Officer</option>
-                            </optgroup>
-                            <optgroup label="Membres Actifs — Cellules">
-                                <option value="Membre Cellule Projets & R&D">Membre — Cellule Projets & R&D</option>
-                                <option value="Membre Cellule Communication">Membre — Cellule Communication & Média</option>
-                                <option value="Membre Cellule Événementiel">Membre — Cellule Événementiel & Logistique</option>
-                                <option value="Membre Projets Spécifiques">Membre — Projets Spécifiques</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <!-- Poste 2ème choix -->
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block flex items-center space-x-1">
-                            <span>Poste — 2ème Choix</span>
-                            <span class="text-gray-400 font-medium normal-case">(optionnel mais recommandé)</span>
-                        </label>
-                        <select name="poste2" id="poste2-select" class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition bg-white">
-                            <option value="">— Pas de 2ème choix —</option>
-                            <optgroup label="Bureau Exécutif — Pôle Projets">
-                                <option value="Projet Manager">Projet Manager</option>
-                                <option value="Vice-Project Manager">Vice-Project Manager</option>
-                                <option value="Finance Officer Projets">Finance & Fundraising Officer (Projets)</option>
-                            </optgroup>
-                            <optgroup label="Bureau Exécutif — Pôle Communication">
-                                <option value="Media Lead / Graphic Designer">Media Lead / Graphic Designer</option>
-                            </optgroup>
-                            <optgroup label="Bureau Exécutif — Pôle RH & Événementiel">
-                                <option value="Event & Logistics Manager">Event & Logistics Manager</option>
-                                <option value="Training & Pitch Coach">Training & Pitch Coach</option>
-                            </optgroup>
-                            <optgroup label="Bureau Exécutif — Pôle Sponsoring">
-                                <option value="Trésorier">Trésorier</option>
-                                <option value="Fundraising Officer">Fundraising Officer</option>
-                            </optgroup>
-                            <optgroup label="Membres Actifs — Cellules">
-                                <option value="Membre Cellule Projets & R&D">Membre — Cellule Projets & R&D</option>
-                                <option value="Membre Cellule Communication">Membre — Cellule Communication & Média</option>
-                                <option value="Membre Cellule Événementiel">Membre — Cellule Événementiel & Logistique</option>
-                                <option value="Membre Projets Spécifiques">Membre — Projets Spécifiques</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <!-- Motivation -->
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Pourquoi Enactus ? (2-3 phrases) *</label>
-                        <textarea name="motivation" required rows="3" placeholder="Dis-nous ce qui te motive à rejoindre Enactus IFMBTP..." class="w-full px-4 py-3 rounded-xl border-2 border-gray-200 text-sm font-medium focus:outline-none transition resize-none"></textarea>
-                    </div>
-
-                    <!-- Disponibilité entretien -->
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Disponibilité pour l'entretien *</label>
-                        <div class="grid grid-cols-3 gap-2">
-                            <label class="flex items-center space-x-2 bg-blue-50 border-2 border-blue-200 rounded-xl p-3 cursor-pointer hover:border-blue-400 transition has-[:checked]:border-blue-500 has-[:checked]:bg-blue-100">
-                                <input type="checkbox" name="dispo" value="Mardi 10 Nov" class="accent-blue-500">
-                                <div>
-                                    <span class="text-[10px] font-black text-blue-900 block">MAR 10</span>
-                                    <span class="text-[9px] text-gray-500">12:20-14:00</span>
-                                </div>
-                            </label>
-                            <label class="flex items-center space-x-2 bg-emerald-50 border-2 border-emerald-200 rounded-xl p-3 cursor-pointer hover:border-emerald-400 transition has-[:checked]:border-emerald-500 has-[:checked]:bg-emerald-100">
-                                <input type="checkbox" name="dispo" value="Mercredi 11 Nov" class="accent-emerald-500">
-                                <div>
-                                    <span class="text-[10px] font-black text-emerald-900 block">MER 11</span>
-                                    <span class="text-[9px] text-gray-500">12:20-14:00</span>
-                                </div>
-                            </label>
-                            <label class="flex items-center space-x-2 bg-purple-50 border-2 border-purple-200 rounded-xl p-3 cursor-pointer hover:border-purple-400 transition has-[:checked]:border-purple-500 has-[:checked]:bg-purple-100">
-                                <input type="checkbox" name="dispo" value="Jeudi 12 Nov" class="accent-purple-500">
-                                <div>
-                                    <span class="text-[10px] font-black text-purple-900 block">JEU 12</span>
-                                    <span class="text-[9px] text-gray-500">12:20-14:00</span>
-                                </div>
-                            </label>
+                    <!-- Checklist rapide -->
+                    <div class="bg-enactus-grayBg rounded-2xl p-4 space-y-2">
+                        <span class="text-[10px] font-black uppercase tracking-wider text-enactus-dark block">Ce dont tu as besoin :</span>
+                        <div class="space-y-1.5">
+                            <div class="flex items-center space-x-2 text-[11px] text-gray-700">
+                                <i class="fa-solid fa-circle-check text-enactus-yellowDark shrink-0"></i>
+                                <span>Ton nom complet, email et numéro de téléphone</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-[11px] text-gray-700">
+                                <i class="fa-solid fa-circle-check text-enactus-yellowDark shrink-0"></i>
+                                <span>Ta filière et ton niveau d'études</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-[11px] text-gray-700">
+                                <i class="fa-solid fa-circle-check text-enactus-yellowDark shrink-0"></i>
+                                <span>Le poste que tu vises (1er et 2ème choix)</span>
+                            </div>
+                            <div class="flex items-center space-x-2 text-[11px] text-gray-700">
+                                <i class="fa-solid fa-circle-check text-enactus-yellowDark shrink-0"></i>
+                                <span>2-3 phrases de motivation</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Status message -->
-                    <div id="form-status" class="hidden"></div>
+                    <!-- CTA principal -->
+                    <button onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')" class="w-full py-5 rounded-2xl enactus-btn-yellow text-sm font-black uppercase tracking-widest font-poster shadow-xl flex items-center justify-center gap-3 hover:gap-4 transition-all">
+                        <i class="fa-brands fa-google text-lg"></i>
+                        <span>REMPLIR LE FORMULAIRE</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </button>
 
-                    <!-- BOUTONS -->
-                    <div class="space-y-3 pt-2">
-                        <button type="submit" id="submit-btn" class="w-full py-4 rounded-2xl bg-enactus-dark text-enactus-yellow font-black text-sm uppercase tracking-widest shadow-xl flex items-center justify-center gap-3 font-poster hover:bg-enactus-charcoal transition-all active:scale-95">
-                            <i class="fa-solid fa-paper-plane"></i>
-                            <span>ENVOYER MA CANDIDATURE</span>
-                        </button>
-                        <button type="button" onclick="window.open('https://forms.gle/WU6K3uPVPHsP6Fdt5','_blank')" class="w-full py-3 rounded-xl bg-white border-2 border-enactus-dark text-enactus-dark font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-enactus-grayBg transition">
-                            <i class="fa-brands fa-google"></i>
-                            <span>OU REMPLIR LE GOOGLE FORM</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>
-                        </button>
+                    <!-- Date limite -->
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-3 flex items-center space-x-3">
+                        <i class="fa-solid fa-triangle-exclamation text-red-500 shrink-0"></i>
+                        <p class="text-[11px] font-bold text-red-700">Entretiens : <strong>Mar 10, Mer 11 et Jeu 12 Novembre</strong> de 12h20 à 14h00. Aucune exception après ces dates !</p>
                     </div>
-                </form>
+                </div>
 
-                <div class="text-center text-[10px] text-gray-400 border-t border-gray-100 pt-3">
-                    <p><i class="fa-solid fa-shield-halved text-enactus-yellow mr-1"></i> Tes données sont transmises uniquement à <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
+                <!-- Pied de page -->
+                <div class="text-center text-[10px] text-gray-400 border-t border-gray-100 pt-3 space-y-1">
+                    <p><i class="fa-solid fa-envelope text-enactus-yellow mr-1"></i> Contact : <strong class="text-enactus-dark">ifmbtpenactus@gmail.com</strong></p>
+                    <p class="text-[9px]"><i class="fa-solid fa-shield-halved text-enactus-yellow mr-1"></i> Tes données sont transmises uniquement à l'équipe Enactus IFMBTP Fès</p>
                 </div>
             </div>
         </section>
@@ -976,23 +888,22 @@ C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2
 
     <script>
         const GOOGLE_FORM_URL = 'https://forms.gle/WU6K3uPVPHsP6Fdt5';
-        const EMAIL_DEST = 'ifmbtpenactus@gmail.com';
 
         const rolesData = {
-            'team-leader': { title:'Team Leader', reports:'Gouvernance globale', holder:'Anouar Boukili', status:'Occupé', statusClass:'bg-enactus-dark text-enactus-yellow', missions:'Direction stratégique du club, représentation officielle auprès d’Enactus Maroc et de la direction IFMBTP, supervision globale de tous les pôles.', skills:'Leadership avéré, vision stratégique, prise de décision, diplomatie.' },
+            'team-leader': { title:'Team Leader', reports:'Gouvernance globale', holder:'Anouar Boukili', status:'Occupé', statusClass:'bg-enactus-dark text-enactus-yellow', missions:'Direction stratégique du club, représentation officielle auprès d\'Enactus Maroc et de la direction IFMBTP, supervision globale de tous les pôles.', skills:'Leadership avéré, vision stratégique, prise de décision, diplomatie.' },
             'vice-team-leader': { title:'Vice–Team Leader', reports:'Team Leader', holder:'Sara Achoubal', status:'Occupé', statusClass:'bg-enactus-dark text-enactus-yellow', missions:'Coordination opérationnelle entre tous les responsables de pôles, contrôle qualité des livrables, soutien direct à la Présidence.', skills:'Organisation rigoureuse, communication interpersonnelle, médiation.' },
-            'vp-communication': { title:'VP Communication', reports:'Team Leader', holder:'Sah Khaoula', status:'Occupé', statusClass:'bg-rose-500 text-white', missions:'Stratégie éditoriale et médias, supervision de la charte graphique, gestion de l’image de marque du club.', skills:'Stratégie de communication, branding, leadership créatif.' },
-            'hr-manager': { title:'HR Manager', reports:'Team Leader', holder:'Mohammed El Ouidadi', status:'Occupé', statusClass:'bg-emerald-500 text-white', missions:'Capital humain, engagement des membres, processus de recrutement, intégration et cohésion d’équipe.', skills:'Intelligence émotionnelle, écoute active, gestion des conflits.' },
-            'vp-sponsorship': { title:'VP Sponsorship', reports:'Team Leader', holder:'Meryem Eraoui', status:'Occupé', statusClass:'bg-purple-500 text-white', missions:'Stratégie de prospection d’entreprises, négociation de conventions de sponsoring, réseau de partenaires.', skills:'Négociation commerciale, aisance relationnelle, closing.' },
+            'vp-communication': { title:'VP Communication', reports:'Team Leader', holder:'Sah Khaoula', status:'Occupé', statusClass:'bg-rose-500 text-white', missions:'Stratégie éditoriale et médias, supervision de la charte graphique, gestion de l\'image de marque du club.', skills:'Stratégie de communication, branding, leadership créatif.' },
+            'hr-manager': { title:'HR Manager', reports:'Team Leader', holder:'Mohammed El Ouidadi', status:'Occupé', statusClass:'bg-emerald-500 text-white', missions:'Capital humain, engagement des membres, processus de recrutement, intégration et cohésion d\'équipe.', skills:'Intelligence émotionnelle, écoute active, gestion des conflits.' },
+            'vp-sponsorship': { title:'VP Sponsorship', reports:'Team Leader', holder:'Meryem Eraoui', status:'Occupé', statusClass:'bg-purple-500 text-white', missions:'Stratégie de prospection d\'entreprises, négociation de conventions de sponsoring, réseau de partenaires.', skills:'Négociation commerciale, aisance relationnelle, closing.' },
             'audiovisuel-cm': { title:'Community & Audiovisuel Manager', reports:'VP Communication', holder:'Fadoua Eraoui', status:'Occupé', statusClass:'bg-rose-400 text-white', missions:'Couverture vidéo/photo des événements, montage de Reels/TikToks, rédaction de posts, animation des communautés.', skills:'Montage vidéo, storytelling, copywriting, sens des tendances.' },
-            'projet-manager': { title:'Projet Manager', reports:'Team Leader & Vice-Team Leader', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-blue-100 text-blue-800', missions:'Supervision technique de tous les projets d’entrepreneuriat social, accompagnement méthodologique (Business Model Canvas), suivi terrain et prototypage.', skills:'Gestion de projets, méthodologie Enactus, innovation sociale, résolution de problèmes.' },
-            'vice-project-manager': { title:'Vice-Project Manager', reports:'Projet Manager', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-blue-100 text-blue-800', missions:'Suivi opérationnel quotidien des chefs de projets, contrôle de l’avancement et soutien technique lors des phases d’expérimentation.', skills:'Rigueur, esprit d’analyse, suivi KPIs, travail en équipe.' },
+            'projet-manager': { title:'Projet Manager', reports:'Team Leader & Vice-Team Leader', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-blue-100 text-blue-800', missions:'Supervision technique de tous les projets d\'entrepreneuriat social, accompagnement méthodologique (Business Model Canvas), suivi terrain et prototypage.', skills:'Gestion de projets, méthodologie Enactus, innovation sociale, résolution de problèmes.' },
+            'vice-project-manager': { title:'Vice-Project Manager', reports:'Projet Manager', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-blue-100 text-blue-800', missions:'Suivi opérationnel quotidien des chefs de projets, contrôle de l\'avancement et soutien technique lors des phases d\'expérimentation.', skills:'Rigueur, esprit d\'analyse, suivi KPIs, travail en équipe.' },
             'finance-fundraising-officer': { title:'Finance & Fundraising Officer (Projets)', reports:'Projet Manager', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-blue-100 text-blue-800', missions:'Évaluation des besoins financiers des projets sociaux, élaboration des budgets de prototypage, recherche de micro-financements.', skills:'Gestion budgétaire, prévisions financières, rigueur, initiative.' },
-            'media-lead': { title:'Media Lead / Graphic Designer', reports:'VP Communication (Sah Khaoula)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-rose-100 text-rose-800', missions:'Conception d’affiches, visuels RS, identités visuelles pour les projets, respect de la charte graphique Enactus, supports de présentation.', skills:'Photoshop, Illustrator, Canva, créativité visuelle, attention aux détails.' },
+            'media-lead': { title:'Media Lead / Graphic Designer', reports:'VP Communication (Sah Khaoula)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-rose-100 text-rose-800', missions:'Conception d\'affiches, visuels RS, identités visuelles pour les projets, respect de la charte graphique Enactus, supports de présentation.', skills:'Photoshop, Illustrator, Canva, créativité visuelle, attention aux détails.' },
             'event-logistics-manager': { title:'Event & Logistics Manager', reports:'HR Manager (Mohammed El Ouidadi)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-emerald-100 text-emerald-800', missions:'Planification et organisation logistique de toutes les manifestations, réservation de salles, gestion du matériel.', skills:'Logistique, réactivité, négociation fournisseurs, gestion du stress.' },
-            'training-pitch-coach': { title:'Training & Pitch Coach', reports:'HR Manager (Mohammed El Ouidadi)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-emerald-100 text-emerald-800', missions:'Coaching prise de parole en public, préparation des présentations d’impact (pitchs) face au jury Enactus Maroc.', skills:'Prise de parole, storytelling, persuasion, pédagogie.' },
-            'tresorier': { title:'Trésorier', reports:'VP Sponsorship (Meryem Eraoui)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-purple-100 text-purple-900', missions:'Tenue des comptes globaux, gestion de la caisse, suivi des encaissements sponsorings et décaissements, transparence financière.', skills:'Comptabilité, rigueur extrême, maîtrise d’Excel, intégrité.' },
-            'finance-fundraising-officer-sponsorship': { title:'Fundraising Officer (Sponsorship)', reports:'VP Sponsorship (Meryem Eraoui)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-purple-100 text-purple-900', missions:'Démarchage de subventions, prospection active auprès d’organismes bailleurs de fonds, montage de dossiers financiers.', skills:'Prospection téléphonique/email, argumentation commerciale, ténacité.' }
+            'training-pitch-coach': { title:'Training & Pitch Coach', reports:'HR Manager (Mohammed El Ouidadi)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-emerald-100 text-emerald-800', missions:'Coaching prise de parole en public, préparation des présentations d\'impact (pitchs) face au jury Enactus Maroc.', skills:'Prise de parole, storytelling, persuasion, pédagogie.' },
+            'tresorier': { title:'Trésorier', reports:'VP Sponsorship (Meryem Eraoui)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-purple-100 text-purple-900', missions:'Tenue des comptes globaux, gestion de la caisse, suivi des encaissements sponsorings et décaissements, transparence financière.', skills:'Comptabilité, rigueur extrême, maîtrise d\'Excel, intégrité.' },
+            'finance-fundraising-officer-sponsorship': { title:'Fundraising Officer (Sponsorship)', reports:'VP Sponsorship (Meryem Eraoui)', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-purple-100 text-purple-900', missions:'Démarchage de subventions, prospection active auprès d\'organismes bailleurs de fonds, montage de dossiers financiers.', skills:'Prospection téléphonique/email, argumentation commerciale, ténacité.' }
         };
 
         function showSection(id) {
@@ -1002,7 +913,7 @@ C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2
         }
 
         function openRoleModal(key) {
-            const r = rolesData[key] || { title:'Membre Actif', reports:'Bureau Exécutif', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-emerald-100 text-emerald-800', missions:'Participer activement aux activités et réalisations du pôle choisi.', skills:'Motivation, esprit d’équipe, ponctualité.' };
+            const r = rolesData[key] || { title:'Membre Actif', reports:'Bureau Exécutif', holder:'Poste Ouvert', status:'Poste Ouvert', statusClass:'bg-emerald-100 text-emerald-800', missions:'Participer activement aux activités et réalisations du pôle choisi.', skills:'Motivation, esprit d\'équipe, ponctualité.' };
             document.getElementById('modal-title').innerText = r.title;
             document.getElementById('modal-reports').innerText = 'Rattaché à : ' + r.reports;
             document.getElementById('modal-holder').innerText = r.holder;
@@ -1038,59 +949,19 @@ C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2
             });
         }
 
-        function submitForm(e) {
-            e.preventDefault();
-            const f = e.target;
-            const nom = f.nom.value.trim();
-            const email = f.email.value.trim();
-            const tel = f.telephone.value.trim();
-            const filiere = f.filiere.value.trim();
-            const poste1 = f.poste1.value;
-            const poste2 = f.poste2.value;
-            const motiv = f.motivation.value.trim();
-            const dispos = [...f.querySelectorAll('input[name="dispo"]:checked')].map(c=>c.value).join(', ');
-
-            if (!nom||!email||!tel||!filiere||!poste1||!motiv) {
-                const st = document.getElementById('form-status');
-                st.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-amber-100 text-amber-800';
-                st.innerText = 'Merci de remplir tous les champs obligatoires.';
-                return;
-            }
-
-            const sujet = '[Enactus IFMBTP] Candidature – ' + poste1 + ' – ' + nom;
-            const corps = 'CANDIDATURE ENACTUS IFMBTP FÈS\n' + '='.repeat(40) + '\n\n' +
-                'Nom       : ' + nom + '\n' +
-                'Email     : ' + email + '\n' +
-                'Téléphone : ' + tel + '\n' +
-                'Filière   : ' + filiere + '\n\n' +
-                'POSTE 1er CHOIX : ' + poste1 + '\n' +
-                'POSTE 2ème CHOIX : ' + (poste2||'Aucun') + '\n\n' +
-                'MOTIVATION :\n' + motiv + '\n\n' +
-                'DISPONIBILITÉ ENTRETIEN : ' + (dispos||'Non précisé') + '\n\n' +
-                '='.repeat(40);
-
-            window.location.href = 'mailto:' + EMAIL_DEST + '?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
-
-            setTimeout(() => {
-                const st = document.getElementById('form-status');
-                st.className = 'block p-3 rounded-xl text-xs font-bold text-center bg-emerald-100 text-emerald-800';
-                st.innerHTML = '✅ Ton application email s’est ouverte. Clique <strong>Envoyer</strong> pour finaliser !';
-            }, 1000);
-        }
-
         // ═══════ QUIZ ═══════
         const questions = [
-            { cat:"1. Réaction sous Pression", q:"Lorsqu’une crise imprévue survient 1 heure avant un événement, quelle est votre première réaction ?", opts:[{t:"Je prends la parole pour rassurer et coordonner la logistique.",k:"hr"},{t:"Je rédige une communication percutante pour informer le public.",k:"com"},{t:"J’analyse le problème technique pour trouver une solution alternative.",k:"proj"},{t:"Je négocie avec les prestataires pour minimiser l’impact financier.",k:"spon"}]},
-            { cat:"2. Satisfaction", q:"Quel type d’activité vous procure la plus grande satisfaction ?", opts:[{t:"Convaincre un partenaire de croire en nos projets et nous financer.",k:"spon"},{t:"Concevoir un visuel qui déclenche des centaines de réactions.",k:"com"},{t:"Construire un prototype et mesurer son impact sur les bénéficiaires.",k:"proj"},{t:"Animer un atelier, motiver une équipe et voir les membres progresser.",k:"hr"}]},
-            { cat:"3. Projet de Weekend", q:"Si vous deviez organiser une journée portes ouvertes, que préféreriez-vous faire ?", opts:[{t:"Créer l’affiche officielle et la campagne Instagram.",k:"com"},{t:"Définir l’aménagement de la salle et former les guides d’accueil.",k:"hr"},{t:"Trouver des sponsors pour financer la journée.",k:"spon"},{t:"Modéliser la maquette d’exposition et présenter les innovations.",k:"proj"}]},
-            { cat:"4. Style de Réflexion", q:"Quand vous abordez un nouveau projet, votre cerveau se focalise sur :", opts:[{t:"L’innovation, le modèle économique et le problème à résoudre.",k:"proj"},{t:"Les budgets, le ROI et les sponsors potentiels.",k:"spon"},{t:"Le storytelling et la stratégie d’image de marque.",k:"com"},{t:"Les compétences humaines et le bien-être de l’équipe.",k:"hr"}]},
+            { cat:"1. Réaction sous Pression", q:"Lorsqu'une crise imprévue survient 1 heure avant un événement, quelle est votre première réaction ?", opts:[{t:"Je prends la parole pour rassurer et coordonner la logistique.",k:"hr"},{t:"Je rédige une communication percutante pour informer le public.",k:"com"},{t:"J'analyse le problème technique pour trouver une solution alternative.",k:"proj"},{t:"Je négocie avec les prestataires pour minimiser l'impact financier.",k:"spon"}]},
+            { cat:"2. Satisfaction", q:"Quel type d'activité vous procure la plus grande satisfaction ?", opts:[{t:"Convaincre un partenaire de croire en nos projets et nous financer.",k:"spon"},{t:"Concevoir un visuel qui déclenche des centaines de réactions.",k:"com"},{t:"Construire un prototype et mesurer son impact sur les bénéficiaires.",k:"proj"},{t:"Animer un atelier, motiver une équipe et voir les membres progresser.",k:"hr"}]},
+            { cat:"3. Projet de Weekend", q:"Si vous deviez organiser une journée portes ouvertes, que préféreriez-vous faire ?", opts:[{t:"Créer l'affiche officielle et la campagne Instagram.",k:"com"},{t:"Définir l'aménagement de la salle et former les guides d'accueil.",k:"hr"},{t:"Trouver des sponsors pour financer la journée.",k:"spon"},{t:"Modéliser la maquette d'exposition et présenter les innovations.",k:"proj"}]},
+            { cat:"4. Style de Réflexion", q:"Quand vous abordez un nouveau projet, votre cerveau se focalise sur :", opts:[{t:"L'innovation, le modèle économique et le problème à résoudre.",k:"proj"},{t:"Les budgets, le ROI et les sponsors potentiels.",k:"spon"},{t:"Le storytelling et la stratégie d'image de marque.",k:"com"},{t:"Les compétences humaines et le bien-être de l'équipe.",k:"hr"}]},
             { cat:"5. Outil Préféré", q:"Quel outil résonne le plus avec votre façon de travailler ?", opts:[{t:"Photoshop, Canva, Premiere Pro, CapCut.",k:"com"},{t:"Excel, tableurs financiers, contrats.",k:"spon"},{t:"Formulaires de feedback, plannings, modules de formation.",k:"hr"},{t:"Business Model Canvas, AutoCAD, modélisation 3D.",k:"proj"}]},
-            { cat:"6. Super-Pouvoir Social", q:"Vos amis vous demandent de l’aide quand il s’agit de :", opts:[{t:"Les entraîner pour un exposé oral ou régler un conflit.",k:"hr"},{t:"Négocier un prix ou gérer les comptes d’un voyage.",k:"spon"},{t:"Retoucher une photo, embellir un CV ou faire une vidéo.",k:"com"},{t:"Résoudre un problème technique complexe.",k:"proj"}]},
-            { cat:"7. Compétition Enactus", q:"Lors des compétitions nationales, quel moment vous fait vibrer ?", opts:[{t:"Le pitch récité avec éloquence face aux jurys.",k:"hr"},{t:"Le stand d’exposition des prototypes.",k:"proj"},{t:"La vidéo de présentation sur grand écran.",k:"com"},{t:"L’annonce des investissements remportés.",k:"spon"}]},
-            { cat:"8. Gestion Budget", q:"Si on vous confie 10.000 MAD pour Enactus, où l’investissez-vous ?", opts:[{t:"Matériel de prototypage et tests terrain.",k:"proj"},{t:"Matériel de tournage/photo professionnel.",k:"com"},{t:"Campagne de prospection de grands donateurs.",k:"spon"},{t:"Séminaire de formation et team-building.",k:"hr"}]},
-            { cat:"9. Convaincre", q:"Pour convaincre quelqu’un de vous rejoindre, vous comptez sur :", opts:[{t:"Des visuels attractifs et un message accrocheur.",k:"com"},{t:"Un échange sincere pour comprendre ses motivations.",k:"hr"},{t:"Des données d’impact chiffrées.",k:"proj"},{t:"La démonstration des avantages stratégiques.",k:"spon"}]},
-            { cat:"10. Problème Terrain", q:"Un produit social du club ne fonctionne pas comme prévu. Vous :", opts:[{t:"Consultez les utilisateurs pour retravailler la formule.",k:"proj"},{t:"Cherchez un nouvel investisseur pour la version 2.0.",k:"spon"},{t:"Réorganisez les équipes pour redynamiser la motivation.",k:"hr"},{t:"Ajustez la présentation au public pour valoriser l’apprentissage.",k:"com"}]},
-            { cat:"11. Vision du Succès", q:"À la fin de l’année, votre mandat est réussi si :", opts:[{t:"Le club a un réseau de partenaires et une trésorerie saine.",k:"spon"},{t:"Chaque membre a grandi et trouvé sa place.",k:"hr"},{t:"L’image d’Enactus est rayonnante dans toutes les écoles.",k:"com"},{t:"Les projets sociaux sont autonomes et changent des vies.",k:"proj"}]},
+            { cat:"6. Super-Pouvoir Social", q:"Vos amis vous demandent de l'aide quand il s'agit de :", opts:[{t:"Les entraîner pour un exposé oral ou régler un conflit.",k:"hr"},{t:"Négocier un prix ou gérer les comptes d'un voyage.",k:"spon"},{t:"Retoucher une photo, embellir un CV ou faire une vidéo.",k:"com"},{t:"Résoudre un problème technique complexe.",k:"proj"}]},
+            { cat:"7. Compétition Enactus", q:"Lors des compétitions nationales, quel moment vous fait vibrer ?", opts:[{t:"Le pitch récité avec éloquence face aux jurys.",k:"hr"},{t:"Le stand d'exposition des prototypes.",k:"proj"},{t:"La vidéo de présentation sur grand écran.",k:"com"},{t:"L'annonce des investissements remportés.",k:"spon"}]},
+            { cat:"8. Gestion Budget", q:"Si on vous confie 10.000 MAD pour Enactus, où l'investissez-vous ?", opts:[{t:"Matériel de prototypage et tests terrain.",k:"proj"},{t:"Matériel de tournage/photo professionnel.",k:"com"},{t:"Campagne de prospection de grands donateurs.",k:"spon"},{t:"Séminaire de formation et team-building.",k:"hr"}]},
+            { cat:"9. Convaincre", q:"Pour convaincre quelqu'un de vous rejoindre, vous comptez sur :", opts:[{t:"Des visuels attractifs et un message accrocheur.",k:"com"},{t:"Un échange sincere pour comprendre ses motivations.",k:"hr"},{t:"Des données d'impact chiffrées.",k:"proj"},{t:"La démonstration des avantages stratégiques.",k:"spon"}]},
+            { cat:"10. Problème Terrain", q:"Un produit social du club ne fonctionne pas comme prévu. Vous :", opts:[{t:"Consultez les utilisateurs pour retravailler la formule.",k:"proj"},{t:"Cherchez un nouvel investisseur pour la version 2.0.",k:"spon"},{t:"Réorganisez les équipes pour redynamiser la motivation.",k:"hr"},{t:"Ajustez la présentation au public pour valoriser l'apprentissage.",k:"com"}]},
+            { cat:"11. Vision du Succès", q:"À la fin de l'année, votre mandat est réussi si :", opts:[{t:"Le club a un réseau de partenaires et une trésorerie saine.",k:"spon"},{t:"Chaque membre a grandi et trouvé sa place.",k:"hr"},{t:"L'image d'Enactus est rayonnante dans toutes les écoles.",k:"com"},{t:"Les projets sociaux sont autonomes et changent des vies.",k:"proj"}]},
             { cat:"12. Force Naturelle", q:"Quel adjectif qualifie le mieux votre plus grande force ?", opts:[{t:"Créatif & Visuel",k:"com"},{t:"Méthodique & Innovateur",k:"proj"},{t:"Empathique & Fédérateur",k:"hr"},{t:"Persuasif & Stratège",k:"spon"}]}
         ];
 
@@ -1129,7 +1000,7 @@ C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2
             document.getElementById('score-spon').innerText=Math.round(scores.spon/t*100)+'%';
             let d='com',m=scores.com;
             if(scores.proj>m){d='proj';m=scores.proj;} if(scores.hr>m){d='hr';m=scores.hr;} if(scores.spon>m){d='spon';m=scores.spon;}
-            const roles={com:{t:"VP COMMUNICATION / MEDIA LEAD",s:"Pôle Communication",d:"Votre fibre créative et votre storytelling captivant indiquent que vous excellerez dans la création de contenus et la construction du rayonnement d’Enactus."},proj:{t:"PROJET MANAGER / R&D",s:"Pôle Innovation & Projets",d:"Votre esprit logique et votre goût pour la résolution de problèmes montrent que vous êtes fait pour piloter des projets d’entrepreneuriat social."},hr:{t:"HR MANAGER / PITCH COACH",s:"Pôle Capital Humain",d:"Votre intelligence relationnelle et votre sens de l’organisation font de vous la personne idéale pour coacher les membres et dynamiser la cohésion."},spon:{t:"VP SPONSORSHIP / FUNDRAISING",s:"Pôle Partenariats & Finance",d:"Votre sens de la persuasion et votre vision stratégique vous qualifient pour négocier des partenariats et sécuriser les finances du club."}};
+            const roles={com:{t:"VP COMMUNICATION / MEDIA LEAD",s:"Pôle Communication",d:"Votre fibre créative et votre storytelling captivant indiquent que vous excellerez dans la création de contenus et la construction du rayonnement d'Enactus."},proj:{t:"PROJET MANAGER / R&D",s:"Pôle Innovation & Projets",d:"Votre esprit logique et votre goût pour la résolution de problèmes montrent que vous êtes fait pour piloter des projets d'entrepreneuriat social."},hr:{t:"HR MANAGER / PITCH COACH",s:"Pôle Capital Humain",d:"Votre intelligence relationnelle et votre sens de l'organisation font de vous la personne idéale pour coacher les membres et dynamiser la cohésion."},spon:{t:"VP SPONSORSHIP / FUNDRAISING",s:"Pôle Partenariats & Finance",d:"Votre sens de la persuasion et votre vision stratégique vous qualifient pour négocier des partenariats et sécuriser les finances du club."}};
             const r=roles[d];
             document.getElementById('result-title').innerText=r.t;
             document.getElementById('result-subtitle').innerText='Rattachement : '+r.s;
@@ -1139,3 +1010,5 @@ C'est la 3ème et DERNIÈRE vague de recrutement pour Enactus IFMBTP Fès 2026-2
     </script>
 </body>
 </html>
+
+</body></html>
